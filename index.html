@@ -98,5 +98,18 @@
     });
   </script>
   <button id="topBtn" title="Back to top">↑</button>
+  <script>
+  // Show button after scrolling down
+  const topBtn = document.getElementById("topBtn");
+  window.onscroll = function () {
+    topBtn.style.display = window.scrollY > 200 ? "block" : "none";
+  };
+
+  // Scroll to top on click
+  topBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+</script>
+
 </body>
 </html>
