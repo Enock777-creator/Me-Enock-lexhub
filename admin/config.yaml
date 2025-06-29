@@ -1,6 +1,5 @@
 backend:
   name: git-gateway
-  repo: Enock777-creator/Me-Enock-lexhub
   branch: main
 
 media_folder: "assets/uploads"
@@ -13,6 +12,13 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
