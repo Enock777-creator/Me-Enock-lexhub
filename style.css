@@ -21,6 +21,27 @@ main {
   white-space: nowrap;
   border: 0;
 }
+#topBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #004b8d;
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+#topBtn:hover {
+  background-color: #333;
+}
+
 
 /* Header */
 header {
