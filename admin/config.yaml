@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: Enock777-creator/Me-Enock-lexhub
+  name: git-gateway
   branch: main
 
 media_folder: "assets/uploads"
