@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateway
   repo: Enock777-creator/Me-Enock-lexhub
   branch: main
 
