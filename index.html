@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Me M. Enock’s LexHub</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="style.css" />
@@ -10,10 +10,10 @@
 <body id="home">
 
   <header>
-    <h1 class="site-title">
-      <img src="assets/logo.png" alt="LexHub Logo" class="logo" />
-      Me M. Enock’s LexHub
-    </h1>
+    <div class="logo-container">
+      <img src="assets/logo-circle.png" alt="LexHub Logo" class="logo" />
+      <span class="logo-text">Me M. Enock’s LexHub</span>
+    </div>
     <div class="header-buttons">
       <a href="#articles" class="btn">Read Articles</a>
       <a href="#contact" class="btn outline">Get in Touch</a>
@@ -26,8 +26,9 @@
       <li><a href="#articles">Articles</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <form class="search-form" onsubmit="event.preventDefault(); alert('Search not implemented');">
-      <input type="text" placeholder="Search..." />
+    <form class="search-form" onsubmit="event.preventDefault();">
+      <label for="article-search" class="sr-only">Search articles</label>
+      <input id="article-search" type="search" placeholder="Search…" />
     </form>
   </nav>
 
@@ -35,51 +36,66 @@
     <section id="articles">
       <h2>Legal Articles</h2>
 
-      <article class="article-card">
+      <article class="article-box">
         <h3>Understanding “Special” and “Bis” in Law Drafting</h3>
-        <p>The word “special” in a law publication title signals urgent or exceptional laws that must be issued outside the normal schedule.</p>
-        <p>“Bis” is Latin for “twice” or “again,” used to insert a new article between existing ones (e.g. Article 5 bis between 5 and 6).</p>
+        <p><strong>“Special”</strong> laws are passed urgently or exceptionally, outside regular legislative sessions.<br>
+        <strong>“Bis”</strong> (Latin: “twice”) is used to insert extra articles, like "Article 5 bis," between existing numbered provisions.</p>
       </article>
 
-      <article class="article-card">
+      <article class="article-box">
         <h3>What Is Judicial Precedent?</h3>
-        <p>How courts follow earlier decisions, when they can overrule, and why this maintains legal certainty.</p>
+        <p>Judicial precedent means using past court decisions as a legal guide. It maintains consistency and predictability in law by binding future cases to earlier rulings with similar facts.</p>
       </article>
 
-      <article class="article-card">
+      <article class="article-box">
         <h3>Logic and the Law</h3>
-        <p>Legal reasoning might seem simple at first glance, but applying it in real-life situations—especially in court decisions—is much more complex.</p>
-        <h4>⚖️ How Precedents Really Work</h4>
+        <p>Legal reasoning isn't just logic—it blends analogy, interpretation, and judgment.</p>
         <ul>
-          <li>The common law system evolves inductively, building general legal rules from many specific past cases.</li>
-          <li>Judges actively choose which cases to compare, relying on analogy rather than strict deduction.</li>
-        </ul>
-        <h4>🧠 Reasoning the Law — Paraphrased</h4>
-        <ul>
-          <li>Legal reasoning involves more than fixed steps: statutes and cases require interpretation.</li>
-          <li>Non-legal factors (morality, politics, economics) often shape outcomes.</li>
-          <li>Judgments present a persuasive story rather than a mechanical analysis.</li>
+          <li><strong>Precedent</strong> builds from prior cases using inductive reasoning.</li>
+          <li><strong>Judicial decisions</strong> consider context, not just legal formulas.</li>
+          <li><strong>Other influences</strong>: morality, politics, and economics often shape outcomes.</li>
         </ul>
       </article>
     </section>
 
     <section id="contact">
       <h2>Contact Me</h2>
-      <p>📞 Tel: <a href="tel:+250791851177">+250791851177</a></p>
-      <p>📧 Email: <a href="mailto:mugishaenock777@gmail.com">mugishaenock777@gmail.com</a></p>
-      <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/mugisha-enock-916270300/" target="_blank">Visit my LinkedIn</a></p>
-      <p>💬 WhatsApp: 
-        <a href="https://wa.me/250791851177" target="_blank">
-          <img src="assets/whatsapp.png" alt="WhatsApp" class="icon"/>
-          Chat on WhatsApp
-        </a>
-      </p>
+      <ul class="contact-list">
+        <li>
+          <a href="mailto:mugishaenock777@gmail.com">
+            <img src="assets/email.png" alt="Email" class="contact-icon" />
+            mugishaenock777@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="https://wa.me/250791851177" target="_blank">
+            <img src="assets/whatsapp.png" alt="WhatsApp" class="contact-icon" />
+            WhatsApp
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/mugisha-enock-916270300/" target="_blank">
+            <img src="assets/linkedin.png" alt="LinkedIn" class="contact-icon" />
+            LinkedIn
+          </a>
+        </li>
+      </ul>
     </section>
   </main>
 
   <footer>
-    <p>©Me MUGISHA Enock 2025, All rights reserved.</p>
+    <p>© Me MUGISHA Enock 2025, All rights reserved.</p>
   </footer>
 
+  <script>
+    const searchInput = document.getElementById('article-search');
+    const articles = document.querySelectorAll('.article-box');
+    searchInput.addEventListener('input', e => {
+      const term = e.target.value.toLowerCase();
+      articles.forEach(box => {
+        box.style.display = box.textContent.toLowerCase().includes(term) ? '' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
