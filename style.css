@@ -6,7 +6,7 @@ body {
 }
 
 main {
-  margin-left: 150px; /* Match or slightly exceed sidebar width */
+  margin-left: 160px; /* Match or slightly exceed sidebar width */
   padding: 2rem;
 }
 
@@ -51,7 +51,7 @@ header {
   justify-content: space-between;
   padding: 1.25rem 2rem;
   margin-left: 160px; /* or match your sidebar width */
-  padding: 1rem 2rem;
+  padding: 1.25rem 2rem;
 }
 
 .logo-container {
@@ -96,6 +96,7 @@ nav {
   align-items: center;
   padding: 0.75rem 2rem;
   flex-wrap: wrap;
+  margin-left: 160px;
 }
 .nav-menu {
   list-style: none;
@@ -103,11 +104,13 @@ nav {
   gap: 1rem;
   margin: 0;
   padding: 0;
+  margin-left: 160px;
 }
 .nav-menu a {
   text-decoration: none;
   color: #2c2c2c;
   font-weight: bold;
+  margin-left: 160px;
 }
 .search-form input {
   padding: 0.4rem 0.7rem;
@@ -239,10 +242,12 @@ footer {
     width: 100%;
     height: auto;
   }
-
-  #articles {
+  #articles,
+  nav,
+  header {
     margin-left: 0;
   }
 }
+
 
 
