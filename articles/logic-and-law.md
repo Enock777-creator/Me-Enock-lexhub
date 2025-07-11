@@ -1,7 +1,7 @@
 ---
 title: "Logic and the Law, *by MUGISHA Enock*,"
 date: 2025-07-11
-summary: "This article explains the nuanced use of 'Special' and 'Her' in formal legal contexts within Rwandan law."
+summary: "This article explains the magic of logic in law and in legal reasoning."
 tags: ["Legal reasoning", "Logic", "Logic in Law"]
 ---
 
