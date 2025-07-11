@@ -6,11 +6,10 @@ body {
 }
 
 main {
-  max-width: 960px;
-  margin: auto;
+  margin-left: 150px; /* Match or slightly exceed sidebar width */
   padding: 2rem;
-  line-height: 1.7;
 }
+
 
 .sr-only {
   position: absolute;
@@ -204,7 +203,7 @@ footer {
   
   #sidebar {
   /* Replace width with something smaller */
-  width: 160px; /* or try 140px if needed */
+  width: 150px; /* or try 140px if needed */
 }
 
 }
@@ -232,4 +231,16 @@ footer {
 .breadcrumb a:hover {
   text-decoration: underline;
 }
+@media (max-width: 700px) {
+  #sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  #articles {
+    margin-left: 0;
+  }
+}
+
 
