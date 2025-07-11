@@ -50,6 +50,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 2rem;
+  margin-left: 160px; /* or match your sidebar width */
 }
 
 .logo-container {
