@@ -41,15 +41,14 @@ main {
 #topBtn:hover {
   background-color: #333;
 }
-
   header {
   background-color: burlywood;
   text-align: center;
-  padding: 3.5rem 1rem 2rem 1rem;
-  margin: 0; /* Removes any top margin */
-  position: relative; /* Lets the header flow normally */
-  z-index: 1; /* Ensures layering stays correct */  
-  border-bottom: 1px solid #caa976;
+  padding-top: 2rem;    /* Increased top padding */
+  padding-bottom: 2rem;
+  margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .center-header {
@@ -275,6 +274,11 @@ footer {
   header {
     margin-left: 0;
   }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 
