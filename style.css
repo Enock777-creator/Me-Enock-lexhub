@@ -44,18 +44,16 @@ main {
 
 /* Header */
 header {
+  header {
   background-color: burlywood;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 2rem;
-  margin-left: 160px; /* or match your sidebar width */
-  padding: 1.25rem 2rem;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-left: 160px; /* keep this to avoid overlapping the sidebar */
 }
 
-.logo-container {
+.center-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
@@ -67,25 +65,34 @@ header {
 }
 
 .logo-text {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #2c2c2c;
 }
 
-.header-buttons .btn {
-  margin-left: 0.5rem;
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
   padding: 0.5rem 1rem;
   background: #deb887;
   text-decoration: none;
   color: #333;
   border-radius: 5px;
 }
-.header-buttons .btn.outline {
+
+.btn.outline {
   background: transparent;
   border: 2px solid #deb887;
 }
-.header-buttons .btn:hover {
+
+.btn:hover {
   background: #c1a16e;
+}
+
 }
 
 /* Navigation */
