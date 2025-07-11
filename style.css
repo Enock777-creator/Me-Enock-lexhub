@@ -2,6 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #fffaf0;
   margin: 0;
+  padding: 0;
   color: #333;
 }
 
@@ -45,6 +46,9 @@ main {
   background-color: burlywood;
   text-align: center;
   padding: 2rem 1rem;
+ margin: 0; /* Removes any top margin */
+  position: relative; /* Lets the header flow normally */
+  z-index: 1; /* Ensures layering stays correct */   
 }
 
 .center-header {
