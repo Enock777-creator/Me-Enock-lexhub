@@ -51,6 +51,7 @@ header {
   justify-content: space-between;
   padding: 1.25rem 2rem;
   margin-left: 160px; /* or match your sidebar width */
+  padding: 1rem 2rem;
 }
 
 .logo-container {
