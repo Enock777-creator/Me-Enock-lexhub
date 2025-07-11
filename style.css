@@ -48,7 +48,6 @@ header {
   background-color: burlywood;
   text-align: center;
   padding: 2rem 1rem;
-  margin-left: 160px; /* keep this to avoid overlapping the sidebar */
 }
 
 .center-header {
@@ -56,6 +55,8 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  max-width: 700px;
+  margin: auto;
 }
 
 .logo {
@@ -204,21 +205,21 @@ footer {
     flex-direction: column;
   }
 }
+
+/* ✅ SIDEBAR STYLES */
 #sidebar {
   position: fixed;
   top: 0;
   left: 0;
+  width: 150px;             /* ✅ STEP 3: Sidebar width */
   height: 100%;
   background-color: #f5f5f5;
   padding: 20px;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-  
-  #sidebar {
-  /* Replace width with something smaller */
-  width: 150px; /* or try 140px if needed */
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;             /* ✅ STEP 3 (extra): Keeps sidebar on top */
 }
 
-}
+/* ✅ SIDEBAR LINK STYLING */
 #sidebar a {
   display: block;
   margin-bottom: 15px;
@@ -226,9 +227,27 @@ footer {
   font-weight: bold;
   text-decoration: none;
 }
+
 #sidebar a:hover {
   color: #222;
 }
+
+/* ✅ MOBILE FIX (Collapses sidebar into top bar) */
+@media (max-width: 700px) {
+  #sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  header,
+  main,
+  nav,
+  #articles {
+    margin-left: 0;
+  }
+}
+
 .breadcrumb {
   font-size: 14px;
   margin-bottom: 10px;
