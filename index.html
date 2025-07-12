@@ -116,10 +116,10 @@
       .then(res => res.text())
       .then(text => {
         const box = document.getElementById(article.id);
-        box.innerHTML = `
+     box.innerHTML = `
   <h3>${article.title}</h3>
-  <pre><code class="raw-md">${text}</code></pre>
-`;
+  <pre class="raw-md">${text}</pre>
+`;   
       })
       .catch(err => {
         console.error(`Failed to load ${article.file}`, err);
