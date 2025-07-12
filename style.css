@@ -44,10 +44,26 @@ main {
   header {
   background-color: burlywood;
   text-align: center;
-  padding-top: 2rem;    /* Increased top padding */
+  padding: 2rem 1rem;
   margin: 0;
   position: relative;
   z-index: 1;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  color: #333;
+  margin-left: 160px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #2c2c2c;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
 }
 
 .center-header {
@@ -246,21 +262,6 @@ footer {
   #articles {
     margin-left: 0;
   }
-}
-
-.breadcrumb {
-  font-size: 14px;
-  padding-bottom: 0.5rem;
-  color: #333;
-}
-
-.breadcrumb a {
-  text-decoration: none;
-  color: #2c2c2c;
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
 }
 
 @media (max-width: 700px) {
