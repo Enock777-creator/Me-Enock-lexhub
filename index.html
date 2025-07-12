@@ -93,4 +93,26 @@
   </script>
 
 </body>
+  <script>
+  const files = [
+    { id: "special-bis", file: "articles/drafting.md", title: "Understanding 'Special' and 'Bis'" },
+    { id: "judicial-precedent", file: "articles/precedent.md", title: "What Is Judicial Precedent?" },
+    { id: "logic-and-law", file: "articles/logic.md", title: "Logic and the Law" },
+  ];
+
+  files.forEach(article => {
+    fetch(article.file)
+      .then(res => res.text())
+      .then(text => {
+        const box = document.getElementById(article.id);
+        box.innerHTML = `<h3>${article.title}</h3><pre>${text}</pre>`;
+      })
+      .catch(err => {
+        console.error(`Failed to load ${article.file}`, err);
+        document.getElementById(article.id).innerHTML =
+          `<h3>${article.title}</h3><p>Sorry, this article could not be loaded.</p>`;
+      });
+  });
+</script>
+
 </html>
