@@ -318,6 +318,45 @@ footer {
     transform: translateX(0);
   }
 }
+/* Basic sidebar style */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 100vh;
+  background-color: burlywood; /* 🍂 same as footer style */
+  padding: 1rem;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+/* Hide sidebar by default on small screens */
+@media (max-width: 700px) {
+  #sidebar {
+    transform: translateX(-180px); /* hide it to the left */
+  }
+
+  #sidebar.active {
+    transform: translateX(0); /* show on toggle */
+  }
+}
+
+/* Hamburger Button */
+#sidebarToggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  background-color: burlywood;
+  border: none;
+  font-size: 1.8rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
 
 
 
