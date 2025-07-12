@@ -325,7 +325,7 @@ footer {
   left: 0;
   width: 160px;
   height: 100vh;
-  background-color: burlywood; /* 🍂 same as footer style */
+  background-color: #333; /* 🍂 same as footer style */
   padding: 1rem;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
   z-index: 100;
