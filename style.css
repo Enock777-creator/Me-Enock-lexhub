@@ -50,22 +50,6 @@ main {
   z-index: 1;
 }
 
-.breadcrumb {
-  font-size: 14px;
-  padding: 0.5rem 1rem;
-  color: #333;
-  margin-left: 160px;
-}
-
-.breadcrumb a {
-  text-decoration: none;
-  color: #2c2c2c;
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
-
 .center-header {
   display: flex;
   flex-direction: column;
