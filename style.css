@@ -292,6 +292,32 @@ footer {
   border-radius: 8px;
   overflow-x: auto;
 }
+/* ☰ Hamburger Button */
+#sidebarToggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  background-color: burlywood;
+  border: none;
+  font-size: 1.8rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Hide sidebar by default on small screens */
+@media (max-width: 700px) {
+  #sidebar {
+    transform: translateX(-160px);
+    transition: transform 0.3s ease;
+  }
+
+  #sidebar.active {
+    transform: translateX(0);
+  }
+}
 
 
 
