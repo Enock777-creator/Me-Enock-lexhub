@@ -8,50 +8,54 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body id="home">
-<div id="sidebar">
-  <a href="/">🏠 Home</a>
-  <a href="/articles/">📜 Articles</a>
-  <a href="#categories">📂 Categories</a>
-</div>
-  
-  <a href="/">Home</a> › <a href="/articles/">Articles</a> › Legal Drafting
-</div>
-  
-  <header>
-  <div class="center-header">
-    <img src="assets/logo-circle.png" alt="LexHub Logo" class="logo" />
-    <h1 class="logo-text">Me M. Enock's LexHub</h1>
-    <div class="header-buttons">
-      <a href="#contact" class="btn">Get in Touch</a>
-      <a href="#articles" class="btn outline">Read Articles</a>
-    </div>
+
+  <!-- ✅ Sidebar -->
+  <div id="sidebar">
+    <a href="/">🏠 Home</a>
+    <a href="/articles/">📜 Articles</a>
+    <a href="#categories">📂 Categories</a>
   </div>
+
+  <!-- ✅ Header Section -->
+  <header>
+    <div class="center-header">
+      <img src="assets/logo-circle.png" alt="LexHub Logo" class="logo" />
+      <h1 class="logo-text">Me M. Enock's LexHub</h1>
+      <div class="header-buttons">
+        <a href="#contact" class="btn">Get in Touch</a>
+        <a href="#articles" class="btn outline">Read Articles</a>
+      </div>
+    </div>
   </header>
 
-<div class="breadcrumb">
-  
+  <!-- ✅ Breadcrumb moved below the header -->
+  <div class="breadcrumb">
+    <a href="/">Home</a> › <a href="/articles/">Articles</a> › Legal Drafting
+  </div>
+
+  <!-- ✅ Main Content -->
   <main>
     <section id="articles">
       <h2>Legal Articles</h2>
 
       <article class="article-box">
         <h3>Understanding “Special” and “Bis” in Law Drafting</h3>
-        <p><strong>“Special”</strong> laws are passed urgently or exceptionally, outside regular legislative sessions.<br>
-        <strong>“Bis”</strong> (Latin: “twice”) is used to insert extra articles, like "Article 5 bis," between existing numbered provisions.</p>
+        <p><strong>“Special”</strong> laws are passed urgently or exceptionally.<br>
+        <strong>“Bis”</strong> means adding a new article between two numbered ones, like "Article 5 bis."</p>
       </article>
 
       <article class="article-box">
         <h3>What Is Judicial Precedent?</h3>
-        <p>Judicial precedent means using past court decisions as a legal guide. It maintains consistency and predictability in law by binding future cases to earlier rulings with similar facts.</p>
+        <p>Judicial precedent means using past court decisions as a guide. It brings consistency in rulings.</p>
       </article>
 
       <article class="article-box">
         <h3>Logic and the Law</h3>
-        <p>Legal reasoning isn't just logic—it blends analogy, interpretation, and judgment.</p>
+        <p>Legal reasoning blends logic, analogy, and judgment.</p>
         <ul>
-          <li><strong>Precedent</strong> builds from prior cases using inductive reasoning.</li>
-          <li><strong>Judicial decisions</strong> consider context, not just legal formulas.</li>
-          <li><strong>Other influences</strong>: morality, politics, and economics often shape outcomes.</li>
+          <li><strong>Precedent</strong> builds using inductive reasoning.</li>
+          <li><strong>Judicial decisions</strong> weigh context.</li>
+          <li><strong>Other factors</strong>: morality, politics, economics.</li>
         </ul>
       </article>
     </section>
@@ -81,33 +85,34 @@
     </section>
   </main>
 
+  <!-- ✅ Footer -->
   <footer>
     <p>© Me MUGISHA Enock 2025. All rights reserved.</p>
   </footer>
 
+  <!-- ✅ Search Script -->
   <script>
     const searchInput = document.getElementById('article-search');
     const articles = document.querySelectorAll('.article-box');
-    searchInput.addEventListener('input', e => {
+    searchInput?.addEventListener('input', e => {
       const term = e.target.value.toLowerCase();
       articles.forEach(box => {
         box.style.display = box.textContent.toLowerCase().includes(term) ? '' : 'none';
       });
     });
   </script>
+
+  <!-- ✅ Scroll to Top Button -->
   <button id="topBtn" title="Back to top">↑</button>
   <script>
-  // Show button after scrolling down
-  const topBtn = document.getElementById("topBtn");
-  window.onscroll = function () {
-    topBtn.style.display = window.scrollY > 200 ? "block" : "none";
-  };
-
-  // Scroll to top on click
-  topBtn.onclick = function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-</script>
+    const topBtn = document.getElementById("topBtn");
+    window.onscroll = function () {
+      topBtn.style.display = window.scrollY > 200 ? "block" : "none";
+    };
+    topBtn.onclick = function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+  </script>
 
 </body>
 </html>
