@@ -45,7 +45,6 @@ main {
   background-color: burlywood;
   text-align: center;
   padding-top: 2rem;    /* Increased top padding */
-  padding-bottom: 2rem;
   margin: 0;
   position: relative;
   z-index: 1;
