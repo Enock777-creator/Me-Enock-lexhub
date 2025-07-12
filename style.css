@@ -343,13 +343,13 @@ footer {
   }
 }
 
-/* Hamburger Button */
+/* 🍔 Hamburger Toggle Button */
 #sidebarToggle {
   position: fixed;
   top: 20px;
   left: 20px;
   z-index: 200;
-  background-color: #333;
+  background-color: burlywood;
   border: none;
   font-size: 1.8rem;
   padding: 8px 12px;
@@ -357,30 +357,34 @@ footer {
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
-/* 🧱 Sidebar default state */
+
+/* 🧱 Sidebar Default */
 #sidebar {
   position: fixed;
   top: 0;
   left: 0;
   width: 160px;
   height: 100vh;
-  background-color: burlywood; /* Matches footer */
+  background-color: burlywood;
   padding: 1rem;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
   z-index: 100;
-  transform: translateX(0);
+  transform: translateX(0);  /* visible by default */
   transition: transform 0.3s ease;
 }
-/* 👻 Hidden state */
-#sidebar.hidden {
+
+/* 🎯 Sidebar Hidden When .active Is Added */
+#sidebar.active {
   transform: translateX(-180px);
 }
-/* 🛜 Responsive trigger */
+
+/* 📱 Apply Toggle Only on Small Screens */
 @media (max-width: 700px) {
   #sidebar {
-    transform: translateX(-180px);
+    transform: translateX(-180px); /* hide by default */
   }
-#sidebar.active {
-    transform: translateX(0);
+
+  #sidebar.active {
+    transform: translateX(0);      /* show on toggle */
   }
 }
