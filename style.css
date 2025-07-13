@@ -13,8 +13,8 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
 
-  /* Total height of your sticky <header> (content + top/bottom padding). 
-     Adjust this value if you change header padding or logo size. */
+  /* Total height of your sticky <header> (content + top/bottom padding).
+     Tweak this if you change header padding/logo size */
   --hdr-height: 9.25rem;
 }
 
@@ -30,10 +30,13 @@
   --footer-text: #ccc;
 }
 
-
 /* ==========================================================================
    RESET & BASE
    ========================================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -47,7 +50,6 @@ html, body {
   box-sizing: border-box;
 }
 
-
 /* ==========================================================================
    HEADER & TOGGLES
    ========================================================================== */
@@ -56,11 +58,10 @@ header {
   top: 0;
   z-index: 1000;
   background: var(--accent);
-  padding: 1.5rem 1rem;  
+  padding: 1.5rem 1rem;
   text-align: center;
 }
 
-/* Hamburger button inside header */
 #sidebarToggle {
   position: absolute;
   top: 1.25rem;
@@ -80,7 +81,6 @@ header {
   z-index: 1001;
 }
 
-/* Dark-mode toggle inside header */
 #darkModeToggle {
   position: absolute;
   top: 1.25rem;
@@ -92,7 +92,6 @@ header {
   cursor: pointer;
 }
 
-/* Header inner layout */
 .center-header {
   display: flex;
   flex-direction: column;
@@ -137,7 +136,6 @@ header {
   background: var(--link-hover);
 }
 
-
 /* ==========================================================================
    MAIN LAYOUT
    ========================================================================== */
@@ -151,39 +149,37 @@ main {
   margin-left: 160px;
 }
 
-
 /* ==========================================================================
    SIDEBAR
    ========================================================================== */
-/* Close button */
+/* Close button (now sits below the header) */
 #closeSidebar {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: calc(var(--hdr-height) + 0.5rem);
+  right: 1rem;
   background: transparent;
   border: none;
   color: #444;
   font-size: 1rem;
   cursor: pointer;
-  z-index: 1002;
 }
 
-/* Off-canvas menu spans full window height, contents pushed below header */
+/* Off-canvas sidebar spans full viewport height, content pushed down */
 #sidebar {
   position: fixed;
-  top: 0;                           /* full-height: start at very top */
+  top: 0;
   left: 0;
   width: 160px;
-  height: 100vh;                    /* full viewport height */
+  height: 100vh;
   background: var(--accent);
-  padding-top: var(--hdr-height);   /* push links below sticky header */
+  padding-top: var(--hdr-height);
   padding-left: 1rem;
   padding-right: 1rem;
   overflow-y: auto;
   transform: translateX(-180px);
   transition: transform 0.3s ease;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-  z-index: 999;
+  z-index: 998;
 }
 
 #sidebar.active {
@@ -192,7 +188,7 @@ main {
 
 #sidebar a {
   display: block;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0;
   color: #004b8d;
   font-weight: bold;
   text-decoration: none;
@@ -201,7 +197,6 @@ main {
 #sidebar a:hover {
   color: #fff;
 }
-
 
 /* ==========================================================================
    NAVIGATION
@@ -227,7 +222,6 @@ nav {
   font-weight: bold;
 }
 
-
 /* ==========================================================================
    ARTICLES
    ========================================================================== */
@@ -252,7 +246,6 @@ nav {
   transform: translateY(-4px);
 }
 
-
 /* ==========================================================================
    MARKDOWN CONTENT
    ========================================================================== */
@@ -261,7 +254,6 @@ nav {
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
-
 
 /* ==========================================================================
    CONTACT (EDGE-TO-EDGE)
@@ -308,7 +300,6 @@ nav {
   height: 26px;
 }
 
-
 /* ==========================================================================
    FOOTER (EDGE-TO-EDGE & NO GAP)
    ========================================================================== */
@@ -322,7 +313,6 @@ footer {
   color: var(--footer-text);
   text-align: center;
 }
-
 
 /* ==========================================================================
    BACK-TO-TOP & SCROLL-RING
@@ -361,7 +351,6 @@ footer {
 #topBtn:hover {
   background: var(--link-hover);
 }
-
 
 /* ==========================================================================
    RESPONSIVE
