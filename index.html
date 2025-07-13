@@ -12,7 +12,7 @@
   <!-- ☰ Sidebar Toggle -->
   <button id="sidebarToggle">☰</button>
 
-  <!-- Sidebar -->
+  <!-- Sidebar Navigation -->
   <div id="sidebar">
     <button id="closeSidebar">✖️</button>
     <a href="/">🏠 Home</a>
@@ -30,11 +30,10 @@
         <a href="#articles" class="btn outline">Read Articles</a>
       </div>
     </div>
-    <!-- Dark-mode toggle -->
     <button id="darkModeToggle" title="Toggle Dark Mode">🌓</button>
   </header>
 
-  <!-- Main content -->
+  <!-- Main Content -->
   <main>
     <section id="articles">
       <h2>Legal Articles</h2>
@@ -43,7 +42,7 @@
       <article class="article-box" id="logic-and-law"></article>
     </section>
 
-    <!-- Contact bar (edge-to-edge) -->
+    <!-- Contact Bar (Edge–to–Edge) -->
     <section id="contact">
       <h2>Contact Me</h2>
       <ul class="contact-list">
@@ -69,15 +68,15 @@
     </section>
   </main>
 
-  <!-- Footer (edge-to-edge) -->
+  <!-- Footer (Edge–to–Edge) -->
   <footer>
     <p>© Me MUGISHA Enock 2025. All rights reserved.</p>
   </footer>
 
-  <!-- Back to Top -->
+  <!-- Back to Top Button -->
   <button id="topBtn" title="Back to top">↑</button>
 
-  <!-- Article loader -->
+  <!-- Article Loader -->
   <script>
     const files = [
       {
@@ -96,6 +95,7 @@
         title: "Logic and the Law by *MUGISHA Enock*"
       }
     ];
+
     files.forEach(article => {
       fetch(article.file)
         .then(res => res.text())
@@ -112,7 +112,7 @@
     });
   </script>
 
-  <!-- Sidebar toggle logic -->
+  <!-- Sidebar Toggle Logic -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const toggleBtn = document.getElementById("sidebarToggle");
@@ -123,14 +123,15 @@
     });
   </script>
 
-  <!-- Dark-mode & Back-to-top scripts -->
+  <!-- Dark Mode & Scroll-Ring Scripts -->
   <script>
-    const dmToggle = document.getElementById('darkModeToggle');
-    dmToggle.addEventListener('click', () => {
+    // Dark-mode toggle
+    document.getElementById('darkModeToggle').addEventListener('click', () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
     });
 
+    // Scroll progress & Back to Top
     const topBtn = document.getElementById('topBtn');
     window.addEventListener('scroll', () => {
       const docH = document.documentElement.scrollHeight - window.innerHeight;
