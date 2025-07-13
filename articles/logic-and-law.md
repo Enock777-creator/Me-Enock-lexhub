@@ -1,9 +1,8 @@
 ---
 title: "Logic and the Law, *by MUGISHA Enock*,"
 date: 2025-07-11
-summary: "This article explains the magic of logic in law and in legal reasoning."
-tags: ["Legal reasoning", "Logic", "Logic in Law"]
 ---
+D**ate: 2025-07-11**
 
 Legal reasoning blends logical rules with judgment and real-world complexity.
 
@@ -42,7 +41,7 @@ Original Source: https://www.open.edu/openlearn/society-politics-law/law/legal-s
 
 
 
-### ⚖️ How Precedents Really Work
+**⚖️ How Precedents Really Work**
 - Common law grows inductively from many cases
 - Judges use analogy more than strict deduction
 
@@ -52,4 +51,4 @@ Original Source: https://www.open.edu/openlearn/society-politics-law/law/legal-s
 - Legal arguments persuade; they don’t just compute
   
 
-Law isn’t just logic—it’s thoughtful navigation of principles and people.
+**Law isn’t just logic—it’s thoughtful navigation of principles and people.**
