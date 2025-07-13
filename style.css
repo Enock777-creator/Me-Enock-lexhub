@@ -193,7 +193,7 @@ footer {
 /* ☰ Sidebar Toggle Button */
 #sidebarToggle {
   position: fixed;
-  top: 10px;
+  top: 7px;
   left: 130px; /* moves it away from sidebar */
   z-index: 200;
   background-color: burlywood;
