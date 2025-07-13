@@ -133,10 +133,15 @@
 
 <script>
   const toggleBtn = document.getElementById("sidebarToggle");
+  const closeBtn = document.getElementById("closeSidebar");
   const sidebar = document.getElementById("sidebar");
 
   toggleBtn.addEventListener("click", () => {
     sidebar.classList.toggle("active");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    sidebar.classList.remove("active");
   });
 </script>
 
