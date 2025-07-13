@@ -307,6 +307,8 @@ footer {
   text-align: center;
   padding: 1.25rem;
   margin-top: 0;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
 /* --- Scroll to Top Button --- */
@@ -363,8 +365,4 @@ footer {
   }
 
   h3 {
-    font-size: 1.1rem;
-  }
-
-  .article-box img {
-    margin: 0.
+    font-size: 1.1rem
