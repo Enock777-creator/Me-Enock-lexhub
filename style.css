@@ -13,8 +13,7 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
 
-  /* Total height of your sticky <header> (content + top/bottom padding).
-     If you change header padding or logo size, tweak this value. */
+  /* Total height of your sticky <header> (content + padding) */
   --hdr-height: 9.25rem;
 }
 
@@ -36,7 +35,6 @@
 html {
   scroll-behavior: smooth;
 }
-
 html, body {
   margin: 0;
   padding: 0;
@@ -45,7 +43,6 @@ html, body {
   background: var(--bg);
   color: var(--text);
 }
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -82,7 +79,32 @@ header {
   z-index: 1001;
 }
 
-/* Dark-mode toggle (right) */
+/* Close button (right) – hidden until sidebar opens */
+#closeSidebar {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 3rem;
+  height: 3rem;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1002;
+}
+
+/* Show ✖️ only when sidebar is active */
+#sidebar.active #closeSidebar {
+  display: flex;
+}
+
+/* Dark-mode toggle (if still needed) */
 #darkModeToggle {
   position: absolute;
   top: 1.25rem;
@@ -92,31 +114,6 @@ header {
   font-size: 1.4rem;
   color: var(--btn-text);
   cursor: pointer;
-}
-
-/* Close button – now in header, opposite the hamburger */
-#closeSidebar {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem; /* same offset as darkModeToggle */
-  width: 3rem;
-  height: 3rem;
-  background: var(--footer-bg);
-  color: var(--footer-text);
-  border: none;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  display: none;  /* hidden until sidebar opens */
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 1002;
-}
-
-/* Show the close button when sidebar is open */
-#sidebar.active #closeSidebar {
-  display: flex;
 }
 
 .center-header {
@@ -171,7 +168,6 @@ main {
   padding: 2rem 4rem 0 4rem;
   transition: margin-left 0.3s ease;
 }
-
 #sidebar.active ~ main {
   margin-left: 160px;
 }
@@ -179,16 +175,15 @@ main {
 /* ==========================================================================
    SIDEBAR
    ========================================================================== */
+/* Full viewport burlywood panel, pushed under header */
 #sidebar {
   position: fixed;
-  top: 0;
+  top: var(--hdr-height);
   left: 0;
   width: 160px;
-  height: 100vh;
+  height: calc(100vh - var(--hdr-height));
   background: var(--accent);
-  padding-top: var(--hdr-height);
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
   overflow-y: auto;
   transform: translateX(-180px);
   transition: transform 0.3s ease;
@@ -202,7 +197,7 @@ main {
 
 #sidebar a {
   display: block;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0;
   color: #004b8d;
   font-weight: bold;
   text-decoration: none;
@@ -215,6 +210,8 @@ main {
 /* ==========================================================================
    NAVIGATION
    ========================================================================== */
+/* (unchanged) */
+
 nav {
   background: #deb887;
   display: flex;
