@@ -96,22 +96,22 @@
     };
   </script>
 
-  <!-- 📘 Article Loader -->
+  <!-- 📘 Article Loader (Updated with Raw GitHub Links) -->
   <script>
     const files = [
       {
         id: "special-bis",
-        file: "articles/special-bis.md",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md",
         title: "Understanding 'Special' and 'Bis' in Law Drafting by *MUGISHA Enock*"
       },
       {
         id: "judicial-precedent",
-        file: "articles/judicial-precedent.md",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md",
         title: "What Is Judicial Precedent?"
       },
       {
         id: "logic-and-law",
-        file: "articles/logic-and-law.md",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md",
         title: "Logic and the Law by *MUGISHA Enock*"
       }
     ];
@@ -121,10 +121,10 @@
         .then(res => res.text())
         .then(text => {
           const box = document.getElementById(article.id);
-         box.innerHTML = `
-  <h3>${article.title}</h3>
-  <div class="article-md">${marked.parse(text)}</div>
-`;
+          box.innerHTML = `
+            <h3>${article.title}</h3>
+            <div class="article-md">${marked.parse(text)}</div>
+          `;
         })
         .catch(err => {
           console.error(`Failed to load ${article.file}`, err);
