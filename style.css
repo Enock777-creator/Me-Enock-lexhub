@@ -311,3 +311,41 @@ footer {
     transform: translateX(0);
   }
 }
+.article-md h1, .article-md h2, .article-md h3 {
+  font-weight: bold;
+  margin-top: 1.2rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.article-md strong {
+  font-weight: bold;
+  color: #222;
+}
+
+.article-md em {
+  font-style: italic;
+  color: #444;
+}
+
+.article-md p {
+  margin-bottom: 1rem;
+}
+
+.article-md ul {
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+
+.article-md ol {
+  margin-left: 1.5rem;
+  list-style: decimal;
+}
+
+.article-md blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid burlywood;
+  color: #555;
+}
+
