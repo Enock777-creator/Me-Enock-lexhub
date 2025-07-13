@@ -13,8 +13,7 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
 
-  /* Total height of your sticky <header> (content + top/bottom padding).
-     Tweak if you ever change header padding/logo size */
+  /* Total height of your sticky <header> (content + padding) */
   --hdr-height: 9.25rem;
 }
 
@@ -36,7 +35,6 @@
 html {
   scroll-behavior: smooth;
 }
-
 html, body {
   margin: 0;
   padding: 0;
@@ -45,7 +43,6 @@ html, body {
   background: var(--bg);
   color: var(--text);
 }
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -62,6 +59,7 @@ header {
   text-align: center;
 }
 
+/* Hamburger button (left) */
 #sidebarToggle {
   position: absolute;
   top: 1.25rem;
@@ -81,6 +79,7 @@ header {
   z-index: 1001;
 }
 
+/* Dark-mode toggle (right) */
 #darkModeToggle {
   position: absolute;
   top: 1.25rem;
@@ -90,6 +89,31 @@ header {
   font-size: 1.4rem;
   color: var(--btn-text);
   cursor: pointer;
+}
+
+/* Close button—now in header beside hamburger */
+#closeSidebar {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;     /* same horizontal offset as darkModeToggle */
+  width: 3rem;
+  height: 3rem;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: none;       /* hidden until sidebar opens */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1002;
+}
+
+/* Show “✖️” when sidebar is active */
+#sidebar.active #closeSidebar {
+  display: flex;
 }
 
 .center-header {
@@ -150,34 +174,8 @@ main {
 }
 
 /* ==========================================================================
-   SIDEBAR  ← UPDATED ONLY THIS BLOCK
+   SIDEBAR
    ========================================================================== */
-/* Hide the close “✖” until the sidebar is active */
-#closeSidebar {
-  display: none;
-}
-
-/* Show & style the close button when sidebar is open */
-#sidebar.active #closeSidebar {
-  display: flex;
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  width: 3rem;
-  height: 3rem;
-  background: var(--footer-bg);
-  color: var(--footer-text);
-  border: none;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 1002;
-}
-
-/* Full‐height burlywood background, with content pushed under header */
 #sidebar {
   position: fixed;
   top: 0;
@@ -185,9 +183,11 @@ main {
   width: 160px;
   height: 100vh;
   background: var(--accent);
-  padding: var(--hdr-height) 1rem 1rem; /* top, sides, bottom */
+  padding-top: var(--hdr-height);
+  padding-left: 1rem;
+  padding-right: 1rem;
   overflow-y: auto;
-  transform: translateX(-100%);
+  transform: translateX(-180px);
   transition: transform 0.3s ease;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
   z-index: 999;
@@ -199,7 +199,7 @@ main {
 
 #sidebar a {
   display: block;
-  margin: 0.5rem 0;
+  margin-bottom: 1rem;
   color: #004b8d;
   font-weight: bold;
   text-decoration: none;
@@ -411,6 +411,7 @@ footer {
     width: 100%;
     transform: translateX(-100%);
   }
+
   #sidebar.active {
     transform: translateX(0);
   }
