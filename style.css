@@ -169,7 +169,7 @@ nav {
   background: #fff;
   padding: 1.5rem;
   margin: 2rem auto;
-  max-width: 840px; /* 👈 tighter fit around content */
+  max-width: 840px;
   border: 5px solid;
   border-image: linear-gradient(45deg, #ff512f, #f09819);
   border-image-slice: 1;
@@ -253,11 +253,20 @@ nav {
   overflow-x: auto;
 }
 
-/* --- Contact --- */
+/* --- Contact (Updated with Burlywood Section) --- */
 #contact {
   margin-top: 4rem;
-  padding-top: 2rem;
+  padding: 2rem 1.5rem;
+  background-color: burlywood;
   border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  color: #2c2c2c;
+  border-radius: 8px 8px 0 0;
+}
+
+#contact h2 {
+  color: #2c2c2c;
+  margin-bottom: 1rem;
 }
 
 .contact-list {
@@ -274,8 +283,12 @@ nav {
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: #333;
+  color: #2c2c2c;
   font-weight: 500;
+}
+
+.contact-list a:hover {
+  color: #fff;
 }
 
 .contact-icon {
@@ -317,14 +330,16 @@ footer {
 @media (max-width: 700px) {
   body {
     font-size: 15px;
+  }
+
   .article-md {
-  max-width: 100%;
-  padding: 1rem;
-}  
- .article-box {
-  max-width: 100%;
-  margin: 1.5rem 1rem;
-}   
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .article-box {
+    max-width: 100%;
+    margin: 1.5rem 1rem;
   }
 
   main {
@@ -351,23 +366,7 @@ footer {
     margin: 0.75rem auto;
   }
 
- .article-md {
-  max-width: 793px;        /* ✅ A4 width */
-  margin: 0 auto;
-  padding: 1.25rem 1.5rem;  /* Comfortable spacing */
-}
-
-  #sidebarToggle {
-    left: 20px;
-  }
-
-  #sidebar {
-    width: 100%;
-    height: auto;
-    transform: translateX(-100%);
-  }
-
-  #sidebar.active {
-    transform: translateX(0);
-  }
-}
+  .article-md {
+    max-width: 793px;
+    margin: 0 auto;
+    padding: 1.25rem 1.
