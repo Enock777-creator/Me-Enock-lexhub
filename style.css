@@ -2,6 +2,7 @@
    VARIABLES & THEMES
    ========================================================================== */
 :root {
+  /* Light mode */
   --bg: #fffaf0;
   --text: #333;
   --accent: burlywood;
@@ -12,11 +13,13 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
 
-  /* EXACT height of your sticky header (top padding + content + bottom padding) */
-  --hdr-height: 9.5rem;
+  /* Total height of your sticky <header> (content + top/bottom padding).
+     Adjust this value if you change header padding or logo size. */
+  --hdr-height: 9.25rem;
 }
 
 [data-theme="dark"] {
+  /* Dark mode overrides */
   --bg: #1e1e1e;
   --text: #ccc;
   --accent: #444;
@@ -38,20 +41,9 @@ html, body {
   background: var(--bg);
   color: var(--text);
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
-}
-
-/* ==========================================================================
-   MAIN LAYOUT
-   ========================================================================== */
-main {
-  margin: 0;
-  padding: 2rem 4rem 0 4rem;
-  transition: margin-left 0.3s ease;
-}
-#sidebar.active ~ main {
-  margin-left: 160px;
 }
 
 /* ==========================================================================
@@ -62,21 +54,21 @@ header {
   top: 0;
   z-index: 1000;
   background: var(--accent);
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem;  
   text-align: center;
 }
 
-/* Hamburger inside header */
+/* Hamburger button inside header */
 #sidebarToggle {
   position: absolute;
   top: 1.25rem;
   left: 1.25rem;
   width: 3rem;
   height: 3rem;
-  border: none;
-  border-radius: 50%;
   background: var(--footer-bg);
   color: var(--footer-text);
+  border: none;
+  border-radius: 50%;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
@@ -86,7 +78,7 @@ header {
   z-index: 1001;
 }
 
-/* Dark-mode toggle */
+/* Dark-mode toggle inside header */
 #darkModeToggle {
   position: absolute;
   top: 1.25rem;
@@ -98,7 +90,7 @@ header {
   cursor: pointer;
 }
 
-/* Header internal layout */
+/* Header inner layout */
 .center-header {
   display: flex;
   flex-direction: column;
@@ -107,21 +99,24 @@ header {
   max-width: 700px;
   margin: auto;
 }
+
 .logo {
   width: 100px;
   height: 100px;
   border-radius: 50%;
 }
+
 .logo-text {
-  font-size: 1rem;
+  margin: 0;
   font-weight: bold;
   color: #2c2c2c;
 }
+
 .header-buttons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
 }
+
 .btn {
   padding: 0.5rem 1rem;
   background: var(--btn-bg);
@@ -130,18 +125,33 @@ header {
   border: none;
   border-radius: 5px;
 }
+
 .btn.outline {
   background: transparent;
   border: 2px solid var(--btn-bg);
 }
+
 .btn:hover {
   background: var(--link-hover);
 }
 
 /* ==========================================================================
+   MAIN LAYOUT
+   ========================================================================== */
+main {
+  margin: 0;
+  padding: 2rem 4rem 0 4rem;
+  transition: margin-left 0.3s ease;
+}
+
+#sidebar.active ~ main {
+  margin-left: 160px;
+}
+
+/* ==========================================================================
    SIDEBAR
    ========================================================================== */
-/* Close icon */
+/* Close button */
 #closeSidebar {
   position: absolute;
   top: 10px;
@@ -154,33 +164,36 @@ header {
   z-index: 1002;
 }
 
-/* Off-canvas menu now spans full height and pads content down under header */
+/* Off-canvas menu spans full height, pushes its content down under header */
 #sidebar {
   position: fixed;
-  top: 0;                           /* start at very top */
+  top: 0;
   left: 0;
   width: 160px;
-  height: 100vh;                    /* full viewport height */
+  height: 100vh;
   background: var(--accent);
-  padding-top: var(--hdr-height);   /* push links below header */
+  padding-top: var(--hdr-height);
   padding-left: 1rem;
   padding-right: 1rem;
-  overflow-y: auto;                 /* scroll inside sidebar if needed */
+  overflow-y: auto;
   transform: translateX(-180px);
   transition: transform 0.3s ease;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-  z-index: 999;                      /* below header’s z-index */
+  z-index: 999;
 }
+
 #sidebar.active {
   transform: translateX(0);
 }
+
 #sidebar a {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
   color: #004b8d;
   font-weight: bold;
   text-decoration: none;
 }
+
 #sidebar a:hover {
   color: #fff;
 }
@@ -196,11 +209,13 @@ nav {
   padding: 0.75rem 2rem;
   flex-wrap: wrap;
 }
+
 .nav-menu {
   list-style: none;
   display: flex;
   gap: 1rem;
 }
+
 .nav-menu a {
   text-decoration: none;
   color: #2c2c2c;
@@ -214,6 +229,7 @@ nav {
   font-size: 1.8rem;
   margin-bottom: 1.25rem;
 }
+
 .article-box {
   background: #fff;
   padding: 1.5rem;
@@ -225,6 +241,7 @@ nav {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
 }
+
 .article-box:hover {
   transform: translateY(-4px);
 }
@@ -250,10 +267,12 @@ nav {
   background: var(--accent);
   color: #2c2c2c;
 }
+
 #contact h2 {
   text-align: center;
   margin-bottom: 1rem;
 }
+
 .contact-list {
   list-style: none;
   margin: 0 auto;
@@ -262,6 +281,7 @@ nav {
   display: grid;
   gap: 1rem;
 }
+
 .contact-list a {
   display: inline-flex;
   align-items: center;
@@ -270,9 +290,12 @@ nav {
   text-decoration: none;
   font-weight: 500;
 }
+
 .contact-list a:hover {
   color: #fff;
 }
+
+/* Fix icon size */
 .contact-icon {
   width: 26px;
   height: 26px;
@@ -310,6 +333,7 @@ footer {
   font-size: 18px;
   --scroll-angle: 0deg;
 }
+
 #topBtn::before {
   content: '';
   position: absolute;
@@ -324,6 +348,7 @@ footer {
   );
   z-index: -1;
 }
+
 #topBtn:hover {
   background: var(--link-hover);
 }
@@ -335,6 +360,7 @@ footer {
   main {
     padding: 1.5rem 1.5rem 0 1.5rem;
   }
+
   #contact,
   footer {
     position: static;
@@ -343,31 +369,30 @@ footer {
     margin: 0;
     padding: 2.5rem 1.5rem 0.75rem 1.5rem;
   }
+
   .contact-list {
     padding: 0;
   }
+
   .article-box {
     max-width: 100%;
     margin: 1.5rem auto;
   }
+
   .article-md {
     max-width: 100%;
     padding: 1rem;
   }
+
   h2 {
     font-size: 1.4rem;
   }
+
   h3 {
     font-size: 1.1rem;
   }
+
   .article-box img {
     margin: 0.75rem auto;
-  }
-
-  /* Sidebar on mobile reverts to full-screen under header */
-  #sidebar {
-    top: 0 !important;
-    height: 100vh !important;
-    padding-top: var(--hdr-height);
   }
 }
