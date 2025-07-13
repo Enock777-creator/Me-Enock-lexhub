@@ -164,17 +164,15 @@ main {
   z-index: 1002;
 }
 
-/* Off-canvas menu spans full height, pushes its content down under header */
+/* Off-canvas menu spans full height, pushed right under header */
 #sidebar {
   position: fixed;
-  top: 0;
+  top: var(--hdr-height);
   left: 0;
   width: 160px;
-  height: 100vh;
+  height: calc(100vh - var(--hdr-height));
   background: var(--accent);
-  padding-top: var(--hdr-height);
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
   overflow-y: auto;
   transform: translateX(-180px);
   transition: transform 0.3s ease;
@@ -394,5 +392,14 @@ footer {
 
   .article-box img {
     margin: 0.75rem auto;
+  }
+
+  /* Mobile: full-width sidebar off-canvas */
+  #sidebar {
+    width: 100%;
+    transform: translateX(-100%);
+  }
+  #sidebar.active {
+    transform: translateX(0);
   }
 }
