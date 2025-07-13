@@ -10,17 +10,17 @@ body {
   color: #333;
 }
 
+/* --- Layout Spacing --- */
 main {
   margin-left: 0;
   transition: margin-left 0.3s ease;
 }
+
 #sidebar.active ~ main {
   margin-left: 160px;
 }
 
-
-
-/* Header */
+/* --- Header Section --- */
 header {
   background-color: burlywood;
   text-align: center;
@@ -72,7 +72,7 @@ header {
   background: #c1a16e;
 }
 
-/* Navigation */
+/* --- Navigation --- */
 nav {
   background: #deb887;
   display: flex;
@@ -80,14 +80,14 @@ nav {
   align-items: center;
   padding: 0.75rem 2rem;
   flex-wrap: wrap;
-  margin-left: 160px;
+  margin-left: 0;
 }
 
 .nav-menu {
   list-style: none;
   display: flex;
   gap: 1rem;
-  margin-left: 160px;
+  margin-left: 0;
 }
 
 .nav-menu a {
@@ -96,7 +96,53 @@ nav {
   font-weight: bold;
 }
 
-/* Articles */
+/* --- Sidebar Toggle Button ☰ --- */
+#sidebarToggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  background-color: burlywood;
+  border: none;
+  font-size: 1.8rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* --- Sidebar --- */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 100vh;
+  background-color: burlywood;
+  padding: 1rem;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+  z-index: 100;
+  transform: translateX(-180px); /* hide by default */
+  transition: transform 0.3s ease;
+}
+
+#sidebar.active {
+  transform: translateX(0); /* show when active */
+}
+
+#sidebar a {
+  display: block;
+  margin-bottom: 15px;
+  color: #004b8d;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#sidebar a:hover {
+  color: #fff;
+}
+
+/* --- Articles --- */
 #articles h2 {
   font-size: 1.8rem;
   margin-bottom: 1.25rem;
@@ -122,7 +168,6 @@ nav {
   margin-bottom: 0.75rem;
 }
 
-.article-content,
 .raw-md {
   font-family: Consolas, "Courier New", monospace;
   font-size: 0.95rem;
@@ -135,7 +180,7 @@ nav {
   overflow-x: auto;
 }
 
-/* Contact */
+/* --- Contact --- */
 #contact {
   margin-top: 4rem;
   padding-top: 2rem;
@@ -165,7 +210,7 @@ nav {
   height: 26px;
 }
 
-/* Footer */
+/* --- Footer --- */
 footer {
   background: #333;
   color: #fff;
@@ -174,7 +219,7 @@ footer {
   margin-top: 3rem;
 }
 
-/* Top Button */
+/* --- Scroll to Top Button --- */
 #topBtn {
   display: none;
   position: fixed;
@@ -195,69 +240,16 @@ footer {
   background-color: #333;
 }
 
-/* ☰ Sidebar Toggle Button */
-#sidebarToggle {
-  position: fixed;
-  top: 7px;
-  left: 130px; /* moves it away from sidebar */
-  z-index: 200;
-  background-color: burlywood;
-  border: none;
-  font-size: 1.8rem;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: left 0.3s ease;
-}
-
-#toggleIcon {
-  transition: opacity 0.2s ease;
-}
-
-/* Sidebar Styles */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 160px;
-  height: 100vh;
-  background-color: burlywood;
-  padding: 1rem;
-  z-index: 100;
-  transition: transform 0.3s ease;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-  transform: translateX(-180px); 
-}
-
-#sidebar a {
-  display: block;
-  margin-bottom: 15px;
-  color: #004b8d;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-#sidebar a:hover {
-  color: #fff;
-}
-
-/* Sidebar slide-out when active */
-#sidebar.active {
-  transform: translateX(-180px);
-}
-
-/* Responsive Fixes */
+/* --- Responsive Fixes --- */
 @media (max-width: 700px) {
   main, nav, header {
     margin-left: 0;
   }
 
   #sidebar {
-    transform: translateX(-180px);
-    position: fixed;
     width: 100%;
     height: auto;
+    transform: translateX(-100%);
   }
 
   #sidebar.active {
