@@ -12,8 +12,8 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
 
-  /* Height of your sticky header (padding + content). Tweak if your header changes */
-  --hdr-height: 13.5rem;
+  /* EXACT height of your sticky header (top padding + content + bottom padding) */
+  --hdr-height: 9.5rem;
 }
 
 [data-theme="dark"] {
@@ -66,7 +66,7 @@ header {
   text-align: center;
 }
 
-/* Hamburger in header, circular & footer-colored */
+/* Hamburger inside header */
 #sidebarToggle {
   position: absolute;
   top: 1.25rem;
@@ -98,7 +98,7 @@ header {
   cursor: pointer;
 }
 
-/* Header inner layout */
+/* Header internal layout */
 .center-header {
   display: flex;
   flex-direction: column;
@@ -141,7 +141,7 @@ header {
 /* ==========================================================================
    SIDEBAR
    ========================================================================== */
-/* Close button */
+/* Close icon */
 #closeSidebar {
   position: absolute;
   top: 10px;
@@ -154,19 +154,22 @@ header {
   z-index: 1002;
 }
 
-/* Off-canvas sidebar now begins below header */
+/* Off-canvas menu now spans full height and pads content down under header */
 #sidebar {
   position: fixed;
-  top: var(--hdr-height);
+  top: 0;                           /* start at very top */
   left: 0;
   width: 160px;
-  height: calc(100vh - var(--hdr-height));
+  height: 100vh;                    /* full viewport height */
   background: var(--accent);
-  padding: 1rem;
+  padding-top: var(--hdr-height);   /* push links below header */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  overflow-y: auto;                 /* scroll inside sidebar if needed */
   transform: translateX(-180px);
   transition: transform 0.3s ease;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-  z-index: 1000;
+  z-index: 999;                      /* below header’s z-index */
 }
 #sidebar.active {
   transform: translateX(0);
@@ -351,9 +354,20 @@ footer {
     max-width: 100%;
     padding: 1rem;
   }
+  h2 {
+    font-size: 1.4rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+  }
+  .article-box img {
+    margin: 0.75rem auto;
+  }
+
+  /* Sidebar on mobile reverts to full-screen under header */
   #sidebar {
-    /* On mobile, sidebar slides from top of content */
-    top: 0;
-    height: 100vh;
+    top: 0 !important;
+    height: 100vh !important;
+    padding-top: var(--hdr-height);
   }
 }
