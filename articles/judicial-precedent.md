@@ -3,6 +3,9 @@ title: "What Is Judicial Precedent?"
 date: 2025-07-11
 ---
 
+**Date: 2025-07-11**
+
+
 Judicial precedent means **using previous court rulings as guidance in current legal decisions. It provides consistency and predictability across the justice system.**
 
 Judicial precedent, or **stare decisis,** is a doctrine where courts follow legal principles set by prior decisions. In Rwanda’s evolving legal system—which blends civil law traditions with increasing common law influence—precedent plays an increasingly important role.
