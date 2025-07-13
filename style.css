@@ -168,7 +168,8 @@ nav {
 .article-box {
   background: #fff;
   padding: 1.5rem;
-  margin-bottom: 2rem;
+  margin: 2rem auto;
+  max-width: 840px; /* 👈 tighter fit around content */
   border: 5px solid;
   border-image: linear-gradient(45deg, #ff512f, #f09819);
   border-image-slice: 1;
@@ -320,6 +321,10 @@ footer {
   max-width: 100%;
   padding: 1rem;
 }  
+ .article-box {
+  max-width: 100%;
+  margin: 1.5rem 1rem;
+}   
   }
 
   main {
