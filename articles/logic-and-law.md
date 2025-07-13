@@ -52,6 +52,9 @@ Original Source: https://www.open.edu/openlearn/society-politics-law/law/legal-s
   
 
 
+
+
+
 **Law isn’t just logic—it’s thoughtful navigation of principles and people.**
 
 
