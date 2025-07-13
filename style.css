@@ -28,7 +28,7 @@ body {
 main {
   margin-left: 0;
   margin-right: 0;
-  padding: 2rem 4rem; /* top/right/bottom/left */
+  padding: 2rem 4rem;
   transition: margin-left 0.3s ease;
 }
 #sidebar.active ~ main {
@@ -36,9 +36,8 @@ main {
 }
 
 /* ==========================================================================
-   SIDEBAR & TOGGLE BUTTON
+   SIDEBAR & TOGGLE
    ========================================================================== */
-/* ☰ Toggle Button */
 #sidebarToggle {
   position: fixed;
   top: 20px;
@@ -52,8 +51,6 @@ main {
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
-
-/* ❎ Close Button */
 #closeSidebar {
   position: absolute;
   top: 10px;
@@ -68,8 +65,6 @@ main {
 #closeSidebar:hover {
   color: #000;
 }
-
-/* Sidebar */
 #sidebar {
   position: fixed;
   top: 0;
@@ -200,7 +195,7 @@ nav {
 }
 
 /* ==========================================================================
-   MARKDOWN CONTENT
+   MARKDOWN STYLING
    ========================================================================== */
 .article-md {
   max-width: 700px;
@@ -261,10 +256,10 @@ nav {
    ========================================================================== */
 #contact {
   position: relative;
-  left: -4rem;                      /* cancel main’s 4rem side-padding */
-  width: calc(100% + 8rem);         /* fill full viewport width */
+  left: -4rem;                    /* cancel main’s left padding */
+  width: calc(100% + 8rem);       /* full viewport width */
   margin: 0;
-  padding: 2.5rem 4rem;             /* vertical + side padding */
+  padding: 2.5rem 4rem;           /* vertical + original side padding */
   background-color: burlywood;
   color: #2c2c2c;
 }
@@ -305,10 +300,10 @@ nav {
    ========================================================================== */
 footer {
   position: relative;
-  left: -4rem;                      /* cancel main’s 4rem side-padding */
-  width: calc(100% + 8rem);
-  padding: 1.25rem 4rem;            /* vertical + side padding */
-  margin: 0;                        /* remove any top gap */
+  left: -4rem;                    /* cancel main’s left padding */
+  width: calc(100% + 8rem);       /* full viewport width */
+  padding: 1.25rem 4rem;          /* vertical + original side padding */
+  margin: -2rem 0 0 0;            /* pull up by main’s bottom padding */
   background: #333;
   color: #fff;
   text-align: center;
@@ -344,13 +339,14 @@ footer {
     font-size: 15px;
   }
   main {
-    padding: 1.5rem;                /* restore uniform padding */
+    padding: 1.5rem;              /* restore uniform padding */
   }
   #contact,
   footer {
-    position: static;               /* natural flow on mobile */
+    position: static;             /* back to normal flow */
     left: 0;
     width: 100%;
+    margin: 0;
     padding-left: 1rem;
     padding-right: 1rem;
   }
