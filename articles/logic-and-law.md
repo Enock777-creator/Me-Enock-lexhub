@@ -51,4 +51,5 @@ Original Source: https://www.open.edu/openlearn/society-politics-law/law/legal-s
 - Legal arguments persuade; they don’t just compute
   
 
+
 **Law isn’t just logic—it’s thoughtful navigation of principles and people.**
