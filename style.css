@@ -316,6 +316,10 @@ footer {
 @media (max-width: 700px) {
   body {
     font-size: 15px;
+  .article-md {
+  max-width: 100%;
+  padding: 1rem;
+}  
   }
 
   main {
@@ -342,10 +346,11 @@ footer {
     margin: 0.75rem auto;
   }
 
-  .article-md {
-    max-width: 100%;
-    padding: 1rem;
-  }
+ .article-md {
+  max-width: 793px;        /* ✅ A4 width */
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;  /* Comfortable spacing */
+}
 
   #sidebarToggle {
     left: 20px;
