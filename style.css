@@ -295,8 +295,8 @@ footer {
 /* ☰ Hamburger Button */
 #sidebarToggle {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 170px;
+  left: calc(160px + 10px);
   z-index: 200;
   background-color: burlywood;
   border: none;
@@ -388,3 +388,11 @@ footer {
     transform: translateX(0);      /* show on toggle */
   }
 }
+#sidebarToggle {
+  transition: left 0.3s ease;
+}
+
+#sidebar.active + #sidebarToggle {
+  left: 20px; /* pulls back when sidebar is hidden */
+}
+
