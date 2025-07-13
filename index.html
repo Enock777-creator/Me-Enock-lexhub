@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,10 +9,10 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body id="home">
-  <!-- ☰ Sidebar Toggle Button -->
+  <!-- ☰ Sidebar Toggle -->
   <button id="sidebarToggle">☰</button>
 
-  <!-- ✅ Sidebar Navigation -->
+  <!-- Sidebar -->
   <div id="sidebar">
     <button id="closeSidebar">✖️</button>
     <a href="/">🏠 Home</a>
@@ -20,7 +20,7 @@
     <a href="#categories">📂 Categories</a>
   </div>
 
-  <!-- ✅ Header Section -->
+  <!-- Header -->
   <header>
     <div class="center-header">
       <img src="assets/logo-circle.png" alt="LexHub Logo" class="logo" />
@@ -30,19 +30,20 @@
         <a href="#articles" class="btn outline">Read Articles</a>
       </div>
     </div>
+    <!-- Dark-mode toggle -->
     <button id="darkModeToggle" title="Toggle Dark Mode">🌓</button>
   </header>
 
-  <!-- ✅ Main Content -->
+  <!-- Main content -->
   <main>
     <section id="articles">
       <h2>Legal Articles</h2>
-
       <article class="article-box" id="special-bis"></article>
       <article class="article-box" id="judicial-precedent"></article>
       <article class="article-box" id="logic-and-law"></article>
     </section>
 
+    <!-- Contact bar (edge-to-edge) -->
     <section id="contact">
       <h2>Contact Me</h2>
       <ul class="contact-list">
@@ -68,36 +69,15 @@
     </section>
   </main>
 
-  <!-- ✅ Footer -->
+  <!-- Footer (edge-to-edge) -->
   <footer>
     <p>© Me MUGISHA Enock 2025. All rights reserved.</p>
   </footer>
 
-  <!-- 🔍 Article Search Script -->
-  <script>
-    const searchInput = document.getElementById('article-search');
-    const articles = document.querySelectorAll('.article-box');
-    searchInput?.addEventListener('input', e => {
-      const term = e.target.value.toLowerCase();
-      articles.forEach(box => {
-        box.style.display = box.textContent.toLowerCase().includes(term) ? '' : 'none';
-      });
-    });
-  </script>
-
-  <!-- ⬆ Scroll to Top Button -->
+  <!-- Back to Top -->
   <button id="topBtn" title="Back to top">↑</button>
-  <script>
-    const topBtn = document.getElementById("topBtn");
-    window.onscroll = function () {
-      topBtn.style.display = window.scrollY > 200 ? "block" : "none";
-    };
-    topBtn.onclick = function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-  </script>
 
-  <!-- 📘 Article Loader (Updated with Raw GitHub Links) -->
+  <!-- Article loader -->
   <script>
     const files = [
       {
@@ -116,63 +96,51 @@
         title: "Logic and the Law by *MUGISHA Enock*"
       }
     ];
-
     files.forEach(article => {
       fetch(article.file)
         .then(res => res.text())
         .then(text => {
-          const box = document.getElementById(article.id);
-          box.innerHTML = `
+          document.getElementById(article.id).innerHTML = `
             <h3>${article.title}</h3>
             <div class="article-md">${marked.parse(text)}</div>
           `;
         })
-        .catch(err => {
-          console.error(`Failed to load ${article.file}`, err);
+        .catch(() => {
           document.getElementById(article.id).innerHTML =
             `<h3>${article.title}</h3><p>Sorry, this article could not be loaded.</p>`;
         });
     });
   </script>
 
-  <!-- ✅ Sidebar Toggle Logic -->
+  <!-- Sidebar toggle logic -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const toggleBtn = document.getElementById("sidebarToggle");
       const closeBtn = document.getElementById("closeSidebar");
       const sidebar = document.getElementById("sidebar");
-
-      toggleBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("active");
-      });
-
-      closeBtn.addEventListener("click", () => {
-        sidebar.classList.remove("active");
-      });
+      toggleBtn.addEventListener("click", () => sidebar.classList.toggle("active"));
+      closeBtn.addEventListener("click", () => sidebar.classList.remove("active"));
     });
   </script>
-<script>
-  // Dark-mode toggle
-  const dmToggle = document.getElementById('darkModeToggle');
-  dmToggle.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
-  });
 
-  // Scroll progress ring on Back-to-Top
-  const topBtn = document.getElementById('topBtn');
-  window.addEventListener('scroll', () => {
-    const docH = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = (window.scrollY / docH) * 360;
-    topBtn.style.setProperty('--scroll-angle', `${pct}deg`);
-    topBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
-  });
+  <!-- Dark-mode & Back-to-top scripts -->
+  <script>
+    const dmToggle = document.getElementById('darkModeToggle');
+    dmToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+    });
 
-  // Smooth scroll back to top
-  topBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
-
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = (window.scrollY / docH) * 360;
+      topBtn.style.setProperty('--scroll-angle', `${pct}deg`);
+      topBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
+  </script>
 </body>
 </html>
