@@ -13,8 +13,9 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
 
-  /* Adjust this to your header’s true height */
-  --hdr-height: 7rem;
+  /* Total height of your sticky <header> (content + top/bottom padding).
+     If your header’s actual height is different, tweak this value. */
+  --hdr-height: 9.25rem;
 }
 
 [data-theme="dark"] {
@@ -32,9 +33,6 @@
 /* ==========================================================================
    RESET & BASE
    ========================================================================== */
-html {
-  scroll-behavior: smooth;
-}
 html, body {
   margin: 0;
   padding: 0;
@@ -156,25 +154,25 @@ main {
 /* Close button */
 #closeSidebar {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 10px;
+  right: 10px;
   background: transparent;
   border: none;
-  color: purple;
-  font-size: 1.2rem;
+  color: #444;
+  font-size: 1rem;
   cursor: pointer;
   z-index: 1002;
 }
 
-/* Off-canvas menu spans full height under header */
+/* Updated sidebar positioning: sits directly under header and uses full remaining height */
 #sidebar {
   position: fixed;
-  top: var(--hdr-height);
+  top: var(--hdr-height);                      /* directly under header */
   left: 0;
   width: 160px;
-  height: calc(100vh - var(--hdr-height));
+  height: calc(100vh - var(--hdr-height));     /* fill remaining viewport */
   background: var(--accent);
-  padding: 0.5rem 1rem;
+  padding: 1rem;                                /* uniform padding */
   overflow-y: auto;
   transform: translateX(-180px);
   transition: transform 0.3s ease;
@@ -188,7 +186,7 @@ main {
 
 #sidebar a {
   display: block;
-  margin: 0.5rem 0;
+  margin-bottom: 1rem;
   color: #004b8d;
   font-weight: bold;
   text-decoration: none;
@@ -201,32 +199,156 @@ main {
 /* ==========================================================================
    NAVIGATION
    ========================================================================== */
-/* (Your existing nav styles remain unchanged) */
+nav {
+  background: #deb887;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  flex-wrap: wrap;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #2c2c2c;
+  font-weight: bold;
+}
 
 /* ==========================================================================
    ARTICLES
    ========================================================================== */
-/* (Unchanged) */
+#articles h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.25rem;
+}
+
+.article-box {
+  background: #fff;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 840px;
+  border: 5px solid;
+  border-image: linear-gradient(45deg,#ff512f,#f09819) 1;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.article-box:hover {
+  transform: translateY(-4px);
+}
 
 /* ==========================================================================
    MARKDOWN CONTENT
    ========================================================================== */
-/* (Unchanged) */
+.article-md {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
 
 /* ==========================================================================
    CONTACT (EDGE-TO-EDGE)
    ========================================================================== */
-/* (Unchanged) */
+#contact {
+  position: relative;
+  left: -4rem;
+  width: calc(100% + 8rem);
+  margin: 0;
+  padding: 2.5rem 4rem;
+  background: var(--accent);
+  color: #2c2c2c;
+}
+
+#contact h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.contact-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 800px;
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2c2c2c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-list a:hover {
+  color: #fff;
+}
+
+.contact-icon {
+  width: 26px;
+  height: 26px;
+}
 
 /* ==========================================================================
    FOOTER (EDGE-TO-EDGE & NO GAP)
    ========================================================================== */
-/* (Unchanged) */
+footer {
+  position: relative;
+  left: -4rem;
+  width: calc(100% + 8rem);
+  margin: -2rem 0 0 0;
+  padding: 1.25rem 4rem;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+}
 
 /* ==========================================================================
    BACK-TO-TOP & SCROLL-RING
    ========================================================================== */
-/* (Unchanged) */
+#topBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 99;
+  width: 48px;
+  height: 48px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  --scroll-angle: 0deg;
+}
+
+#topBtn::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent) var(--scroll-angle),
+    var(--scroll-bg) 0deg
+  );
+  z-index: -1;
+}
+
+#topBtn:hover {
+  background: var(--link-hover);
+}
 
 /* ==========================================================================
    RESPONSIVE
@@ -275,7 +397,6 @@ main {
   #sidebar {
     width: 100%;
     transform: translateX(-100%);
-    padding: 1rem;
   }
   #sidebar.active {
     transform: translateX(0);
