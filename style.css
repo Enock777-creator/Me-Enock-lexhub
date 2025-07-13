@@ -13,8 +13,8 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
 
-  /* Total height of your sticky <header> (content + top/bottom padding).
-     If your header’s actual height is different, tweak this value. */
+  /* Total height of your sticky <header> (content + top/bottom padding). 
+     Adjust this value if you change header padding or logo size. */
   --hdr-height: 9.25rem;
 }
 
@@ -29,6 +29,7 @@
   --footer-bg: #000;
   --footer-text: #ccc;
 }
+
 
 /* ==========================================================================
    RESET & BASE
@@ -45,6 +46,7 @@ html, body {
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
 
 /* ==========================================================================
    HEADER & TOGGLES
@@ -135,6 +137,7 @@ header {
   background: var(--link-hover);
 }
 
+
 /* ==========================================================================
    MAIN LAYOUT
    ========================================================================== */
@@ -147,6 +150,7 @@ main {
 #sidebar.active ~ main {
   margin-left: 160px;
 }
+
 
 /* ==========================================================================
    SIDEBAR
@@ -164,15 +168,17 @@ main {
   z-index: 1002;
 }
 
-/* Updated sidebar positioning: sits directly under header and uses full remaining height */
+/* Off-canvas menu spans full window height, contents pushed below header */
 #sidebar {
   position: fixed;
-  top: var(--hdr-height);                      /* directly under header */
+  top: 0;                           /* full-height: start at very top */
   left: 0;
   width: 160px;
-  height: calc(100vh - var(--hdr-height));     /* fill remaining viewport */
+  height: 100vh;                    /* full viewport height */
   background: var(--accent);
-  padding: 1rem;                                /* uniform padding */
+  padding-top: var(--hdr-height);   /* push links below sticky header */
+  padding-left: 1rem;
+  padding-right: 1rem;
   overflow-y: auto;
   transform: translateX(-180px);
   transition: transform 0.3s ease;
@@ -195,6 +201,7 @@ main {
 #sidebar a:hover {
   color: #fff;
 }
+
 
 /* ==========================================================================
    NAVIGATION
@@ -220,6 +227,7 @@ nav {
   font-weight: bold;
 }
 
+
 /* ==========================================================================
    ARTICLES
    ========================================================================== */
@@ -244,6 +252,7 @@ nav {
   transform: translateY(-4px);
 }
 
+
 /* ==========================================================================
    MARKDOWN CONTENT
    ========================================================================== */
@@ -252,6 +261,7 @@ nav {
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
+
 
 /* ==========================================================================
    CONTACT (EDGE-TO-EDGE)
@@ -298,6 +308,7 @@ nav {
   height: 26px;
 }
 
+
 /* ==========================================================================
    FOOTER (EDGE-TO-EDGE & NO GAP)
    ========================================================================== */
@@ -311,6 +322,7 @@ footer {
   color: var(--footer-text);
   text-align: center;
 }
+
 
 /* ==========================================================================
    BACK-TO-TOP & SCROLL-RING
@@ -349,6 +361,7 @@ footer {
 #topBtn:hover {
   background: var(--link-hover);
 }
+
 
 /* ==========================================================================
    RESPONSIVE
