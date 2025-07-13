@@ -13,10 +13,9 @@ body {
 main {
   margin-left: 0;
   margin-right: 0;
-  padding: 2rem 2.5rem; /* ✅ Added side spacing */
+  padding: 2rem 4rem; /* 🍃 Wider side margins */
   transition: margin-left 0.3s ease;
 }
-
 #sidebar.active ~ main {
   margin-left: 160px;
 }
@@ -257,11 +256,10 @@ footer {
 
 /* Responsive */
 @media (max-width: 700px) {
-  main, nav, header {
-    margin-left: 0;
-    padding-left: 1rem;  /* ✅ Extra space on smaller screens */
-    padding-right: 1rem;
-  }
+  main {
+  padding: 2rem 2rem; /* 📱 Comfortable mobile spacing */
+  margin-left: 0;
+}
 
   #sidebarToggle {
     left: 20px;
