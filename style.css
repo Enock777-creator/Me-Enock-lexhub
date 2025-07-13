@@ -1,25 +1,49 @@
 /* ==========================================================================
-   RESET & OVERFLOW FIX
+   VARIABLES & THEMES
+   Define colors as variables to switch easily between light & dark modes
    ========================================================================== */
-html,
-body {
+:root {
+  /* Light mode colors */
+  --bg: #fffaf0;
+  --text: #333;
+  --accent: burlywood;
+  --link-hover: #c1a16e;
+  --btn-bg: burlywood;
+  --btn-text: #333;
+  --footer-bg: #333;
+  --footer-text: #fff;
+  --scroll-ring: rgba(255, 255, 255, 0.5);
+  --scroll-bg: transparent;
+}
+
+[data-theme="dark"] {
+  /* Dark mode overrides */
+  --bg: #1e1e1e;
+  --text: #ccc;
+  --accent: #444;
+  --link-hover: #666;
+  --btn-bg: #444;
+  --btn-text: #fff;
+  --footer-bg: #000;
+  --footer-text: #ccc;
+  --scroll-ring: rgba(255, 255, 255, 0.3);
+  --scroll-bg: transparent;
+}
+
+/* ==========================================================================
+   RESET & OVERFLOW
+   ========================================================================== */
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 * {
   box-sizing: border-box;
-}
-
-/* ==========================================================================
-   BASE STYLES
-   ========================================================================== */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #fffaf0;
-  color: #333;
 }
 
 /* ==========================================================================
@@ -31,6 +55,7 @@ main {
   padding: 2rem 4rem;
   transition: margin-left 0.3s ease;
 }
+
 #sidebar.active ~ main {
   margin-left: 160px;
 }
@@ -38,22 +63,21 @@ main {
 /* ==========================================================================
    SIDEBAR & TOGGLE BUTTON
    ========================================================================== */
-/* ☰ Toggle Button */
 #sidebarToggle {
   position: fixed;
   top: 20px;
   left: 20px;
   z-index: 200;
-  background-color: burlywood;
+  background-color: var(--accent);
   border: none;
   font-size: 1.8rem;
   padding: 6px 10px;
   cursor: pointer;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  color: var(--btn-text);
 }
 
-/* ❎ Close Button */
 #closeSidebar {
   position: absolute;
   top: 10px;
@@ -69,14 +93,13 @@ main {
   color: #000;
 }
 
-/* Sidebar */
 #sidebar {
   position: fixed;
   top: 0;
   left: 0;
   width: 160px;
   height: 100vh;
-  background-color: burlywood;
+  background-color: var(--accent);
   padding: 1rem;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
   transform: translateX(-180px);
@@ -101,10 +124,12 @@ main {
    HEADER
    ========================================================================== */
 header {
-  background-color: burlywood;
+  background-color: var(--accent);
   text-align: center;
   padding: 2rem 1rem;
+  position: relative;
 }
+
 .center-header {
   display: flex;
   flex-direction: column;
@@ -113,34 +138,53 @@ header {
   max-width: 700px;
   margin: auto;
 }
+
 .logo {
   width: 100px;
   height: 100px;
   border-radius: 100%;
 }
+
 .logo-text {
   font-size: 1rem;
   font-weight: bold;
   color: #2c2c2c;
 }
+
 .header-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
 }
+
 .btn {
   padding: 0.5rem 1rem;
-  background: #deb887;
+  background: var(--btn-bg);
   text-decoration: none;
-  color: #333;
+  color: var(--btn-text);
   border-radius: 5px;
+  border: none;
 }
+
 .btn.outline {
   background: transparent;
-  border: 2px solid #deb887;
+  border: 2px solid var(--btn-bg);
 }
+
 .btn:hover {
-  background: #c1a16e;
+  background: var(--link-hover);
+}
+
+/* Dark-mode toggle button */
+#darkModeToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: var(--btn-text);
+  font-size: 1.4rem;
+  cursor: pointer;
 }
 
 /* ==========================================================================
@@ -154,11 +198,13 @@ nav {
   padding: 0.75rem 2rem;
   flex-wrap: wrap;
 }
+
 .nav-menu {
   list-style: none;
   display: flex;
   gap: 1rem;
 }
+
 .nav-menu a {
   text-decoration: none;
   color: #2c2c2c;
@@ -172,6 +218,7 @@ nav {
   font-size: 1.8rem;
   margin-bottom: 1.25rem;
 }
+
 .article-box {
   background: #fff;
   padding: 1.5rem;
@@ -184,220 +231,100 @@ nav {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
 }
+
 .article-box:hover {
   transform: translateY(-4px);
 }
-.article-box h3 {
-  margin-bottom: 0.75rem;
-}
-.article-box img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 1rem auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
 
 /* ==========================================================================
-   MARKDOWN CONTENT
+   MARKDOWN STYLING
    ========================================================================== */
 .article-md {
   max-width: 700px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
-.article-md h1,
-.article-md h2,
-.article-md h3 {
-  font-weight: bold;
-  margin-top: 1.2rem;
-  margin-bottom: 0.8rem;
-  line-height: 1.4;
-}
-.article-md strong {
-  font-weight: bold;
-  color: #222;
-}
-.article-md em {
-  font-style: italic;
-  color: #444;
-}
-.article-md p {
-  margin-bottom: 1rem;
-}
-.article-md ul {
-  margin-left: 1.5rem;
-  list-style: disc;
-}
-.article-md ol {
-  margin-left: 1.5rem;
-  list-style: decimal;
-}
-.article-md blockquote {
-  margin: 1rem 0;
-  padding-left: 1rem;
-  border-left: 3px solid burlywood;
-  color: #555;
-}
 
 /* ==========================================================================
-   RAW MARKDOWN CODE
-   ========================================================================== */
-.raw-md {
-  font-family: Consolas, "Courier New", monospace;
-  font-size: 0.95rem;
-  white-space: pre-wrap;
-  line-height: 1.6;
-  display: block;
-  padding: 1rem;
-  background: #f9f9f9;
-  border-radius: 8px;
-  overflow-x: auto;
-}
-
-/* ==========================================================================
-   CONTACT SECTION (EDGE-TO-EDGE)
+   CONTACT & FOOTER
+   (we assume you’ve already edge-stretched these per prior steps)
    ========================================================================== */
 #contact {
-  position: relative;
-  left: -4rem;                      /* cancel main’s 4rem side-padding */
-  width: calc(100% + 8rem);         /* fill full viewport width */
   margin: 0;
-  padding: 2.5rem 4rem;             /* vertical + original side padding */
-  background-color: burlywood;
+  padding: 2.5rem 0;
+  background-color: var(--accent);
   color: #2c2c2c;
+  width: 100vw;
+  box-sizing: border-box;
 }
+
 #contact h2 {
   margin-bottom: 1rem;
   text-align: center;
-  color: #2c2c2c;
-}
-.contact-list {
-  list-style: none;
-  padding: 0;
-  max-width: 800px;
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-.contact-list li {
-  margin-bottom: 1rem;
-}
-.contact-list a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: #2c2c2c;
-  font-weight: 500;
-}
-.contact-list a:hover {
-  color: #fff;
-}
-.contact-icon {
-  width: 26px;
-  height: 26px;
 }
 
-/* ==========================================================================
-   FOOTER (EDGE-TO-EDGE & NO GAP)
-   ========================================================================== */
 footer {
-  position: relative;
-  left: -4rem;                      /* cancel main’s 4rem side-padding */
-  width: calc(100% + 8rem);
-  margin: -2rem 0 0 0;              /* pull up under contact */
-  padding: 1.25rem 4rem;            /* vertical + original side padding */
-  background: #333;
-  color: #fff;
+  background: var(--footer-bg);
+  color: var(--footer-text);
   text-align: center;
+  padding: 1.25rem;
+  margin: 0;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
 /* ==========================================================================
-   SCROLL-TO-TOP BUTTON
+   BACK TO TOP BUTTON + SCROLL PROGRESS RING
    ========================================================================== */
 #topBtn {
-  display: none;
   position: fixed;
   bottom: 30px;
   right: 20px;
   z-index: 99;
+  width: 48px;
+  height: 48px;
   font-size: 18px;
-  background-color: #004b8d;
-  color: white;
-  cursor: pointer;
-  padding: 12px;
-  border-radius: 50%;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
   border: none;
-  transition: opacity 0.3s ease;
+  border-radius: 50%;
+  cursor: pointer;
+  --scroll-angle: 0deg;
 }
+
+#topBtn::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent) var(--scroll-angle),
+    var(--scroll-bg) 0deg
+  );
+  z-index: -1;
+}
+
 #topBtn:hover {
-  background-color: #333;
+  background-color: var(--link-hover);
 }
 
 /* ==========================================================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE
    ========================================================================== */
 @media (max-width: 700px) {
-  body {
-    font-size: 15px;
-  }
-
-  /* Shrink main padding on mobile and remove bottom space */
   main {
     padding: 1.5rem 1.5rem 0 1.5rem;
   }
-
-  /* Edge-to-edge contact & footer on mobile */
   #contact,
   footer {
-    position: relative;
-    left: -1.5rem;                   /* cancel main’s 1.5rem padding */
-    width: calc(100% + 3rem);        /* fill full mobile viewport */
+    position: static;
+    left: 0;
+    width: 100%;
     margin: 0;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  /* Contact vertical padding stays */
-  #contact {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-  }
-
-  /* Footer pulled up under contact */
-  footer {
-    margin-top: -1.5rem;             /* overlap that last strip */
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-  }
-
-  .article-box {
-    max-width: 100%;
-    margin: 1.5rem auto;
-  }
-
-  .contact-list {
-    margin: 1.5rem auto;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .article-md {
-    max-width: 100%;
-    padding: 1rem;
-  }
-
-  h2 {
-    font-size: 1.4rem;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-  }
-
-  .article-box img {
-    margin: 0.75rem auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
