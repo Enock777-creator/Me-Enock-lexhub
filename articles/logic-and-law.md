@@ -1,8 +1,8 @@
 ---
-title: "Logic and the Law, *by MUGISHA Enock*,"
-date: 2025-07-11
+title: "Logic and the Law, by MUGISHA Enock,"
 ---
-D**ate: 2025-07-11**
+
+**Date: 2025-07-11**
 
 Legal reasoning blends logical rules with judgment and real-world complexity.
 
