@@ -30,6 +30,7 @@
         <a href="#articles" class="btn outline">Read Articles</a>
       </div>
     </div>
+    <button id="darkModeToggle" title="Toggle Dark Mode">🌓</button>
   </header>
 
   <!-- ✅ Main Content -->
@@ -150,6 +151,28 @@
       });
     });
   </script>
+<script>
+  // Dark-mode toggle
+  const dmToggle = document.getElementById('darkModeToggle');
+  dmToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+  });
+
+  // Scroll progress ring on Back-to-Top
+  const topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', () => {
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (window.scrollY / docH) * 360;
+    topBtn.style.setProperty('--scroll-angle', `${pct}deg`);
+    topBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+  });
+
+  // Smooth scroll back to top
+  topBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
 
 </body>
 </html>
