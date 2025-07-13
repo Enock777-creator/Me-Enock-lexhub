@@ -11,10 +11,13 @@ body {
 }
 
 main {
-  margin-left: 160px; /* match sidebar width */
-  padding: 2rem;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
 }
 
+#sidebar.active ~ main {
+  margin-left: 160px;
+}
 /* Header */
 header {
   background-color: burlywood;
@@ -222,6 +225,7 @@ footer {
   z-index: 100;
   transition: transform 0.3s ease;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+  transform: translateX(-180px); 
 }
 
 #sidebar a {
