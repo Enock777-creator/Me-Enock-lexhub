@@ -14,6 +14,10 @@ main {
   margin-left: 0;
   transition: margin-left 0.3s ease;
 }
+#sidebar.active ~ main {
+  margin-left: 160px;
+}
+
 
 
 /* Header */
