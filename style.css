@@ -1,8 +1,8 @@
 /* ==========================================================================
    RESET & OVERFLOW FIX
-   Prevent any browser margins or scroll-bar gaps
    ========================================================================== */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -28,7 +28,7 @@ body {
 main {
   margin-left: 0;
   margin-right: 0;
-  padding: 2rem 4rem;
+  padding: 2rem 4rem; /* top/right/bottom/left */
   transition: margin-left 0.3s ease;
 }
 #sidebar.active ~ main {
@@ -258,14 +258,13 @@ nav {
 
 /* ==========================================================================
    CONTACT SECTION (EDGE-TO-EDGE)
-   - pulled out of main’s padding by negative offset
    ========================================================================== */
 #contact {
   position: relative;
-  left: -4rem;                       /* cancel main’s 4rem side-padding */
-  width: calc(100% + 8rem);          /* full viewport minus scrollbars */
+  left: -4rem;                      /* cancel main’s 4rem side-padding */
+  width: calc(100% + 8rem);         /* fill full viewport width */
   margin: 0;
-  padding: 2.5rem 0;
+  padding: 2.5rem 4rem;             /* vertical + side padding */
   background-color: burlywood;
   color: #2c2c2c;
 }
@@ -302,17 +301,17 @@ nav {
 }
 
 /* ==========================================================================
-   FOOTER (EDGE-TO-EDGE)
+   FOOTER (EDGE-TO-EDGE & NO GAP)
    ========================================================================== */
 footer {
   position: relative;
-  left: -4rem;                       /* cancel main’s 4rem side-padding */
+  left: -4rem;                      /* cancel main’s 4rem side-padding */
   width: calc(100% + 8rem);
-  padding: 1.25rem;
+  padding: 1.25rem 4rem;            /* vertical + side padding */
+  margin: 0;                        /* remove any top gap */
   background: #333;
   color: #fff;
   text-align: center;
-  margin: 0;
 }
 
 /* ==========================================================================
@@ -345,19 +344,19 @@ footer {
     font-size: 15px;
   }
   main {
-    padding: 1.5rem;
+    padding: 1.5rem;                /* restore uniform padding */
   }
   #contact,
   footer {
-    position: static;               /* restore normal flow */
+    position: static;               /* natural flow on mobile */
     left: 0;
     width: 100%;
-  }
-  .article-box,
-  .contact-list {
-    margin: 1.5rem auto;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  .article-box {
+    max-width: 100%;
+    margin: 1.5rem auto;
   }
   .article-md {
     max-width: 100%;
@@ -368,5 +367,8 @@ footer {
   }
   h3 {
     font-size: 1.1rem;
+  }
+  .article-box img {
+    margin: 0.75rem auto;
   }
 }
