@@ -13,7 +13,8 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
 
-  /* Total height of your sticky <header> (content + padding) */
+  /* Total height of your sticky <header> (content + top/bottom padding).
+     If you change header padding or logo size, tweak this value. */
   --hdr-height: 9.25rem;
 }
 
@@ -35,6 +36,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -43,6 +45,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -91,11 +94,11 @@ header {
   cursor: pointer;
 }
 
-/* Close button—now in header beside hamburger */
+/* Close button – now in header, opposite the hamburger */
 #closeSidebar {
   position: absolute;
   top: 1.25rem;
-  right: 1.25rem;     /* same horizontal offset as darkModeToggle */
+  right: 1.25rem; /* same offset as darkModeToggle */
   width: 3rem;
   height: 3rem;
   background: var(--footer-bg);
@@ -103,7 +106,7 @@ header {
   border: none;
   border-radius: 50%;
   font-size: 1.5rem;
-  display: none;       /* hidden until sidebar opens */
+  display: none;  /* hidden until sidebar opens */
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -111,7 +114,7 @@ header {
   z-index: 1002;
 }
 
-/* Show “✖️” when sidebar is active */
+/* Show the close button when sidebar is open */
 #sidebar.active #closeSidebar {
   display: flex;
 }
