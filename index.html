@@ -142,6 +142,17 @@
       window.scrollTo({ top: 0, behavior: 'smooth' })
     );
   </script>
+<script>
+  function adjustSidebar() {
+    const hdr = document.querySelector('header');
+    const sb  = document.getElementById('sidebar');
+    const hh  = hdr.offsetHeight;
+    sb.style.top    = hh + 'px';
+    sb.style.height = `calc(100vh - ${hh}px)`;
+  }
+  window.addEventListener('load', adjustSidebar);
+  window.addEventListener('resize', adjustSidebar);
+</script>
 
 </body>
 </html>
