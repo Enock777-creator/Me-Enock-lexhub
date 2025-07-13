@@ -1,52 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #fffaf0;
-  margin: 0;
-  padding: 0;
   color: #333;
 }
 
 main {
-  margin-left: 160px; /* Match or slightly exceed sidebar width */
+  margin-left: 160px; /* match sidebar width */
   padding: 2rem;
 }
 
-
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  margin: -1px; padding: 0;
-  clip: rect(0,0,0,0);
-  overflow: hidden;
-  white-space: nowrap;
-  border: 0;
-}
-#topBtn {
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  right: 20px;
-  z-index: 99;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  background-color: #004b8d;
-  color: white;
-  cursor: pointer;
-  padding: 12px;
-  border-radius: 50%;
-  transition: opacity 0.3s ease;
-}
-
-#topBtn:hover {
-  background-color: #333;
-}
-  header {
+/* Header */
+header {
   background-color: burlywood;
   text-align: center;
   padding: 2rem 1rem;
-  margin: 0;
-  position: relative;
   z-index: 1;
 }
 
@@ -94,8 +67,6 @@ main {
   background: #c1a16e;
 }
 
-}
-
 /* Navigation */
 nav {
   background: #deb887;
@@ -106,24 +77,18 @@ nav {
   flex-wrap: wrap;
   margin-left: 160px;
 }
+
 .nav-menu {
   list-style: none;
   display: flex;
   gap: 1rem;
-  margin: 0;
-  padding: 0;
   margin-left: 160px;
 }
+
 .nav-menu a {
   text-decoration: none;
   color: #2c2c2c;
   font-weight: bold;
-  margin-left: 160px;
-}
-.search-form input {
-  padding: 0.4rem 0.7rem;
-  border-radius: 6px;
-  border: 1px solid #aaa;
 }
 
 /* Articles */
@@ -143,144 +108,16 @@ nav {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
 }
+
 .article-box:hover {
   transform: translateY(-4px);
 }
-.article-box h3 {
-  margin-top: 0;
-}
 
-/* Contact */
-#contact {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid #ccc;
-}
-
-#contact h2 {
-  font-size: 1.6rem;
-  margin-bottom: 1.25rem;
-}
-.contact-list {
-  list-style: none;
-  padding: 0;
-}
-.contact-list li {
-  margin-bottom: 1rem;
-}
-.contact-list a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-.contact-icon {
-  width: 26px;
-  height: 26px;
-  vertical-align: middle;
-}
-
-/* Footer */
-footer {
-  background: #333;
-  color: #fff;
-  text-align: center;
-  padding: 1.25rem;
-  margin-top: 3rem;
-}
-
-/* Responsive */
-@media (max-width: 700px) {
-  header, nav {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-  .header-buttons {
-    margin-top: 1rem;
-  }
-  .nav-menu {
-    flex-direction: column;
-  }
-}
-
-/* ✅ SIDEBAR STYLES */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 150px;             /* ✅ STEP 3: Sidebar width */
-  height: 100%;
-  background-color: #333;
-  padding: 20px;
-  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-  z-index: 100;             /* ✅ STEP 3 (extra): Keeps sidebar on top */
-}
-
-/* ✅ SIDEBAR LINK STYLING */
-#sidebar a {
-  display: block;
-  margin-bottom: 15px;
-  color: #004b8d;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-#sidebar a:hover {
-  color: #222;
-}
-
-/* ✅ MOBILE FIX (Collapses sidebar into top bar) */
-@media (max-width: 700px) {
-  #sidebar {
-    position: static;
-    width: 100%;
-    height: auto;
-  }
-
-  header,
-  main,
-  nav,
-  #articles {
-    margin-left: 0;
-  }
-}
-
-@media (max-width: 700px) {
-  #sidebar {
-    position: static;
-    width: 100%;
-    height: auto;
-  }
-  #articles,
-  nav,
-  header {
-    margin-left: 0;
-  }
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.article-content {
-  max-height: 300px;           /* Controls vertical height */
-  overflow-y: auto;            /* Adds scroll if too long */
-  white-space: pre-wrap;       /* Preserves line breaks */
-  padding: 1rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  background-color: #fff8ee;   /* Optional: soft background for contrast */
-  border-radius: 8px;
-}
-.article-box {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
 .article-box h3 {
   margin-bottom: 0.75rem;
 }
+
+.article-content,
 .raw-md {
   font-family: Consolas, "Courier New", monospace;
   font-size: 0.95rem;
@@ -292,61 +129,72 @@ footer {
   border-radius: 8px;
   overflow-x: auto;
 }
-/* ☰ Hamburger Button */
-#sidebarToggle {
+
+/* Contact */
+#contact {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ccc;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-list li {
+  margin-bottom: 1rem;
+}
+
+.contact-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.contact-icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1.25rem;
+  margin-top: 3rem;
+}
+
+/* Top Button */
+#topBtn {
+  display: none;
   position: fixed;
-  top: 170px;
-  left: calc(160px + 10px);
-  z-index: 200;
-  background-color: burlywood;
-  border: none;
-  font-size: 1.8rem;
-  padding: 8px 12px;
+  bottom: 30px;
+  right: 20px;
+  z-index: 99;
+  font-size: 18px;
+  background-color: #004b8d;
+  color: white;
   cursor: pointer;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 12px;
+  border-radius: 50%;
+  border: none;
+  transition: opacity 0.3s ease;
 }
 
-/* Hide sidebar by default on small screens */
-@media (max-width: 700px) {
-  #sidebar {
-    transform: translateX(-160px);
-    transition: transform 0.3s ease;
-  }
-
-  #sidebar.active {
-    transform: translateX(0);
-  }
-}
-/* Basic sidebar style */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 160px;
-  height: 100vh;
-  background-color: #333; /* 🍂 same as footer style */
-  padding: 1rem;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-  z-index: 100;
-  transition: transform 0.3s ease;
+#topBtn:hover {
+  background-color: #333;
 }
 
-/* Hide sidebar by default on small screens */
-@media (max-width: 700px) {
-  #sidebar {
-    transform: translateX(-180px); /* hide it to the left */
-  }
-
-  #sidebar.active {
-    transform: translateX(0); /* show on toggle */
-  }
-}
-
+/* ☰ Sidebar Toggle Button */
 #sidebarToggle {
   position: fixed;
   top: 20px;
-  left: left: calc(160px + 10px);
+  left: 180px; /* moves it away from sidebar */
   z-index: 200;
   background-color: burlywood;
   border: none;
@@ -355,29 +203,62 @@ footer {
   cursor: pointer;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: left 0.3s ease;
 }
 
+#toggleIcon {
+  transition: opacity 0.2s ease;
+}
 
-/* 🎯 Sidebar Hidden When .active Is Added */
+/* Sidebar Styles */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 100vh;
+  background-color: #333;
+  padding: 1rem;
+  z-index: 100;
+  transition: transform 0.3s ease;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+}
+
+#sidebar a {
+  display: block;
+  margin-bottom: 15px;
+  color: #004b8d;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#sidebar a:hover {
+  color: #fff;
+}
+
+/* Sidebar slide-out when active */
 #sidebar.active {
   transform: translateX(-180px);
 }
 
-/* 📱 Apply Toggle Only on Small Screens */
+/* Responsive Fixes */
 @media (max-width: 700px) {
+  main, nav, header {
+    margin-left: 0;
+  }
+
   #sidebar {
-    transform: translateX(-180px); /* hide by default */
+    transform: translateX(-180px);
+    position: fixed;
+    width: 100%;
+    height: auto;
   }
 
   #sidebar.active {
-    transform: translateX(0);      /* show on toggle */
+    transform: translateX(0);
+  }
+
+  #sidebarToggle {
+    left: 20px;
   }
 }
-#sidebarToggle {
-  transition: left 0.3s ease;
-}
-
-#sidebar.active + #sidebarToggle {
-  left: 20px; /* pulls back when sidebar is hidden */
-}
-
