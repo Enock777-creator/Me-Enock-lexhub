@@ -31,13 +31,15 @@ main {
   padding: 2rem 4rem;
   transition: margin-left 0.3s ease;
 }
+
 #sidebar.active ~ main {
   margin-left: 160px;
 }
 
 /* ==========================================================================
-   SIDEBAR & TOGGLE
+   SIDEBAR & TOGGLE BUTTON
    ========================================================================== */
+/* ☰ Toggle Button */
 #sidebarToggle {
   position: fixed;
   top: 20px;
@@ -51,6 +53,8 @@ main {
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
+
+/* ❎ Close Button */
 #closeSidebar {
   position: absolute;
   top: 10px;
@@ -62,9 +66,12 @@ main {
   cursor: pointer;
   z-index: 999;
 }
+
 #closeSidebar:hover {
   color: #000;
 }
+
+/* Sidebar */
 #sidebar {
   position: fixed;
   top: 0;
@@ -78,9 +85,11 @@ main {
   transition: transform 0.3s ease;
   z-index: 1000;
 }
+
 #sidebar.active {
   transform: translateX(0);
 }
+
 #sidebar a {
   display: block;
   margin-bottom: 15px;
@@ -88,6 +97,7 @@ main {
   font-weight: bold;
   text-decoration: none;
 }
+
 #sidebar a:hover {
   color: #fff;
 }
@@ -100,6 +110,7 @@ header {
   text-align: center;
   padding: 2rem 1rem;
 }
+
 .center-header {
   display: flex;
   flex-direction: column;
@@ -108,21 +119,25 @@ header {
   max-width: 700px;
   margin: auto;
 }
+
 .logo {
   width: 100px;
   height: 100px;
   border-radius: 100%;
 }
+
 .logo-text {
   font-size: 1rem;
   font-weight: bold;
   color: #2c2c2c;
 }
+
 .header-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
 }
+
 .btn {
   padding: 0.5rem 1rem;
   background: #deb887;
@@ -130,10 +145,12 @@ header {
   color: #333;
   border-radius: 5px;
 }
+
 .btn.outline {
   background: transparent;
   border: 2px solid #deb887;
 }
+
 .btn:hover {
   background: #c1a16e;
 }
@@ -149,11 +166,13 @@ nav {
   padding: 0.75rem 2rem;
   flex-wrap: wrap;
 }
+
 .nav-menu {
   list-style: none;
   display: flex;
   gap: 1rem;
 }
+
 .nav-menu a {
   text-decoration: none;
   color: #2c2c2c;
@@ -167,6 +186,7 @@ nav {
   font-size: 1.8rem;
   margin-bottom: 1.25rem;
 }
+
 .article-box {
   background: #fff;
   padding: 1.5rem;
@@ -179,12 +199,15 @@ nav {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
 }
+
 .article-box:hover {
   transform: translateY(-4px);
 }
+
 .article-box h3 {
   margin-bottom: 0.75rem;
 }
+
 .article-box img {
   max-width: 100%;
   height: auto;
@@ -195,13 +218,14 @@ nav {
 }
 
 /* ==========================================================================
-   MARKDOWN STYLING
+   MARKDOWN CONTENT
    ========================================================================== */
 .article-md {
   max-width: 700px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
+
 .article-md h1,
 .article-md h2,
 .article-md h3 {
@@ -210,25 +234,31 @@ nav {
   margin-bottom: 0.8rem;
   line-height: 1.4;
 }
+
 .article-md strong {
   font-weight: bold;
   color: #222;
 }
+
 .article-md em {
   font-style: italic;
   color: #444;
 }
+
 .article-md p {
   margin-bottom: 1rem;
 }
+
 .article-md ul {
   margin-left: 1.5rem;
   list-style: disc;
 }
+
 .article-md ol {
   margin-left: 1.5rem;
   list-style: decimal;
 }
+
 .article-md blockquote {
   margin: 1rem 0;
   padding-left: 1rem;
@@ -256,18 +286,20 @@ nav {
    ========================================================================== */
 #contact {
   position: relative;
-  left: -4rem;                    /* cancel main’s left padding */
-  width: calc(100% + 8rem);       /* full viewport width */
+  left: -4rem;                      /* cancel main’s side-padding */
+  width: calc(100% + 8rem);
   margin: 0;
-  padding: 2.5rem 4rem;           /* vertical + original side padding */
+  padding: 2.5rem 4rem;
   background-color: burlywood;
   color: #2c2c2c;
 }
+
 #contact h2 {
   margin-bottom: 1rem;
   text-align: center;
   color: #2c2c2c;
 }
+
 .contact-list {
   list-style: none;
   padding: 0;
@@ -276,9 +308,11 @@ nav {
   padding-left: 2rem;
   padding-right: 2rem;
 }
+
 .contact-list li {
   margin-bottom: 1rem;
 }
+
 .contact-list a {
   display: inline-flex;
   align-items: center;
@@ -287,9 +321,11 @@ nav {
   color: #2c2c2c;
   font-weight: 500;
 }
+
 .contact-list a:hover {
   color: #fff;
 }
+
 .contact-icon {
   width: 26px;
   height: 26px;
@@ -300,10 +336,10 @@ nav {
    ========================================================================== */
 footer {
   position: relative;
-  left: -4rem;                    /* cancel main’s left padding */
-  width: calc(100% + 8rem);       /* full viewport width */
-  padding: 1.25rem 4rem;          /* vertical + original side padding */
-  margin: -2rem 0 0 0;            /* pull up by main’s bottom padding */
+  left: -4rem;                      /* cancel main’s side-padding */
+  width: calc(100% + 8rem);
+  margin: -2rem 0 0 0;              /* pull up under contact */
+  padding: 1.25rem 4rem;
   background: #333;
   color: #fff;
   text-align: center;
@@ -327,43 +363,53 @@ footer {
   border: none;
   transition: opacity 0.3s ease;
 }
+
 #topBtn:hover {
   background-color: #333;
 }
 
 /* ==========================================================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE DESIGN
    ========================================================================== */
 @media (max-width: 700px) {
   body {
     font-size: 15px;
   }
+
+  /* Remove main’s bottom padding so contact and footer touch */
   main {
-    padding: 1.5rem;              /* restore uniform padding */
+    padding: 1.5rem 1.5rem 0 1.5rem;
   }
+
+  /* Flow contact and footer normally at full width */
   #contact,
   footer {
-    position: static;             /* back to normal flow */
+    position: static;
     left: 0;
     width: 100%;
     margin: 0;
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  .article-box {
-    max-width: 100%;
+
+  .article-box,
+  .contact-list {
     margin: 1.5rem auto;
   }
+
   .article-md {
     max-width: 100%;
     padding: 1rem;
   }
+
   h2 {
     font-size: 1.4rem;
   }
+
   h3 {
     font-size: 1.1rem;
   }
+
   .article-box img {
     margin: 0.75rem auto;
   }
