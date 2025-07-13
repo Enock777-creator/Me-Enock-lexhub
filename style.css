@@ -28,8 +28,10 @@
    RESET & BASE
    ========================================================================== */
 html, body {
-  margin: 0; padding: 0;
-  width: 100%; overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
 }
@@ -53,7 +55,7 @@ main {
    SIDEBAR & TOGGLE
    ========================================================================== */
 #sidebarToggle {
-  position: fixed; top: 20px; left: 20px; z-index: 200;
+  position: fixed; top: 20px; left: 20px;
   background: var(--accent); color: var(--btn-text);
   border: none; font-size: 1.8rem; padding: 6px 10px;
   border-radius: 6px; cursor: pointer;
@@ -64,8 +66,10 @@ main {
   background: transparent; border: none; color: #444;
   font-size: 1rem; cursor: pointer; z-index: 999;
 }
+#closeSidebar:hover { color: #000; }
 #sidebar {
-  position: fixed; top: 0; left: 0; width: 160px; height: 100vh;
+  position: fixed; top: 0; left: 0;
+  width: 160px; height: 100vh;
   background: var(--accent); padding: 1rem;
   transform: translateX(-180px); transition: transform 0.3s;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1); z-index: 1000;
@@ -137,20 +141,16 @@ nav {
    MARKDOWN CONTENT
    ========================================================================== */
 .article-md {
-  max-width: 700px; margin: 0 auto;
-  padding: 1rem 1.5rem;
+  max-width: 700px; margin: 0 auto; padding: 1rem 1.5rem;
 }
 
 /* ==========================================================================
    CONTACT (EDGE-TO-EDGE)
    ========================================================================== */
 #contact {
-  position: relative;
-  left: -4rem;
-  width: calc(100% + 8rem);
-  margin: 0;
-  padding: 2.5rem 4rem;
-  background: var(--accent);
+  position: relative; left: -4rem;
+  width: calc(100% + 8rem); margin: 0;
+  padding: 2.5rem 4rem; background: var(--accent);
   color: #2c2c2c;
 }
 #contact h2 { text-align: center; margin-bottom: 1rem; }
@@ -163,23 +163,25 @@ nav {
   color: #2c2c2c; text-decoration: none; font-weight: 500;
 }
 .contact-list a:hover { color: #fff; }
+/* ** FIXED ICON SIZE ** */
+.contact-icon {
+  width: 26px;
+  height: 26px;
+}
 
 /* ==========================================================================
    FOOTER (EDGE-TO-EDGE, NO GAP)
    ========================================================================== */
 footer {
-  position: relative;
-  left: -4rem;
+  position: relative; left: -4rem;
   width: calc(100% + 8rem);
-  margin: -2rem 0 0 0;
-  padding: 1.25rem 4rem;
-  background: var(--footer-bg);
-  color: var(--footer-text);
+  margin: -2rem 0 0 0; padding: 1.25rem 4rem;
+  background: var(--footer-bg); color: var(--footer-text);
   text-align: center;
 }
 
 /* ==========================================================================
-   BACK-TO-TOP & SCROLL RING
+   BACK-TO-TOP & SCROLL-RING
    ========================================================================== */
 #topBtn {
   position: fixed; bottom: 30px; right: 20px; z-index: 99;
@@ -189,13 +191,10 @@ footer {
   --scroll-angle: 0deg;
 }
 #topBtn::before {
-  content: '';
-  position: absolute; top: -4px; left: -4px;
-  right: -4px; bottom: -4px; border-radius: 50%;
-  background: conic-gradient(
-    var(--accent) var(--scroll-angle),
-    var(--scroll-bg) 0deg
-  );
+  content: ''; position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) var(--scroll-angle),var(--scroll-bg) 0deg);
   z-index: -1;
 }
 #topBtn:hover { background: var(--link-hover); }
@@ -204,13 +203,10 @@ footer {
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 700px) {
-  main {
-    padding: 1.5rem 1.5rem 0 1.5rem;
-  }
-  #contact,
-  footer {
-    position: static; left: 0; width: 100%;
-    margin: 0; padding: 2.5rem 1.5rem 0.75rem 1.5rem;
+  main { padding: 1.5rem 1.5rem 0 1.5rem; }
+  #contact, footer {
+    position: static; left: 0; width: 100%; margin: 0;
+    padding: 2.5rem 1.5rem 0.75rem 1.5rem;
   }
   .contact-list { padding: 0; }
 }
