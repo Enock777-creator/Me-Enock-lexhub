@@ -253,22 +253,20 @@ nav {
   overflow-x: auto;
 }
 
-/* --- Contact Section (now full-width) --- */
+/* --- Contact Section (final fix applied) --- */
 #contact {
-  margin-top: 4rem;
-  padding: 2rem 2rem;
+  margin: 0;
+  padding: 2.5rem 0;
   background-color: burlywood;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
   color: #2c2c2c;
-  width: 100%;
+  width: 100vw;
   box-sizing: border-box;
-  border-radius: 0;
 }
 
 #contact h2 {
-  color: #2c2c2c;
   margin-bottom: 1rem;
+  text-align: center;
+  color: #2c2c2c;
 }
 
 .contact-list {
@@ -276,6 +274,8 @@ nav {
   padding: 0;
   max-width: 800px;
   margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .contact-list li {
@@ -367,7 +367,4 @@ footer {
   }
 
   .article-box img {
-    margin: 0.75rem auto;
-  }
-
-  .article-md {
+    margin: 0.
