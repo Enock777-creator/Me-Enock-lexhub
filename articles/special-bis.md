@@ -1,11 +1,10 @@
 ---
-title: "Understanding 'Special' and 'Bis' in Law Drafting By *MUGISHA Enock*"
-date: 2025-06-29 
-summary: "This article explains the nuanced use of 'Special' and 'bis' in drafting of legal instruments such as laws."
-tags: ["Legal Drafting", "bis", "special bis in Law"]
+title: "Understanding 'Special' and 'Bis' in Law Drafting By MUGISHA Enock"
 ---
+
+**date: 2025-07-13** 
+
 Understanding 'Special' and 'Bis' in Law Drafting: Tools for Precision and Agility in Legislation
-Date: June 29, 2025
 
 The process of drafting and enacting laws is meticulous, aiming for clarity, coherence, and effectiveness. Legal drafters employ various linguistic and structural tools to achieve these goals, and among them, the terms "Special" and "Bis" hold specific, though sometimes misunderstood, significance. These concepts are crucial for adding precision, addressing unique circumstances, and maintaining the structural integrity of legal texts.
 
@@ -13,7 +12,7 @@ The process of drafting and enacting laws is meticulous, aiming for clarity, coh
 Dissecting 'Special' in Law Drafting
 The initial premise that "Special laws are passed urgently or exceptionally, outside regular legislative sessions" is largely inaccurate in a general legal context. While some laws might be enacted quickly, the term "special law" has a much more precise and foundational meaning in legal systems, particularly those influenced by civil law traditions or where constitutional frameworks differentiate types of legislation.
 
-In law drafting, a "Special Law" typically refers to a law that:
+In law drafting, **a Special Law**typically refers to a law that:
 
 Addresses a Specific Subject Matter or Group: Unlike "general laws" which apply broadly to all persons or situations within a jurisdiction, a special law is designed to regulate a particular subject, a specific class of persons, or a defined set of circumstances.
 
@@ -56,7 +55,7 @@ Article 6: Duties of citizens.
 
 Maintaining Structural Coherence: This method preserves the original numbering logic and makes it easier for legal professionals to cross-reference and navigate large statutory instruments. Imagine trying to update references in hundreds of related laws every time a new article was added! "Bis" avoids this monumental task.
 
-Indicating Additions Over Time: The presence of "bis," "ter," "quater" (third, fourth, etc., though less common than "bis") articles often indicates that specific provisions have been added or amended after the original drafting of the law, reflecting legislative updates and adaptations to new circumstances.
+**Indicating Additions Over Time: The presence of "bis," "ter," "quater" (third, fourth, etc., though less common than "bis") articles often indicates that specific provisions have been added or amended after the original drafting of the law, reflecting legislative updates and adaptations to new circumstances.**
 
 The Drafter's Arsenal: Precision and Agility
 Legal drafters leverage "special laws" and "bis" articles as essential tools in their craft:
@@ -76,7 +75,7 @@ Legal drafters use these tools to add precision and urgency to statutory languag
 **Sources**: Sources
 
 
-Marsol Lawyers &amp; Consultants
+Marsol Lawyers &amp Consultants
 **www.marsollawyer.com**
 The Hidden Costs of Poor Legislative Drafting: Navigating Loopholes and Delays Through Expert Consultation
 - In the world of legislation, precise and effective drafting plays a crucial role. - When legislative documents are poorly drafted, they often become ...
@@ -94,4 +93,4 @@ Lex specialis derogat legi generali - Oxford Reference
 Wiktionary, the free dictionary
 **en.wiktionary.org**
 bis - Wiktionary, the free dictionary
-Etymology. From Latin bis (“twice; again!”).
+**Etymology. From Latin bis (“twice; again!”).**
