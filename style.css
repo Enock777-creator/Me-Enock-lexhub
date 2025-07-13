@@ -12,6 +12,8 @@ body {
 
 main {
   margin-left: 0;
+  margin-right: 0;
+  padding: 2rem 2.5rem; /* ✅ Added side spacing */
   transition: margin-left 0.3s ease;
 }
 
@@ -28,7 +30,7 @@ main {
   background-color: burlywood;
   border: none;
   font-size: 1.8rem;
-  padding: 8px 12px;
+  padding: 6px 10px; /* ✅ Slightly reduced size */
   cursor: pointer;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -241,6 +243,8 @@ footer {
 @media (max-width: 700px) {
   main, nav, header {
     margin-left: 0;
+    padding-left: 1rem;  /* ✅ Extra space on smaller screens */
+    padding-right: 1rem;
   }
 
   #sidebarToggle {
