@@ -13,12 +13,11 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
 
-  /* Total height of your sticky <header> (content + padding) */
+  /* Height of your sticky header (adjust if you change its padding or content) */
   --hdr-height: 9.25rem;
 }
 
 [data-theme="dark"] {
-  /* Dark mode overrides */
   --bg: #1e1e1e;
   --text: #ccc;
   --accent: #444;
@@ -35,6 +34,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -43,6 +43,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -99,12 +100,12 @@ header {
   z-index: 1002;
 }
 
-/* Show ✖️ only when sidebar is active */
+/* Show close “✖️” when sidebar is open */
 #sidebar.active #closeSidebar {
   display: flex;
 }
 
-/* Dark-mode toggle (if still needed) */
+/* Dark-mode toggle (optional) */
 #darkModeToggle {
   position: absolute;
   top: 1.25rem;
@@ -168,6 +169,7 @@ main {
   padding: 2rem 4rem 0 4rem;
   transition: margin-left 0.3s ease;
 }
+
 #sidebar.active ~ main {
   margin-left: 160px;
 }
@@ -175,13 +177,13 @@ main {
 /* ==========================================================================
    SIDEBAR
    ========================================================================== */
-/* Full viewport burlywood panel, pushed under header */
+/* Full-height burlywood panel, pushed under header */
 #sidebar {
   position: fixed;
   top: var(--hdr-height);
+  bottom: 0;
   left: 0;
   width: 160px;
-  height: calc(100vh - var(--hdr-height));
   background: var(--accent);
   padding: 1rem;
   overflow-y: auto;
@@ -210,8 +212,6 @@ main {
 /* ==========================================================================
    NAVIGATION
    ========================================================================== */
-/* (unchanged) */
-
 nav {
   background: #deb887;
   display: flex;
@@ -411,7 +411,6 @@ footer {
     width: 100%;
     transform: translateX(-100%);
   }
-
   #sidebar.active {
     transform: translateX(0);
   }
