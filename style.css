@@ -10,7 +10,6 @@ body {
   color: #333;
 }
 
-/* --- Layout Spacing --- */
 main {
   margin-left: 0;
   transition: margin-left 0.3s ease;
@@ -20,12 +19,57 @@ main {
   margin-left: 160px;
 }
 
-/* --- Header Section --- */
+/* ☰ Toggle Button */
+#sidebarToggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  background-color: burlywood;
+  border: none;
+  font-size: 1.8rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar Styles */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 100vh;
+  background-color: burlywood;
+  padding: 1rem;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transform: translateX(-180px);
+  transition: transform 0.3s ease;
+}
+
+#sidebar.active {
+  transform: translateX(0);
+}
+
+#sidebar a {
+  display: block;
+  margin-bottom: 15px;
+  color: #004b8d;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#sidebar a:hover {
+  color: #fff;
+}
+
+/* Header */
 header {
   background-color: burlywood;
   text-align: center;
   padding: 2rem 1rem;
-  z-index: 1;
 }
 
 .center-header {
@@ -72,7 +116,7 @@ header {
   background: #c1a16e;
 }
 
-/* --- Navigation --- */
+/* Navigation */
 nav {
   background: #deb887;
   display: flex;
@@ -87,7 +131,6 @@ nav {
   list-style: none;
   display: flex;
   gap: 1rem;
-  margin-left: 0;
 }
 
 .nav-menu a {
@@ -96,53 +139,7 @@ nav {
   font-weight: bold;
 }
 
-/* --- Sidebar Toggle Button ☰ --- */
-#sidebarToggle {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 200;
-  background-color: burlywood;
-  border: none;
-  font-size: 1.8rem;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-/* --- Sidebar --- */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 160px;
-  height: 100vh;
-  background-color: burlywood;
-  padding: 1rem;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-  z-index: 100;
-  transform: translateX(-180px); /* hide by default */
-  transition: transform 0.3s ease;
-}
-
-#sidebar.active {
-  transform: translateX(0); /* show when active */
-}
-
-#sidebar a {
-  display: block;
-  margin-bottom: 15px;
-  color: #004b8d;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-#sidebar a:hover {
-  color: #fff;
-}
-
-/* --- Articles --- */
+/* Articles */
 #articles h2 {
   font-size: 1.8rem;
   margin-bottom: 1.25rem;
@@ -156,7 +153,7 @@ nav {
   border-image: linear-gradient(45deg, #ff512f, #f09819);
   border-image-slice: 1;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease;
 }
 
@@ -180,7 +177,7 @@ nav {
   overflow-x: auto;
 }
 
-/* --- Contact --- */
+/* Contact */
 #contact {
   margin-top: 4rem;
   padding-top: 2rem;
@@ -210,7 +207,7 @@ nav {
   height: 26px;
 }
 
-/* --- Footer --- */
+/* Footer */
 footer {
   background: #333;
   color: #fff;
@@ -219,7 +216,7 @@ footer {
   margin-top: 3rem;
 }
 
-/* --- Scroll to Top Button --- */
+/* Scroll to Top Button */
 #topBtn {
   display: none;
   position: fixed;
@@ -240,10 +237,14 @@ footer {
   background-color: #333;
 }
 
-/* --- Responsive Fixes --- */
+/* Responsive */
 @media (max-width: 700px) {
   main, nav, header {
     margin-left: 0;
+  }
+
+  #sidebarToggle {
+    left: 20px;
   }
 
   #sidebar {
@@ -254,9 +255,5 @@ footer {
 
   #sidebar.active {
     transform: translateX(0);
-  }
-
-  #sidebarToggle {
-    left: 20px;
   }
 }
