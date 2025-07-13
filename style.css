@@ -13,13 +13,11 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
 
-  /* Total height of your sticky <header> (content + top/bottom padding).
-     Tweak if you ever change header padding/logo size. */
+  /* Total height of your sticky <header> */
   --hdr-height: 9.25rem;
 }
 
 [data-theme="dark"] {
-  /* Dark mode overrides */
   --bg: #1e1e1e;
   --text: #ccc;
   --accent: #444;
@@ -101,41 +99,6 @@ header {
   margin: auto;
 }
 
-.logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
-.logo-text {
-  margin: 0;
-  font-weight: bold;
-  color: #2c2c2c;
-}
-
-.header-buttons {
-  display: flex;
-  gap: 1rem;
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  background: var(--btn-bg);
-  color: var(--btn-text);
-  text-decoration: none;
-  border: none;
-  border-radius: 5px;
-}
-
-.btn.outline {
-  background: transparent;
-  border: 2px solid var(--btn-bg);
-}
-
-.btn:hover {
-  background: var(--link-hover);
-}
-
 /* ==========================================================================
    MAIN LAYOUT
    ========================================================================== */
@@ -150,31 +113,39 @@ main {
 }
 
 /* ==========================================================================
-   SIDEBAR  ← UPDATED
+   SIDEBAR
    ========================================================================== */
-/* Close button */
+/* Close button – now fixed in header, opposite the hamburger */
 #closeSidebar {
-  position: absolute;
-  top: 1rem;        /* sits just under the sticky header */
-  right: 1rem;
-  background: transparent;
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 3rem;
+  height: 3rem;
+  background: var(--footer-bg);
+  color: var(--footer-text);
   border: none;
-  color: #444;
-  font-size: 1rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1002;
 }
 
-/* Off-canvas sidebar spans full viewport height,
-   with its menu pushed below the header via padding */
+/* Off-canvas sidebar spans full viewport, content pushed below header */
 #sidebar {
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
   width: 160px;
+  height: 100vh;
   background: var(--accent);
-  padding: var(--hdr-height) 1rem 1rem; /* top, sides, bottom */
+  padding-top: var(--hdr-height);
+  padding-left: 1rem;
+  padding-right: 1rem;
   overflow-y: auto;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
@@ -201,36 +172,170 @@ main {
 /* ==========================================================================
    NAVIGATION
    ========================================================================== */
-/* …your existing nav rules here… */
+nav {
+  background: #deb887;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  flex-wrap: wrap;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #2c2c2c;
+  font-weight: bold;
+}
 
 /* ==========================================================================
    ARTICLES
    ========================================================================== */
-/* …unchanged… */
+#articles h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.25rem;
+}
+
+.article-box {
+  background: #fff;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 840px;
+  border: 5px solid;
+  border-image: linear-gradient(45deg,#ff512f,#f09819) 1;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.article-box:hover {
+  transform: translateY(-4px);
+}
 
 /* ==========================================================================
    MARKDOWN CONTENT
    ========================================================================== */
-/* …unchanged… */
+.article-md {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
 
 /* ==========================================================================
    CONTACT (EDGE-TO-EDGE)
    ========================================================================== */
-/* …unchanged… */
+#contact {
+  position: relative;
+  left: -4rem;
+  width: calc(100% + 8rem);
+  margin: 0;
+  padding: 2.5rem 4rem;
+  background: var(--accent);
+  color: #2c2c2c;
+}
+
+.contact-list {
+  list-style: none;
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
 
 /* ==========================================================================
    FOOTER (EDGE-TO-EDGE & NO GAP)
    ========================================================================== */
-/* …unchanged… */
+footer {
+  position: relative;
+  left: -4rem;
+  width: calc(100% + 8rem);
+  margin: -2rem 0 0 0;
+  padding: 1.25rem 4rem;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+}
 
 /* ==========================================================================
    BACK-TO-TOP & SCROLL-RING
    ========================================================================== */
-/* …unchanged… */
+#topBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 99;
+  width: 48px;
+  height: 48px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  --scroll-angle: 0deg;
+}
+
+#topBtn::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent) var(--scroll-angle),
+    var(--scroll-bg) 0deg
+  );
+  z-index: -1;
+}
+
+#topBtn:hover {
+  background: var(--link-hover);
+}
 
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 700px) {
-  /* …everything remains exactly as you had it… */
+  main {
+    padding: 1.5rem;
+  }
+  #contact,
+  footer {
+    position: static;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 2.5rem 1.5rem 0.75rem 1.5rem;
+  }
+  .article-box {
+    max-width: 100%;
+    margin: 1.5rem auto;
+  }
+  .article-md {
+    max-width: 100%;
+    padding: 1rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+  }
+  .article-box img {
+    margin: 0.75rem auto;
+  }
+  #sidebar {
+    width: 100%;
+    transform: translateX(-100%);
+  }
+  #sidebar.active {
+    transform: translateX(0);
+  }
 }
