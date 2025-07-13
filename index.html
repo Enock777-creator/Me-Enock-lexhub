@@ -9,8 +9,7 @@
 </head>
 <body id="home">
 <!-- Hamburger Toggle Button -->
-<button id="sidebarToggle"><span id="toggleIcon">☰</span></button>
-
+<button id="sidebarToggle">☰</button>
   <!-- ✅ Sidebar -->
   <div id="sidebar">
     <a href="/">🏠 Home</a>
@@ -134,11 +133,9 @@
 <script>
   const toggleBtn = document.getElementById("sidebarToggle");
   const sidebar = document.getElementById("sidebar");
-  const toggleIcon = document.getElementById("toggleIcon");
 
   toggleBtn.addEventListener("click", () => {
     sidebar.classList.toggle("active");
-    toggleIcon.textContent = sidebar.classList.contains("active") ? "❌" : "☰";
   });
 </script>
 
