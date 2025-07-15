@@ -436,3 +436,21 @@ footer {
   background: var(--accent);
   color: white;
 }
+#llb1 {
+  background-color: silver;           /* soft silver backdrop */
+  padding: 2rem;                      /* comfortable spacing */
+  border-radius: 12px;                /* smooth rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* subtle depth */
+  margin-top: 2rem;
+}
+
+/* Optional: section title styling */
+#llb1 h2 {
+  color: #222;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+   border: 4px solid burlywood;
+}
+
+
