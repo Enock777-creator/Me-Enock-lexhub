@@ -587,3 +587,29 @@ footer {
     margin: 1.5rem auto;
   }
 }
+
+/* ─────────────────────────────────────────────────────────
+   RESTORE original .article-box styles (desktop + mobile)
+   ───────────────────────────────────────────────────────── */
+.article-box {
+  background: #fff;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 840px;
+  border: 5px solid;
+  border-image: linear-gradient(45deg, #ff512f, #f09819) 1;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.article-box:hover {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 700px) {
+  .article-box {
+    max-width: 100%;
+    margin: 1.5rem auto;
+  }
+}
