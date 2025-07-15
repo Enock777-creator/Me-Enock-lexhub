@@ -506,5 +506,28 @@ footer {
 #llb1 ul.pdf-list a {
   display: inline-block;  /* shrink-wrap each link for centering */
 }
+/* ————————————————————————————————————
+   Center & cap width of LLB1 PDF list
+   ———————————————————————————————————— */
+#llb1 ul.pdf-list {
+  max-width: 600px;       /* ← stops the white box getting too wide */
+  margin: 0 auto;         /* ← centers the box in the silver section */
+  background: #f0f0f0;     /* ← light box behind your links */
+  padding: 1.5rem;         /* ← space inside the box */
+  border-radius: 8px;      /* ← rounded corners */
+  display: flex;
+  flex-direction: column;  /* ← stack links vertically */
+  align-items: center;     /* ← center each link horizontally */
+  text-align: center;      /* ← center the link text */
+}
+
+#llb1 ul.pdf-list li {
+  width: 100%;            /* ← each item fills the white box */
+  margin: 1rem 0;         /* ← spacing above/below each link */
+}
+
+#llb1 ul.pdf-list a {
+  display: block;         /* ← makes the entire width clickable */
+}
 
 
