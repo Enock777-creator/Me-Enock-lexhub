@@ -415,3 +415,24 @@ footer {
     transform: translateX(0);
   }
 }
+.pdf-list {
+  list-style: none;
+  padding-left: 0;
+}
+.pdf-list li {
+  margin: 0.75rem 0;
+}
+.pdf-list a {
+  background: #f8f8f8;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+  color: #004b8d;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.pdf-list a:hover {
+  background: var(--accent);
+  color: white;
+}
