@@ -438,7 +438,7 @@ footer {
 }
 #llb1 ul.pdf-list {
   margin: 0;
-  padding: 0;
+  padding: 1rem 0;
 }
 #llb1 ul.pdf-list li {
   margin: 1rem 0;
@@ -457,6 +457,11 @@ footer {
   background-color: silver;
   color: #2c2c2c;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+#llb1.article-md {
+  max-width: none;
+  margin: 0;
+  padding: 2.5rem 4rem;
 }
 
 /* Optional: section title styling */
