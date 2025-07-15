@@ -571,3 +571,19 @@ footer {
   background: var(--accent);   /* ensures burlywood is visible */
   z-index: 1;
 }
+/* ————————————————————————————————————
+   Restore Article-Box Sizes (Overrides)
+   ———————————————————————————————————— */
+.article-box {
+  max-width: 840px;     /* original max width */
+  margin: 2rem auto;    /* original vertical spacing */
+  padding: 1.5rem;      /* original inner padding */
+}
+
+/* Mobile: keep them full-width but not gigantic */
+@media (max-width: 700px) {
+  .article-box {
+    max-width: 100%;
+    margin: 1.5rem auto;
+  }
+}
