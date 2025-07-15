@@ -247,7 +247,6 @@ nav {
   padding-right: 4rem;
   background: silver;
   color: #2c2c2c;
-   border-top: 4px solid var(--accent);
 }
 #articles h2 {
   text-align: center;
