@@ -488,5 +488,23 @@ footer {
    border: 4px solid burlywood;
    text-align: center;
 }
+/* Center PDF items in #llb1 */
+#llb1 ul.pdf-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* horizontally center each link */
+  text-align: center;     /* center text inside each link */
+  margin: 0 auto;         /* keep container centered */
+}
+
+#llb1 ul.pdf-list li {
+  width: 100%;            /* make each item span full silver area */
+  max-width: 400px;       /* optional: limit how wide they stretch */
+  margin: 1rem 0;         /* vertical spacing */
+}
+
+#llb1 ul.pdf-list a {
+  display: inline-block;  /* shrink-wrap each link for centering */
+}
 
 
