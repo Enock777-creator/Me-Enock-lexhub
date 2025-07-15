@@ -1,6 +1,3 @@
----
-title: "Logic and the Law, by MUGISHA Enock,"
----
 
 **Date: 2025-07-11**
 
