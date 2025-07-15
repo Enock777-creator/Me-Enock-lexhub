@@ -465,6 +465,7 @@ footer {
 }
 #llb1 {
   position: relative;
+   top: -2rem;
   left: -4rem;
   width: calc(100% + 8rem);
   margin: 0;
