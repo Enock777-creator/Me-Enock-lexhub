@@ -382,18 +382,26 @@ footer {
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 700px) {
-  main {
-    padding: 1.5rem 1.5rem 0 1.5rem;
+  #contact {
+    position: static;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 2rem 1rem 1rem 1rem;   /* ⬅️ tighter horizontal padding */
+    background: var(--accent);      /* keep burlywood fill */
   }
 
-  #contact,
   footer {
     position: static;
     left: 0;
     width: 100%;
     margin: 0;
-    padding: 2.5rem 1.5rem 0.75rem 1.5rem;
+    padding: 1rem 1rem;             /* ⬅️ tighter padding on small screens */
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
   }
+}
 
   .contact-list {
     padding: 0;
