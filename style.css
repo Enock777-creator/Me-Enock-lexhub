@@ -439,6 +439,7 @@ footer {
 #llb1 {
   position: relative;
   left: -4rem;
+   right: -4rem;
   width: calc(100% + 8rem);
   margin: 0;
   padding: 2.5rem 4rem;
