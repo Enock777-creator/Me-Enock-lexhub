@@ -555,7 +555,7 @@ footer {
 }
 /* 🔧 Fill the gap between articles and PDFs with silver */
 #llb1 {
-  margin-top: -1.5rem;         /* pull the PDF section upward */
+  margin-top: -2rem;         /* pull the PDF section upward */
   background-color: silver;    /* ensure silver fills the gap */
   position: relative;
   z-index: 1;
