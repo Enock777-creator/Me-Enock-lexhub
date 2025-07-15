@@ -2,7 +2,6 @@
    VARIABLES & THEMES
    ========================================================================== */
 :root {
-  /* Light mode */
   --bg: #fffaf0;
   --text: #333;
   --accent: burlywood;
@@ -12,13 +11,10 @@
   --footer-bg: #333;
   --footer-text: #fff;
   --scroll-bg: transparent;
-
-  /* Total height of your sticky <header> (content + padding) */
   --hdr-height: 9.25rem;
 }
 
 [data-theme="dark"] {
-  /* Dark mode overrides */
   --bg: #1e1e1e;
   --text: #ccc;
   --accent: #444;
@@ -59,7 +55,6 @@ header {
   text-align: center;
 }
 
-/* Hamburger button (left) */
 #sidebarToggle {
   position: absolute;
   top: 1.25rem;
@@ -79,15 +74,14 @@ header {
   z-index: 1001;
 }
 
-/* Close button (right) – hidden until sidebar opens */
 #closeSidebar {
   position: fixed;
   top: 1.25rem;
   right: 1.25rem;
   width: 2.2rem;
   height: 2.2rem;
-  background:#DEB887;
-  color: color: var(--footer-text);     /* white */
+  background: #DEB887;
+  color: var(--footer-text);
   border: none;
   border-radius: 50%;
   font-size: 1.2rem;
@@ -98,12 +92,11 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   z-index: 1002;
 }
-/* Show ✖️ when sidebar is active */
+
 #sidebar.active #closeSidebar {
   display: flex;
 }
 
-/* Dark-mode toggle (if used) – pushed a bit so it doesn’t overlap ✖️ */
 #darkModeToggle {
   position: absolute;
   top: 1.25rem;
@@ -164,7 +157,7 @@ header {
    ========================================================================== */
 main {
   margin: 0;
-  padding: 0;  /* remove ALL padding */
+  padding: 0;
   transition: margin-left 0.3s ease;
 }
 
@@ -175,7 +168,6 @@ main {
 /* ==========================================================================
    SIDEBAR
    ========================================================================== */
-/* Full-height burlywood panel, pushed under header */
 #sidebar {
   position: fixed;
   top: 0;
@@ -183,11 +175,11 @@ main {
   left: 0;
   width: 160px;
   background: var(--accent);
-  padding-top: var(--hdr-height); /* pushes links below header */
+  padding-top: var(--hdr-height);
   padding-left: 1rem;
   padding-right: 1rem;
   overflow-y: auto;
-  transform: translateX(-100%);   /* hide off-canvas */
+  transform: translateX(-100%);
   transition: transform 0.3s ease;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
   z-index: 999;
@@ -238,7 +230,7 @@ nav {
    ========================================================================== */
 #articles {
   position: relative;
-  top: -1.5rem; /* Pull up to close header padding gap */
+  top: -1.5rem;
   left: -4rem;
   width: calc(100% + 8rem);
   margin: 0;
@@ -247,6 +239,7 @@ nav {
   color: #2c2c2c;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
+
 #articles h2 {
   text-align: center;
   font-size: 1.8rem;
@@ -282,6 +275,64 @@ nav {
 }
 
 /* ==========================================================================
+   LLB1 PDF LIST (EDGE-TO-EDGE & CENTERED)
+   ========================================================================== */
+#llb1 {
+  position: relative;
+  left: -4rem;
+  width: calc(100% + 8rem);
+  margin: 0;
+  padding: 2.5rem 4rem;
+  background-color: silver;
+  color: #2c2c2c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#llb1 h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+  border-bottom: 2px solid burlywood;
+  padding-bottom: 0.5rem;
+}
+
+#llb1 ul.pdf-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 1.5rem;
+  max-width: 500px;           /* adjust to taste */
+  background: #f0f0f0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#llb1 ul.pdf-list li {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+#llb1 ul.pdf-list a {
+  display: block;
+  width: 100%;
+  background: #f8f8f8;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: #004b8d;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+#llb1 ul.pdf-list a:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* ==========================================================================
    CONTACT (EDGE-TO-EDGE)
    ========================================================================== */
 #contact {
@@ -299,33 +350,6 @@ nav {
   margin-bottom: 1rem;
 }
 
-.contact-list {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  max-width: 800px;
-  display: grid;
-  gap: 1rem;
-}
-
-.contact-list a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #2c2c2c;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contact-list a:hover {
-  color: #fff;
-}
-
-.contact-icon {
-  width: 26px;
-  height: 26px;
-}
-
 /* ==========================================================================
    FOOTER (EDGE-TO-EDGE & NO GAP)
    ========================================================================== */
@@ -333,7 +357,7 @@ footer {
   position: relative;
   left: -4rem;
   width: calc(100% + 8rem);
-  margin: -2rem 0 0 0;
+  margin: 0;
   padding: 1.25rem 4rem;
   background: var(--footer-bg);
   color: var(--footer-text);
@@ -379,32 +403,31 @@ footer {
 }
 
 /* ==========================================================================
-   RESPONSIVE
+   RESPONSIVE (MOBILE)
    ========================================================================== */
 @media (max-width: 700px) {
-  #contact {
-    position: static;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    padding: 2rem 1rem 1rem 1rem;   /* ⬅️ tighter horizontal padding */
-    background: var(--accent);      /* keep burlywood fill */
+  main {
+    padding: 1.5rem;
   }
 
+  /* Sidebar becomes full-width off-canvas */
+  #sidebar {
+    width: 100%;
+    transform: translateX(-100%);
+  }
+  #sidebar.active {
+    transform: translateX(0);
+  }
+
+  /* Reset sections to 100% width */
+  #llb1,
+  #contact,
   footer {
     position: static;
     left: 0;
     width: 100%;
     margin: 0;
-    padding: 1rem 1rem;             /* ⬅️ tighter padding on small screens */
-    background: var(--footer-bg);
-    color: var(--footer-text);
-    text-align: center;
-  }
-}
-
-  .contact-list {
-    padding: 0;
+    padding: 2rem 1.5rem;
   }
 
   .article-box {
@@ -425,149 +448,11 @@ footer {
     font-size: 1.1rem;
   }
 
+  .contact-list {
+    padding: 0;
+  }
+
   .article-box img {
     margin: 0.75rem auto;
   }
-
-  /* Mobile: full-width sidebar off-canvas */
-  #sidebar {
-    width: 100%;
-    transform: translateX(-100%);
-  }
-  #sidebar.active {
-    transform: translateX(0);
-  }
-}
-.pdf-list {
-  list-style: none;
-  padding-left: 0;
-}
-.pdf-list li {
-  margin: 0.75rem 0;
-}
-.pdf-list a {
-  background: #f8f8f8;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  display: inline-block;
-  color: #004b8d;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-.pdf-list a:hover {
-  background: var(--accent);
-  color: white;
-}
-#llb1 ul.pdf-list {
-  margin: 0;
-  padding: 1rem 0;
-}
-#llb1 ul.pdf-list li {
-  margin: 1rem 0;
-}
-#llb1 ul.pdf-list {
-  background: #f0f0f0;
-  padding: 1.5rem;
-  border-radius: 8px;
-}
-
-#llb1.article-md {
-  max-width: none;
-  margin: 0;
-  padding: 2.5rem 4rem;
-}
-
-/* Optional: section title styling */
-#llb1 h2 {
-  color: #222;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-   border: 4px solid burlywood;
-   text-align: center;
-}
-/* Center PDF items in #llb1 */
-#llb1 ul.pdf-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;    /* horizontally center each link */
-  text-align: center;     /* center text inside each link */
-  margin: 0 auto;         /* keep container centered */
-}
-
-#llb1 ul.pdf-list li {
-  width: 100%;            /* make each item span full silver area */
-  max-width: 400px;       /* optional: limit how wide they stretch */
-  margin: 1rem 0;         /* vertical spacing */
-}
-
-#llb1 ul.pdf-list a {
-  display: inline-block;  /* shrink-wrap each link for centering */
-}
-/* ————————————————————————————————————
-   Center & cap width of LLB1 PDF list
-   ———————————————————————————————————— */
-#llb1 ul.pdf-list {
-  max-width: 600px;       /* ← stops the white box getting too wide */
-  margin: 0 auto;         /* ← centers the box in the silver section */
-  background: #f0f0f0;     /* ← light box behind your links */
-  padding: 1.5rem;         /* ← space inside the box */
-  border-radius: 8px;      /* ← rounded corners */
-  display: flex;
-  flex-direction: column;  /* ← stack links vertically */
-  align-items: center;     /* ← center each link horizontally */
-  text-align: center;      /* ← center the link text */
-}
-
-#llb1 ul.pdf-list li {
-  width: 100%;            /* ← each item fills the white box */
-  margin: 1rem 0;         /* ← spacing above/below each link */
-}
-
-#llb1 ul.pdf-list a {
-  display: block;         /* ← makes the entire width clickable */
-}
-/* ✅ Slim PDF box width & center it in silver section */
-#llb1 ul.pdf-list {
-  width: 100%;
-  max-width: 500px;       /* ← You can reduce this to 400px if you want it even tighter */
-  margin: 0 auto;         /* ← Centers the box horizontally */
-  padding: 1.5rem;
-  background: #f0f0f0;
-  border-radius: 8px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-#llb1 ul.pdf-list li {
-  width: 100%;
-  margin: 1rem 0;
-}
-
-#llb1 ul.pdf-list a {
-  display: block;
-  width: 100%;
-}
-#llb1 {
-  position: relative;
-  top: -2rem;
-  left: -4rem;
-  width: calc(100% + 8rem);
-  margin: 0;
-  margin-bottom: 0;     /* ✅ this removes gap below PDF section */
-  padding: 2.5rem 4rem;
-  background-color: silver;
-  color: #2c2c2c;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  z-index: 1;
-}
-#contact {
-  position: relative;
-  top: -2rem;                   /* 👈 lifts the burlywood background upward */
-  background: var(--accent);   /* ensures burlywood is visible */
-  z-index: 1;
 }
