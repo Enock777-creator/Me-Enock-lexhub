@@ -1,7 +1,3 @@
----
-title: "What Is Judicial Precedent?"
-date: 2025-07-11
----
 
 **Date: 2025-07-11**
 
