@@ -237,24 +237,23 @@ nav {
    ARTICLES
    ========================================================================== */
 #articles {
-  position: relative;
+  position: absolute;
+  top: var(--hdr-height);           /* start exactly at the bottom of the header */
   left: -4rem;
   width: calc(100% + 8rem);
-  margin-top: 0;
-  padding-top: 0;
-  padding-bottom: 2.5rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  margin: 0;
+  padding: 2.5rem 4rem;
   background: silver;
   color: #2c2c2c;
+  z-index: 10;
 }
 #articles h2 {
-  text-align: center;
+text-align: center;
   font-size: 1.8rem;
   margin-bottom: 1.25rem;
-  border-bottom: 2px solid burlywood;
-  padding-bottom: 0.5rem;
   color: #222;
+  border-bottom: 2px solid burlywood;
+  padding-bottom: 0.5rem;  
 }
 
 .article-box {
