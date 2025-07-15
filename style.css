@@ -237,14 +237,12 @@ nav {
    ARTICLES
    ========================================================================== */
 #articles {
-  position: relative;               /* changed from absolute */
+  position: relative;
+  top: -1.5rem; /* Pull up to close header padding gap */
   left: -4rem;
   width: calc(100% + 8rem);
-  margin-top: 0;
-  padding-top: 0;
-  padding-bottom: 2.5rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  margin: 0;
+  padding: 2.5rem 4rem;
   background: silver;
   color: #2c2c2c;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
