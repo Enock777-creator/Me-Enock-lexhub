@@ -164,7 +164,7 @@ header {
    ========================================================================== */
 main {
   margin: 0;
-  padding: 0 4rem 0 4rem;  /* remove top padding entirely */
+  padding: 0;  /* remove ALL padding */
   transition: margin-left 0.3s ease;
 }
 
