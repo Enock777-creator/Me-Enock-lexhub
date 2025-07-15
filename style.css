@@ -456,3 +456,82 @@ footer {
     margin: 0.75rem auto;
   }
 }
+/* ==========================================================================
+   PATCH: PDF LIST CENTER & WIDTH
+   ========================================================================== */
+#llb1 {
+  /* restore your edge-to-edge silver container */
+  position: relative;
+  left: -4rem;
+  width: calc(100% + 8rem);
+  margin: 0;
+  padding: 2.5rem 4rem;
+  background: silver;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  /* remove any stray bottom gap */
+  margin-bottom: 0;
+}
+
+#llb1 ul.pdf-list {
+  /* cap the white box, center it, stack vertically */
+  max-width: 500px;         
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #f0f0f0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#llb1 ul.pdf-list li {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+#llb1 ul.pdf-list a {
+  display: block;
+  width: 100%;
+}
+
+/* ==========================================================================
+   PATCH: BRIDGE GAP BETWEEN PDF & CONTACT
+   ========================================================================== */
+#contact {
+  /* pull the burlywood up under the silver */
+  position: relative;
+  top: -2rem;
+  left: -4rem;
+  width: calc(100% + 8rem);
+  margin: 0;
+  padding: 2.5rem 4rem;
+  background: var(--accent);
+}
+
+footer {
+  /* ensure footer sits tight under contact */
+  position: relative;
+  left: -4rem;
+  width: calc(100% + 8rem);
+  margin: 0;
+  padding: 1.25rem 4rem;
+  background: var(--footer-bg);
+}
+
+/* ==========================================================================
+   PATCH: MOBILE OVERRIDES
+   ========================================================================== */
+@media (max-width: 700px) {
+  /* Reset edge-to-edge sections to full width */
+  #llb1,
+  #contact,
+  footer {
+    position: static;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 2rem 1.5rem;
+  }
+}
+
