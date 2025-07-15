@@ -550,10 +550,16 @@ footer {
   left: -4rem;
   width: calc(100% + 8rem);
   margin: 0;
-  margin-bottom: -2rem;     /* ✅ this removes gap below PDF section */
+  margin-bottom: 0;     /* ✅ this removes gap below PDF section */
   padding: 2.5rem 4rem;
   background-color: silver;
   color: #2c2c2c;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+#contact {
+  position: relative;
+  top: -2rem;                   /* 👈 lifts the burlywood background upward */
+  background: var(--accent);   /* ensures burlywood is visible */
   z-index: 1;
 }
