@@ -164,7 +164,7 @@ header {
    ========================================================================== */
 main {
   margin: 0;
-  padding: 2rem 4rem 0 4rem;
+  padding: 0 4rem 0 4rem;  /* remove top padding entirely */
   transition: margin-left 0.3s ease;
 }
 
@@ -251,7 +251,7 @@ nav {
 }
 }
 #articles h2 {
-text-align: center;
+  text-align: center;
   font-size: 1.8rem;
   margin-bottom: 1.25rem;
   color: #222;
