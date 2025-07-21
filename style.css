@@ -620,21 +620,7 @@ footer {
   }
 }
 
-/* ─────────────────────────────────────────────────────────
-   HEADER DOME + INCREASED HEIGHT
-   ───────────────────────────────────────────────────────── */
-header {
-  position: relative;
-  background: var(--accent);      /* your burlywood */
-  min-height: 16rem;              /* tweak this until it hits your blue line */
-  border-bottom-left-radius: 50% 20%;
-  border-bottom-right-radius: 50% 20%;
-  overflow: hidden;               /* hides anything spilling out */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1rem;                /* keeps side padding for mobile */
-}
+
 
 /* ensure logo, photo & title sit above the dome */
 .center-header {
@@ -656,29 +642,38 @@ header {
     border-bottom-left-radius: 50% 25%;
     border-bottom-right-radius: 50% 25%;
   }
- /* ─────────────────────────────────────────────────────────
-   1) Give header room for a big photo
-   2) Define exactly one .header-photo rule
+   /* ─────────────────────────────────────────────────────────
+   FINAL: single header + header-photo definition
    ───────────────────────────────────────────────────────── */
 header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background: var(--accent);
-  padding: 1.5rem 1rem 18rem;  /* top/right/left stay, bottom gives 18rem of room */
+  padding: 1.5rem 1rem 18rem;  /* bottom padding makes room for the big photo */
   text-align: center;
-  overflow: visible;          
+  overflow: visible;          /* allow the photo to “spill” into that padding */
 }
 
 .header-photo {
   position: absolute;
-  bottom: 1rem;               /* sits one rem above the bottom padding */
+  bottom: 1rem;               /* sits 1rem above the bottom of header’s padding */
   left: 50%;
   transform: translateX(-50%);
-  width: 260px;               /* desktop size */
+  width: 260px;               /* desktop circle size */
   height: 260px;
-  object-fit: contain;        /* no cropping—entire head & arms visible */
+  object-fit: contain;        /* show your full head+arms */
   border-radius: 50%;
   border: 4px solid var(--bg);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1;                 /* under your text/buttons */
+}
+
+.center-header,
+header #sidebarToggle,
+header #darkModeToggle {
+  position: relative;
+  z-index: 2;                 /* keep logo/title/buttons above the photo */
 }
 
 @media (max-width: 700px) {
@@ -691,3 +686,4 @@ header {
     bottom: 0.5rem;
   }
 }
+
