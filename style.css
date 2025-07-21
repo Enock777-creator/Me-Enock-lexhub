@@ -681,16 +681,7 @@ header {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-@media (max-width: 700px) {
-  header {
-    padding-bottom: 14rem;    /* less bottom padding on mobile */
-  }
-  .header-photo {
-    width: 180px;
-    height: 180px;
-    bottom: 0.5rem;
-  }
-}
+
 /* ────────────────────────────────────────────────────
    Desktop-only: reduce header photo & padding
    ──────────────────────────────────────────────────── */
