@@ -624,10 +624,10 @@ footer {
    ───────────────────────────────────────────────────────── */
 .header-photo {
   display: block;         /* centers if you auto-margin */
-  width: 120px;           /* pick whatever diameter you like */
-  height: 120px;          
+  width: 150px;           /* pick whatever diameter you like */
+  height: 150px;          
   object-fit: cover;      /* crop to fill circle without distortion */
-  border-radius: 50%;     /* makes it a perfect circle */
+  border-radius: 85%;     /* makes it a perfect circle */
   margin: 0 auto 1rem;    /* center + 1rem bottom gap */
 }
 
