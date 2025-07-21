@@ -691,3 +691,16 @@ header {
     bottom: 0.5rem;
   }
 }
+/* ────────────────────────────────────────────────────
+   Desktop-only: reduce header photo & padding
+   ──────────────────────────────────────────────────── */
+@media (min-width: 701px) {
+  header {
+    padding-bottom: 10rem;    /* less room under the dome */
+  }
+  .header-photo {
+    width: 180px;             /* smaller circle on desktop */
+    height: 180px;
+    bottom: 0.5rem;           /* nudge it up a bit */
+  }
+}
