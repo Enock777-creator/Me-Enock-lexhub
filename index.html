@@ -175,18 +175,7 @@
   window.addEventListener('resize', adjustSidebar);
 </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const sidebarToggle = document.getElementById('sidebarToggle');
-  const sidebar = document.getElementById('sidebar');
 
-  sidebarToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-    const firstLink = sidebar.querySelector('a');
-    if (firstLink) firstLink.focus();
-  });
-});
-</script>
   
 </body>
 </html>
