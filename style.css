@@ -597,3 +597,33 @@ footer p {
   margin-top: 1rem;
 }
 
+/* ────────────────────────────────────────────────────────────────
+   SIDEBAR MENU FIX: visible, scroll-free contents on click
+   ──────────────────────────────────────────────────────────────── */
+#sidebar {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;                 /* adjust to content height */
+  max-height: 100vh;            /* prevent overspill beyond screen */
+  overflow-y: auto;
+  background: var(--accent);
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  z-index: 2000;
+  padding: 5rem 2rem 2rem 2rem; /* enough space below header */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#sidebar.active {
+  transform: translateY(0);     /* slides down smoothly into view */
+}
+
+/* Ensure close button stays visible */
+#closeSidebar {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3000;
+}
