@@ -680,3 +680,29 @@ header {
     margin-top: 1.5rem;
   }
 }
+/* ─────────── OVERRIDE: make your header headshot fill the blue area ─────────── */
+header {
+  /* give extra “breathing room” under the dome so a bigger photo isn’t cut off */
+  padding-bottom: 12rem;  
+  overflow: visible;      
+}
+
+.header-photo {
+  /* enlarge your circle until it spans the full band */
+  width: 260px;          
+  height: 260px;
+  margin-top: -1rem;      /* nudge it up a bit if the bottom sits too low */
+}
+
+@media (max-width: 700px) {
+  header {
+    padding-bottom: 8rem;
+  }
+  .header-photo {
+    width: 180px;
+    height: 180px;
+    margin-top: 0;        /* fine-tune on mobile as needed */
+  }
+}
+
+
