@@ -620,60 +620,79 @@ footer {
   }
 }
 
-/* ==========================================================================
-   FINAL HEADER & PHOTO LAYOUT
-   ========================================================================== */
+/* ─────────────────────────────────────────────────────────
+   HEADER DOME + INCREASED HEIGHT
+   ───────────────────────────────────────────────────────── */
+header {
+  position: relative;
+  background: var(--accent);      /* your burlywood */
+  min-height: 16rem;              /* tweak this until it hits your blue line */
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+  overflow: hidden;               /* hides anything spilling out */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;                /* keeps side padding for mobile */
+}
 
-/* 1) Header: room for a big circle without overlap */
+/* ensure logo, photo & title sit above the dome */
+.center-header {
+  position: relative;
+  z-index: 1;
+}
+
+/* push your photo down so it nestles in the dome */
+.header-photo {
+  margin-top: 2rem;               /* adjust up/down so your headshot “sits” in the curve */
+}
+
+/* ─────────────────────────────────────────────────────────
+   MOBILE ADJUSTMENTS
+   ───────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  header {
+    min-height: 12rem;            /* shorter on small screens */
+    border-bottom-left-radius: 50% 25%;
+    border-bottom-right-radius: 50% 25%;
+  }
+ /* ─────────────────────────────────────────────────────────
+   1) Give header room for a big photo
+   2) Define exactly one .header-photo rule
+   ───────────────────────────────────────────────────────── */
 header {
   position: relative;
   background: var(--accent);
-  padding: 2rem 1rem 14rem;  /* top/right/left stay, bottom makes space */
-  text-align: left;          /* align your logo/buttons to the left */
-  overflow: visible;         /* let the photo spill into that padding */
+  padding: 1.5rem 1rem 18rem;  /* top/right/left stay, bottom gives 18rem of room */
+  text-align: center;
+  overflow: visible;          
 }
 
-/* 2) Center‐header (logo, title, buttons) sits below the photo */
-.center-header {
-  position: relative;
-  z-index: 2;                /* above the photo */
-  margin-top: 12rem;         /* push it down into that lower-left corner */
-  margin-left: 1rem;         /* horizontal gutter */
-}
-
-/* Tweak your buttons spacing */
-.header-buttons {
-  margin-top: 0.5rem;
-  display: flex;
-  gap: 1rem;
-}
-
-/* 3) Header‐photo: one definitive rule */
 .header-photo {
   position: absolute;
-  top: 2rem;                 /* distance from top of header */
+  bottom: 1rem;               /* sits one rem above the bottom padding */
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;              /* desktop circle size—tweak if needed */
-  height: 200px;
-  object-fit: cover;         /* perfectly crops to fill the circle */
+  width: 260px;               /* desktop size */
+  height: 260px;
+  object-fit: contain;        /* no cropping—entire head & arms visible */
   border-radius: 50%;
   border: 4px solid var(--bg);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  z-index: 1;                /* underneath your logo/title/buttons */
 }
 
-/* 4) MOBILE ADJUSTMENTS */
 @media (max-width: 700px) {
   header {
-    padding: 1.5rem 1rem 10rem;  /* less bottom padding on phones */
-  }
-  .center-header {
-    margin-top: 9rem;            /* bring content up a bit */
+    padding-bottom: 14rem;    /* less bottom padding on mobile */
   }
   .header-photo {
-    top: 1rem;                   /* less distance from top */
-    width: 140px;                /* smaller circle on phones */
-    height: 140px;
+    width: 180px;
+    height: 180px;
+    bottom: 0.5rem;
   }
 }
+
+
+
+
+
