@@ -35,6 +35,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -43,6 +44,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -55,7 +57,7 @@ header {
   top: 0;
   z-index: 1000;
   background: var(--accent);
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem;   /* only top/right/left padding */
   text-align: center;
 }
 
@@ -86,8 +88,8 @@ header {
   right: 1.25rem;
   width: 2.2rem;
   height: 2.2rem;
-  background:#DEB887;
-  color: color: var(--footer-text);     /* white */
+  background: #DEB887;
+  color: var(--footer-text);
   border: none;
   border-radius: 50%;
   font-size: 1.2rem;
@@ -98,12 +100,12 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   z-index: 1002;
 }
-/* Show ✖️ when sidebar is active */
+
 #sidebar.active #closeSidebar {
   display: flex;
 }
 
-/* Dark-mode toggle (if used) – pushed a bit so it doesn’t overlap ✖️ */
+/* Dark-mode toggle */
 #darkModeToggle {
   position: absolute;
   top: 1.25rem;
@@ -164,7 +166,7 @@ header {
    ========================================================================== */
 main {
   margin: 0;
-  padding: 0;  /* remove ALL padding */
+  padding: 0;
   transition: margin-left 0.3s ease;
 }
 
@@ -175,7 +177,6 @@ main {
 /* ==========================================================================
    SIDEBAR
    ========================================================================== */
-/* Full-height burlywood panel, pushed under header */
 #sidebar {
   position: fixed;
   top: 0;
@@ -183,11 +184,11 @@ main {
   left: 0;
   width: 160px;
   background: var(--accent);
-  padding-top: var(--hdr-height); /* pushes links below header */
+  padding-top: var(--hdr-height);
   padding-left: 1rem;
   padding-right: 1rem;
   overflow-y: auto;
-  transform: translateX(-100%);   /* hide off-canvas */
+  transform: translateX(-100%);
   transition: transform 0.3s ease;
   box-shadow: 2px 0 6px rgba(0,0,0,0.1);
   z-index: 999;
@@ -247,13 +248,14 @@ nav {
   color: #2c2c2c;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
+
 #articles h2 {
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 1.25rem;
   color: #222;
   border-bottom: 2px solid burlywood;
-  padding-bottom: 0.5rem;  
+  padding-bottom: 0.5rem;
 }
 
 .article-box {
@@ -367,10 +369,7 @@ footer {
   right: -4px;
   bottom: -4px;
   border-radius: 50%;
-  background: conic-gradient(
-    var(--accent) var(--scroll-angle),
-    var(--scroll-bg) 0deg
-  );
+  background: conic-gradient(var(--accent) var(--scroll-angle), var(--scroll-bg) 0deg);
   z-index: -1;
 }
 
@@ -382,29 +381,13 @@ footer {
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 700px) {
-  #contact {
+  /* CONTACT & FOOTER full-width */
+  #contact, footer {
     position: static;
     left: 0;
     width: 100%;
     margin: 0;
-    padding: 2rem 1rem 1rem 1rem;   /* ⬅️ tighter horizontal padding */
-    background: var(--accent);      /* keep burlywood fill */
-  }
-
-  footer {
-    position: static;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    padding: 1rem 1rem;             /* ⬅️ tighter padding on small screens */
-    background: var(--footer-bg);
-    color: var(--footer-text);
-    text-align: center;
-  }
-}
-
-  .contact-list {
-    padding: 0;
+    padding: 2rem 1rem 1rem 1rem;
   }
 
   .article-box {
@@ -438,6 +421,10 @@ footer {
     transform: translateX(0);
   }
 }
+
+/* ==========================================================================
+   PDF & LLB1 STYLES
+   ========================================================================== */
 .pdf-list {
   list-style: none;
   padding-left: 0;
@@ -445,254 +432,107 @@ footer {
 .pdf-list li {
   margin: 0.75rem 0;
 }
-/* ——————————————————————————————————————————
-   Style LLB1 PDF links: flex‐align + gap
-   —————————————————————————————————————————— */
 .pdf-list a {
-  display: inline-flex;        /* treat icon+text as one flex row */
-  align-items: center;         /* vertically center the emoji and text */
-  gap: 0.5rem;                  /* space between icon and title */
-  padding: 0.5rem 1rem;         /* comfy hit area */
-  background: #f8f8f8;          /* light card background */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #f8f8f8;
   border-radius: 6px;
   text-decoration: none;
-  color: #004b8d;               /* your link color */
+  color: #004b8d;
   transition: background 0.2s ease;
 }
-
 .pdf-list a:hover {
   background: var(--accent);
   color: #fff;
 }
 
 #llb1 ul.pdf-list {
-  margin: 0;
-  padding: 1rem 0;
-}
-#llb1 ul.pdf-list li {
-  margin: 1rem 0;
-}
-#llb1 ul.pdf-list {
+  margin: 0 auto;
   background: #f0f0f0;
   padding: 1.5rem;
   border-radius: 8px;
-}
-
-#llb1.article-md {
-  max-width: none;
-  margin: 0;
-  padding: 2.5rem 4rem;
-}
-
-/* Optional: section title styling */
-#llb1 h2 {
-  color: #222;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-   border: 4px solid burlywood;
-   text-align: center;
-}
-/* Center PDF items in #llb1 */
-#llb1 ul.pdf-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;    /* horizontally center each link */
-  text-align: center;     /* center text inside each link */
-  margin: 0 auto;         /* keep container centered */
-}
-
-#llb1 ul.pdf-list li {
-  width: 100%;            /* make each item span full silver area */
-  max-width: 400px;       /* optional: limit how wide they stretch */
-  margin: 1rem 0;         /* vertical spacing */
-}
-
-#llb1 ul.pdf-list a {
-  display: inline-block;  /* shrink-wrap each link for centering */
-}
-/* ————————————————————————————————————
-   Center & cap width of LLB1 PDF list
-   ———————————————————————————————————— */
-#llb1 ul.pdf-list {
-  max-width: 600px;       /* ← stops the white box getting too wide */
-  margin: 0 auto;         /* ← centers the box in the silver section */
-  background: #f0f0f0;     /* ← light box behind your links */
-  padding: 1.5rem;         /* ← space inside the box */
-  border-radius: 8px;      /* ← rounded corners */
-  display: flex;
-  flex-direction: column;  /* ← stack links vertically */
-  align-items: center;     /* ← center each link horizontally */
-  text-align: center;      /* ← center the link text */
-}
-
-#llb1 ul.pdf-list li {
-  width: 100%;            /* ← each item fills the white box */
-  margin: 1rem 0;         /* ← spacing above/below each link */
-}
-
-#llb1 ul.pdf-list a {
-  display: block;         /* ← makes the entire width clickable */
-}
-/* ✅ Slim PDF box width & center it in silver section */
-#llb1 ul.pdf-list {
-  width: 100%;
-  max-width: 500px;       /* ← You can reduce this to 400px if you want it even tighter */
-  margin: 0 auto;         /* ← Centers the box horizontally */
-  padding: 1.5rem;
-  background: #f0f0f0;
-  border-radius: 8px;
-
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-
 #llb1 ul.pdf-list li {
   width: 100%;
+  max-width: 400px;
   margin: 1rem 0;
 }
-
 #llb1 ul.pdf-list a {
   display: block;
   width: 100%;
 }
+
 #llb1 {
   position: relative;
   top: -2rem;
   left: -4rem;
   width: calc(100% + 8rem);
-  margin: 0;
-  margin-bottom: 0;     /* ✅ this removes gap below PDF section */
+  margin: 0 0 0 0;
   padding: 2.5rem 4rem;
   background-color: silver;
   color: #2c2c2c;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  z-index: 1;
 }
-#contact {
-  position: relative;
-  top: -2rem;                   /* 👈 lifts the burlywood background upward */
-  background: var(--accent);   /* ensures burlywood is visible */
-  z-index: 1;
-}
-/* ————————————————————————————————————
-   Restore Article-Box Sizes (Overrides)
-   ———————————————————————————————————— */
-.article-box {
-  max-width: 840px;     /* original max width */
-  margin: 2rem auto;    /* original vertical spacing */
-  padding: 1.5rem;      /* original inner padding */
-}
-
-/* Mobile: keep them full-width but not gigantic */
-@media (max-width: 700px) {
-  .article-box {
-    max-width: 100%;
-    margin: 1.5rem auto;
-  }
-}
-
-/* ─────────────────────────────────────────────────────────
-   RESTORE original .article-box styles (desktop + mobile)
-   ───────────────────────────────────────────────────────── */
-.article-box {
-  background: #fff;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  max-width: 840px;
-  border: 5px solid;
-  border-image: linear-gradient(45deg, #ff512f, #f09819) 1;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease;
-}
-
-.article-box:hover {
-  transform: translateY(-4px);
-}
-
-@media (max-width: 700px) {
-  .article-box {
-    max-width: 100%;
-    margin: 1.5rem auto;
-  }
-}
-
-/* ─────────────────────────────────────────────────────────
-   HEADER DOME + INCREASED HEIGHT
-   ───────────────────────────────────────────────────────── */
-header {
-  position: relative;
-  background: var(--accent);      /* your burlywood */
-  min-height: 16rem;              /* tweak this until it hits your blue line */
-  border-bottom-left-radius: 50% 20%;
-  border-bottom-right-radius: 50% 20%;
-  overflow: hidden;               /* hides anything spilling out */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1rem;                /* keeps side padding for mobile */
-}
-
-/* ensure logo, photo & title sit above the dome */
-.center-header {
-  position: relative;
-  z-index: 1;
-}
-
-/* push your photo down so it nestles in the dome */
-.header-photo {
-  margin-top: 2rem;               /* adjust up/down so your headshot “sits” in the curve */
-}
-
-/* ─────────────────────────────────────────────────────────
-   MOBILE ADJUSTMENTS
-   ───────────────────────────────────────────────────────── */
-@media (max-width: 700px) {
-  header {
-    min-height: 12rem;            /* shorter on small screens */
-    border-bottom-left-radius: 50% 25%;
-    border-bottom-right-radius: 50% 25%;
-  }
- /* ─────────────────────────────────────────────────────────
-   1) Give header room for a big photo
-   2) Define exactly one .header-photo rule
-   ───────────────────────────────────────────────────────── */
-header {
-  position: relative;
-  background: var(--accent);
-  padding: 1.5rem 1rem 18rem;  /* top/right/left stay, bottom gives 18rem of room */
+#llb1 h2 {
+  color: #222;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  border: 4px solid burlywood;
   text-align: center;
-  overflow: visible;          
 }
 
+/* ==========================================================================
+   FINAL HEADER + PHOTO LAYOUT
+   ========================================================================== */
+/* 1) Give header room for the circle without overlap */
+header {
+  padding: 1.5rem 1rem 10rem;  /* bottom padding makes room for 180px circle */
+  overflow: visible;           /* allow the photo to bleed into that space */
+  text-align: left;            /* align logo/buttons in lower left */
+}
+
+/* 2) Keep sidebar toggle, dark-mode toggle, logo & title above the photo */
+.center-header,
+header #sidebarToggle,
+header #darkModeToggle {
+  position: relative;
+  z-index: 2;
+}
+
+/* 3) One clean .header-photo rule */
 .header-photo {
   position: absolute;
-  bottom: 1rem;               /* sits one rem above the bottom padding */
+  bottom: 0.5rem;              /* lifts circle just above the padding base */
   left: 50%;
   transform: translateX(-50%);
-  width: 260px;               /* desktop size */
-  height: 260px;
-  object-fit: contain;        /* no cropping—entire head & arms visible */
-  border-radius: 50%;
+
+  width: 180px;                /* desktop diameter */
+  height: 180px;
+
+  object-fit: contain;         /* full head & arms visible—no cropping */
+  border-radius: 50%;          /* perfect circle */
   border: 4px solid var(--bg);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+  z-index: 1;                  /* underneath your header content */
 }
 
+/* 4) MOBILE ADJUSTMENTS */
 @media (max-width: 700px) {
   header {
-    padding-bottom: 14rem;    /* less bottom padding on mobile */
+    padding-bottom: 8rem;      /* less bottom padding on phones */
   }
   .header-photo {
-    width: 180px;
-    height: 180px;
+    width: 140px;              /* smaller circle on mobile */
+    height: 140px;
     bottom: 0.5rem;
   }
 }
-
-
-
-
-
