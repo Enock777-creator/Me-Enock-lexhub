@@ -536,3 +536,64 @@ header #darkModeToggle {
     bottom: 0.5rem;
   }
 }
+
+/* ──────────────────────────────────────────────────────────────
+   FIX LLB MATERIALS + FOOTER CENTERING
+   ────────────────────────────────────────────────────────────── */
+#llb1,
+footer {
+  position: relative;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem 2rem 1rem;   /* clean even spacing */
+  max-width: 840px;              /* centers on large screens */
+  text-align: center;
+}
+
+#llb1 h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid burlywood;
+  padding-bottom: 0.5rem;
+}
+
+#llb1 ul.pdf-list {
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  max-width: 600px;
+}
+
+#llb1 ul.pdf-list li {
+  width: 100%;
+}
+
+#llb1 ul.pdf-list a {
+  display: block;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  color: #004b8d;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 2px solid burlywood;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+#llb1 ul.pdf-list a:hover {
+  background: burlywood;
+  color: white;
+}
+
+footer p {
+  text-align: center;
+  color: var(--footer-text);
+  margin-top: 1rem;
+}
+
