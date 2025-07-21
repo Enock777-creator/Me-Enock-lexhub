@@ -619,3 +619,25 @@ footer {
     margin: 1.5rem auto;
   }
 }
+/* ─────────────────────────────────────────────────────────
+   HEADER PHOTO: fixed size + circle mask
+   ───────────────────────────────────────────────────────── */
+.header-photo {
+  display: block;         /* centers if you auto-margin */
+  width: 120px;           /* pick whatever diameter you like */
+  height: 120px;          
+  object-fit: cover;      /* crop to fill circle without distortion */
+  border-radius: 50%;     /* makes it a perfect circle */
+  margin: 0 auto 1rem;    /* center + 1rem bottom gap */
+}
+
+/* ─────────────────────────────────────────────────────────
+   MOBILE: shrink the header photo on small screens
+   ───────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .header-photo {
+    width: 80px;
+    height: 80px;
+  }
+}
+
