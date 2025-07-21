@@ -640,4 +640,44 @@ footer {
     height: 80px;
   }
 }
+/* ─────────────────────────────────────────────────────────
+   HEADER DOME + INCREASED HEIGHT
+   ───────────────────────────────────────────────────────── */
+header {
+  position: relative;
+  background: var(--accent);      /* your burlywood */
+  min-height: 16rem;              /* tweak this until it hits your blue line */
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+  overflow: hidden;               /* hides anything spilling out */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;                /* keeps side padding for mobile */
+}
+
+/* ensure logo, photo & title sit above the dome */
+.center-header {
+  position: relative;
+  z-index: 1;
+}
+
+/* push your photo down so it nestles in the dome */
+.header-photo {
+  margin-top: 2rem;               /* adjust up/down so your headshot “sits” in the curve */
+}
+
+/* ─────────────────────────────────────────────────────────
+   MOBILE ADJUSTMENTS
+   ───────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  header {
+    min-height: 12rem;            /* shorter on small screens */
+    border-bottom-left-radius: 50% 25%;
+    border-bottom-right-radius: 50% 25%;
+  }
+  .header-photo {
+    margin-top: 1.5rem;
+  }
+}
 
