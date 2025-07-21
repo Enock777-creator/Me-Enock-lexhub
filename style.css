@@ -680,4 +680,41 @@ header {
     margin-top: 1.5rem;
   }
 }
+/* ────────────────────────────────────────────────────────────────────
+   ENLARGE HEADER PHOTO & FULLY EXPOSE IT IN THE DOME
+   ──────────────────────────────────────────────────────────────────── */
+header {
+  /* give extra room at the bottom so the photo can sit half-in/half-out */
+  padding-bottom: 12rem;    
+  overflow: visible;        /* allow the photo to spill outside */
+}
+
+.header-photo {
+  position: absolute;    
+  left: 50%;              
+  bottom: -100px;         /* pulls half of a 200px photo into the dome */
+  transform: translateX(-50%);
+
+  width: 200px;           /* bigger diameter so your whole head fits */
+  height: 200px;          
+  object-fit: cover;      /* crops to fill the circle perfectly */
+  
+  border-radius: 50%;     /* perfect circle */
+  border: 4px solid var(--bg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   MOBILE ADJUSTMENTS FOR SMALLER Screens
+   ──────────────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  header {
+    padding-bottom: 8rem;
+  }
+  .header-photo {
+    bottom: -70px;       /* half of 140px */
+    width: 140px;
+    height: 140px;
+  }
+}
 
