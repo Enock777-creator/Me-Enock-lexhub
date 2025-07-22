@@ -553,3 +553,27 @@ footer {
     transform: translateX(0);
   }
 }
+
+/* ────────────────────────────────────────────────
+   OVERRIDE: LLB1 full-width silver band (no gutters)
+   ──────────────────────────────────────────────── */
+#llb1 {
+  position: relative !important;
+  left: -4rem          !important; /* pull into left gutter */
+  width: calc(100% + 8rem) !important; /* stretch through right gutter */
+  margin: 0             !important;
+  padding: 2.5rem 4rem  !important; /* same gutters as #articles */
+  background-color: silver !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* mobile reset: on small screens revert to normal flow */
+@media (max-width: 700px) {
+  #llb1 {
+    left: 0             !important;
+    width: 100%         !important;
+    padding: 2rem 1rem  !important;
+  }
+}
+
+
