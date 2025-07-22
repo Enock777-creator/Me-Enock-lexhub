@@ -132,18 +132,19 @@
   </script>
 
  <script>
-    const sidebar = document.getElementById("sidebar");
-    const toggleBtn = document.getElementById("sidebarToggle");
-    const closeBtn = document.getElementById("closeSidebar");
+  const sidebar = document.getElementById("sidebar");
+  const toggleBtn = document.getElementById("sidebarToggle");
+  const closeBtn = document.getElementById("closeSidebar");
 
-    toggleBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("active");
-    });
+  toggleBtn.addEventListener("click", () => {
+    sidebar.classList.add("active");
+  });
 
-    closeBtn.addEventListener("click", () => {
-      sidebar.classList.remove("active");
-    });
-  </script>
+  closeBtn.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+  });
+</script>
+
 
   <!-- Dark-Mode & Back-to-Top Logic -->
   <script>
