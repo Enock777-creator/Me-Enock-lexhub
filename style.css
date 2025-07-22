@@ -1,6 +1,3 @@
-/* ==========================================================================
-   VARIABLES & THEMES
-   ========================================================================== */
 :root {
   --bg: burlywood;
   --text: #333;
@@ -12,7 +9,7 @@
   --footer-text: #fff;
   --scroll-bg: transparent;
   --hdr-height: 9.25rem;
-  --sidebar-width: 220px; /* wider for PC menu */
+  --sidebar-width: 220px;
   --sidebar-mobile-width: 100vw;
   --sidebar-top-offset: 1.25rem;
   --sidebar-header-padding: 1.5rem;
@@ -29,9 +26,6 @@
   --footer-text: #ccc;
 }
 
-/* ==========================================================================
-   RESET & BASE
-   ========================================================================== */
 html, body {
   margin: 0;
   padding: 0;
@@ -45,9 +39,7 @@ html, body {
   box-sizing: border-box;
 }
 
-/* ==========================================================================
-   HEADER PROFESSIONAL LAYOUT
-   ========================================================================== */
+/* HEADER */
 header {
   position: sticky;
   top: 0;
@@ -59,7 +51,6 @@ header {
   min-height: 440px;
   width: 100%;
 }
-
 #sidebarToggle {
   position: absolute;
   top: 1.5rem;
@@ -165,13 +156,11 @@ header {
   background: #fff;
 }
 
-/* ==========================================================================
-   SIDEBAR (BUG-FREE, PC: FIXED LEFT; MOBILE: FULL SCREEN, CENTERED, NO SCROLL)
-   ========================================================================== */
+/* SIDEBAR: PC = fixed left, scrollable; MOBILE = full screen, centered */
 #sidebar {
   position: fixed;
-  left: 0;
   top: var(--sidebar-top-offset);
+  left: 0;
   width: var(--sidebar-width);
   height: calc(100vh - var(--sidebar-top-offset));
   background: var(--accent);
@@ -184,10 +173,7 @@ header {
   box-shadow: 2px 0 6px rgba(0,0,0,0.13);
   z-index: 1200;
   border-radius: 0 10px 10px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  display: block;
 }
 #sidebar.active {
   transform: translateX(0);
@@ -225,7 +211,8 @@ header {
   z-index: 1201;
   transition: background 0.2s;
 }
-/* --- MOBILE: SIDEBAR FULL SCREEN, CENTERED CONTENT --- */
+
+/* MOBILE: sidebar covers whole screen and centers menu */
 @media (max-width: 700px) {
   #sidebar {
     top: 0;
@@ -238,11 +225,10 @@ header {
     padding-left: 1rem;
     padding-right: 1rem;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  #sidebar.active {
-    transform: translateX(0);
   }
   #sidebar a {
     font-size: 1.35rem;
@@ -261,9 +247,7 @@ header {
   }
 }
 
-/* ==========================================================================
-   MAIN LAYOUT
-   ========================================================================== */
+/* MAIN */
 main {
   margin: 0;
   padding: 0;
@@ -278,9 +262,6 @@ main {
   }
 }
 
-/* ============================
-   Creative Section Corners CSS
-   ============================ */
 #articles {
   border-radius: 2rem;
   overflow: hidden;
@@ -354,9 +335,7 @@ main {
   padding-bottom: 0.5rem;
 }
 
-/* ==========================================================================
-   NAVIGATION
-   ========================================================================== */
+/* NAVIGATION */
 nav {
   background: #deb887;
   display: flex;
@@ -376,9 +355,7 @@ nav {
   font-weight: bold;
 }
 
-/* ==========================================================================
-   ARTICLE BOXES
-   ========================================================================== */
+/* ARTICLE BOXES */
 .article-box {
   background: #fff;
   padding: 1.5rem;
@@ -392,18 +369,14 @@ nav {
 }
 .article-box:hover { transform: translateY(-4px); }
 
-/* ==========================================================================
-   MARKDOWN CONTENT
-   ========================================================================== */
+/* MARKDOWN CONTENT */
 .article-md {
   max-width: 700px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
 
-/* ==========================================================================
-   CONTACT CONTENT
-   ========================================================================== */
+/* CONTACT CONTENT */
 .contact-list {
   list-style: none;
   margin: 0 auto;
@@ -426,9 +399,7 @@ nav {
   height: 26px;
 }
 
-/* ==========================================================================
-   PDF & LLB1 STYLES
-   ========================================================================== */
+/* PDF & LLB1 STYLES */
 .pdf-list {
   list-style: none;
   padding-left: 0;
@@ -467,9 +438,7 @@ nav {
   width: 100%;
 }
 
-/* ==========================================================================
-   FOOTER (EDGE-TO-EDGE & FIXED CONTENT)
-   ========================================================================== */
+/* FOOTER */
 footer {
   position: relative;
   left: 0;
@@ -482,9 +451,7 @@ footer {
   box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
 }
 
-/* ==========================================================================
-   BACK-TO-TOP & SCROLL-RING - FIXED POSITION
-   ========================================================================== */
+/* BACK-TO-TOP & SCROLL-RING */
 #topBtn {
   position: fixed;
   bottom: 30px;
@@ -515,9 +482,7 @@ footer {
   background: var(--link-hover);
 }
 
-/* ==========================================================================
-   RESPONSIVE ADJUSTMENTS
-   ========================================================================== */
+/* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 700px) {
   header { padding-bottom: 2.5rem; min-height: 320px; }
   .logo { width: 80px; height: 80px; }
