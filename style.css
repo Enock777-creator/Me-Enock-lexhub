@@ -651,3 +651,15 @@ footer p {
   padding: 2rem 1rem;
   text-align: center;
 }
+
+/* ─────────────────────────────────────────────
+   Silver Background Behind LLB Materials Block
+   ───────────────────────────────────────────── */
+#llb1-wrapper {
+  background: silver;
+  padding: 2rem 0;
+}
+
+#llb1 {
+  max-width: 840px;
+  margin: 0 auto
