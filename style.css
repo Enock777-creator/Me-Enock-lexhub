@@ -264,7 +264,7 @@ main {
 }
 
 /* ==========================================================================
-   SIDEBAR
+   SIDEBAR (IMPROVED FOR MOBILE: FULL SCREEN, CENTERED, NO SCROLL)
    ========================================================================== */
 #sidebar {
   position: fixed;
@@ -282,8 +282,15 @@ main {
   box-shadow: 2px 0 6px rgba(0,0,0,0.13);
   z-index: 1200;
   border-radius: 0 10px 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-#sidebar.active { transform: translateX(0);}
+
+#sidebar.active {
+  transform: translateX(0);
+}
+
 #sidebar a {
   display: block;
   margin: 0.8rem 0;
@@ -294,27 +301,63 @@ main {
   border-radius: 4px;
   transition: background 0.18s, color 0.18s;
 }
-#sidebar a:hover { background: #d2ba8a; color: #fff;}
+
+#sidebar a:hover {
+  background: #d2ba8a;
+  color: #fff;
+}
+
+#closeSidebar {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  background: #deb887;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.13);
+  z-index: 1201;
+  transition: background 0.2s;
+}
+
+/* --- MOBILE: SIDEBAR FULL SCREEN --- */
 @media (max-width: 700px) {
   #sidebar {
-    top: var(--sidebar-top-offset);
+    top: 0;
     left: 0;
-    width: var(--sidebar-mobile-width);
-    height: calc(100vh - var(--sidebar-top-offset));
-    border-radius: 0 0 12px 12px;
-    padding-top: 1.5rem;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.10);
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: 0 0 0 100vw rgba(0,0,0,0.24);
+    padding-top: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: visible;
+    /* makes the sidebar take the whole screen and center its contents */
   }
   #sidebar a {
-    font-size: 1.1rem;
-    padding: 0.5rem 0.8rem;
+    font-size: 1.35rem;
+    padding: 0.75rem 1.2rem;
+    text-align: center;
   }
-}
-@media (min-width: 701px) {
-  #sidebar {
-    padding-top: 1.5rem !important;
-    height: calc(100vh - var(--sidebar-top-offset)) !important;
-    top: var(--sidebar-top-offset) !important;
+  #closeSidebar {
+    top: 1.5rem;
+    left: 1.5rem;
+    right: unset;
+    bottom: unset;
+    font-size: 1.6rem;
+    background: #fff;
+    color: #222;
+    border: 2px solid #deb887;
   }
 }
 
