@@ -60,11 +60,11 @@ header {
   top: 0;
   z-index: 1000;
   background: var(--accent);
-  padding: 1.5rem 1rem 10rem;
+  padding: 1.5rem 1rem 12rem; /* Adjusted for better spacing */
   clip-path: ellipse(100% 80% at 50% 0%);
   text-align: left;
   overflow: visible;
-  min-height: calc(var(--hdr-height) + 180px);
+  min-height: calc(var(--hdr-height) + 300px); /* Increased height to ensure full visibility */
 }
 
 /* Keep sidebar toggle, dark-mode toggle, logo & title above the photo */
@@ -78,11 +78,11 @@ header #darkModeToggle {
 /* Fixed header photo dimensions */
 .header-photo {
   position: absolute;
-  bottom: 0.5rem;
+  bottom: -20px; /* Adjusted to ensure visibility */
   left: 50%;
   transform: translateX(-50%);
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid burlywood;
@@ -93,14 +93,14 @@ header #darkModeToggle {
 /* Mobile header adjustments */
 @media (max-width: 700px) {
   header {
-    padding-bottom: 8rem;
-    clip-path: ellipse(100% 52% at 50% 0%);
-    min-height: calc(var(--hdr-height) + 140px);
+    padding-bottom: 10rem;
+    clip-path: ellipse(100% 70% at 50% 0%);
+    min-height: calc(var(--hdr-height) + 200px);
   }
   .header-photo {
-    width: 140px;
-    height: 140px;
-    bottom: 0.5rem;
+    width: 160px;
+    height: 160px;
+    bottom: -10px;
   }
 }
 
@@ -508,3 +508,95 @@ nav {
 }
 
 /* ==========================================================================
+   FOOTER (EDGE-TO-EDGE & FIXED CONTENT)
+   ========================================================================== */
+footer {
+  position: relative;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 1.25rem 4rem;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}
+
+/* ==========================================================================
+   BACK-TO-TOP & SCROLL-RING - FIXED POSITION
+   ========================================================================== */
+#topBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px; /* Repositioned to prevent overlap */
+  z-index: 99;
+  width: 50px; /* Adjusted dimensions */
+  height: 50px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  --scroll-angle: 0deg;
+}
+
+#topBtn::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) var(--scroll-angle), var(--scroll-bg) 0deg);
+  z-index: -1;
+}
+
+#topBtn:hover {
+  background: var(--link-hover);
+}
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+@media (max-width: 700px) {
+  #contact,
+  footer {
+    position: static;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .article-box {
+    max-width: 100%;
+    margin: 1.5rem auto;
+  }
+
+  .article-md {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .article-box img {
+    margin: 0.75rem auto;
+  }
+
+  #topBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
