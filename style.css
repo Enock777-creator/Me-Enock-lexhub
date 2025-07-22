@@ -184,6 +184,55 @@ main {
   }
 }
 
+/* ============================
+   Creative Section Corners CSS
+   Options: Rounded, Blob, Cut
+   ============================ */
+
+/* 1. Rounded Corners - #articles */
+#articles {
+  border-radius: 2rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5e9da, #deb887 80%); /* Optional: nice gradient */
+  box-shadow: 0 10px 32px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 2. Blob/Organic Top - #contact */
+#contact {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #deb887 60%, #fffaf0 100%);
+  border-radius: 0 0 2.5rem 2.5rem;
+  /* Blob shape at the top using clip-path */
+  clip-path: ellipse(85% 100% at 50% 0%);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* 3. Cut/Notched Corners - #llb1 */
+#llb1 {
+  background: linear-gradient(135deg, silver 80%, #f5e9da 100%);
+  /* Notched/cut corners using clip-path */
+  clip-path: polygon(
+    0 30px, 30px 0, 100% 0, 100% calc(100% - 30px),
+    calc(100% - 30px) 100%, 0 100%
+  );
+  box-shadow: 0 6px 18px rgba(0,0,0,0.09);
+  overflow: hidden;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 700px) {
+  #articles,
+  #contact,
+  #llb1 {
+    border-radius: 1.2rem;
+    clip-path: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: var(--accent); /* fallback to accent color for mobile simplicity */
+  }
+}
+
+
 /* ==========================================================================
    SIDEBAR - CORRECTED
    ========================================================================== */
@@ -596,50 +645,3 @@ footer {
   }
 }
 
-/* ============================
-   Creative Section Corners CSS
-   Options: Rounded, Blob, Cut
-   ============================ */
-
-/* 1. Rounded Corners - #articles */
-#articles {
-  border-radius: 2rem;
-  overflow: hidden;
-  background: linear-gradient(135deg, #f5e9da, #deb887 80%); /* Optional: nice gradient */
-  box-shadow: 0 10px 32px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
-}
-
-/* 2. Blob/Organic Top - #contact */
-#contact {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(120deg, #deb887 60%, #fffaf0 100%);
-  border-radius: 0 0 2.5rem 2.5rem;
-  /* Blob shape at the top using clip-path */
-  clip-path: ellipse(85% 100% at 50% 0%);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-
-/* 3. Cut/Notched Corners - #llb1 */
-#llb1 {
-  background: linear-gradient(135deg, silver 80%, #f5e9da 100%);
-  /* Notched/cut corners using clip-path */
-  clip-path: polygon(
-    0 30px, 30px 0, 100% 0, 100% calc(100% - 30px),
-    calc(100% - 30px) 100%, 0 100%
-  );
-  box-shadow: 0 6px 18px rgba(0,0,0,0.09);
-  overflow: hidden;
-}
-
-/* Responsive adjustments for mobile */
-@media (max-width: 700px) {
-  #articles,
-  #contact,
-  #llb1 {
-    border-radius: 1.2rem;
-    clip-path: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    background: var(--accent); /* fallback to accent color for mobile simplicity */
-  }
-}
