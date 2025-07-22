@@ -639,3 +639,15 @@ footer p {
   cursor: pointer;
   z-index: 2000;
 }
+
+/* ─────────────────────────────
+   Center LLB Materials Section
+   ───────────────────────────── */
+#llb1 {
+  position: relative;
+  width: 100%;
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+}
