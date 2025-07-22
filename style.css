@@ -61,7 +61,7 @@ header {
   z-index: 1000;
   background: var(--accent);
   padding: 1.5rem 1rem 14rem; /* Adjusted for better spacing */
-  clip-path: ellipse(100% 80% at 50% 0%);
+  clip-path: ellipse(100% 85% at 50% 0%);
   text-align: left;
   overflow: visible;
   min-height: calc(var(--hdr-height) + 340px); /* Ensure full visibility of content */
@@ -78,19 +78,19 @@ header #darkModeToggle {
 /* Final adjustment of header photo dimensions and position */
 .header-photo {
   position: absolute;
-  bottom: -40px; /* Adjusted to ensure full visibility */
+  bottom: 0; /* Adjusted to center the photo */
   left: 50%;
   transform: translateX(-50%);
-  width: 240px; /* Increased size for better visibility */
-  height: 240px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid burlywood;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  width: 260px; /* Increased size for better visibility */
+  height: 260px; /* Match width for circular frame */
+  object-fit: cover; /* Keeps the image filling the circle */
+  border-radius: 50%; /* Ensures circular frame */
+  border: 6px solid burlywood; /* Increased border for better framing */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Keeps the photo prominent */
   z-index: 1;
 }
 
-/* Mobile header adjustments */
+/* Mobile Adjustments */
 @media (max-width: 700px) {
   header {
     padding-bottom: 12rem;
@@ -98,9 +98,9 @@ header #darkModeToggle {
     min-height: calc(var(--hdr-height) + 250px);
   }
   .header-photo {
-    width: 180px;
-    height: 180px;
-    bottom: -20px;
+    width: 200px;
+    height: 200px;
+    bottom: 0; /* Centered for mobile */
   }
 }
 
@@ -456,7 +456,6 @@ nav {
 .contact-icon {
   width: 26px;
   height: 26px;
-}
 
 /* ==========================================================================
    PDF & LLB1 STYLES
