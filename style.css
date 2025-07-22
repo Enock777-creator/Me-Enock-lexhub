@@ -12,7 +12,6 @@
   --footer-bg: #333;
   --footer-text: #fff;
   --scroll-bg: transparent;
-
   /* Total height of your sticky <header> (content + padding) */
   --hdr-height: 9.25rem;
 }
@@ -329,13 +328,135 @@ nav {
 }
 
 /* ==========================================================================
+   PDF & LLB1 STYLES (original)
+   ========================================================================== */
+.pdf-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.pdf-list li {
+  margin: 0.75rem 0;
+}
+
+.pdf-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #f8f8f8;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #004b8d;
+  transition: background 0.2s ease;
+}
+
+.pdf-list a:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ========================================================================== PDF LIST INSIDE LLB1 (centering cleanup) ========================================================================== */
+#llb1 ul.pdf-list {
+  margin: 0 auto;
+  background: #f0f0f0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#llb1 ul.pdf-list li {
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem 0;
+}
+
+#llb1 ul.pdf-list a {
+  display: block;
+  width: 100%;
+}
+
+/* ==========================================================================
+   LLB1 SECTION — FULL-WIDTH SILVER & NO SIDE GAPS
+   ========================================================================== */
+#llb1 {
+  /* REPLACED: no offsets, full silver band edge-to-edge */
+  width: 100%;
+  margin: 0;
+  padding: 2.5rem 1rem 2.5rem 1rem;
+  background-color: silver;
+  color: #2c2c2c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#llb1 h2 {
+  color: #222;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  border-bottom: 2px solid burlywood;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* ==========================================================================
+   FINAL HEADER + PHOTO LAYOUT
+   ========================================================================== */
+/* 1) Give header room for the circle without overlap */
+header {
+  padding: 1.5rem 1rem 10rem;
+  overflow: visible;
+  text-align: left;
+}
+
+/* 2) Keep sidebar toggle, dark-mode toggle, logo & title above the photo */
+.center-header,
+header #sidebarToggle,
+header #darkModeToggle {
+  position: relative;
+  z-index: 2;
+}
+
+/* 3) One clean .header-photo rule */
+.header-photo {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 4px solid burlywood;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* 4) MOBILE ADJUSTMENTS */
+@media (max-width: 700px) {
+  header {
+    padding-bottom: 8rem;
+  }
+  .header-photo {
+    width: 140px;
+    height: 140px;
+    bottom: 0.5rem;
+  }
+}
+
+/* ==========================================================================
    FOOTER (EDGE-TO-EDGE & NO GAP)
    ========================================================================== */
 footer {
+  /* REPLACED: remove left offsets, span full width */
   position: relative;
-  left: -4rem;
-  width: calc(100% + 8rem);
-  margin: -2rem 0 0 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
   padding: 1.25rem 4rem;
   background: var(--footer-bg);
   color: var(--footer-text);
@@ -382,7 +503,8 @@ footer {
    ========================================================================== */
 @media (max-width: 700px) {
   /* CONTACT & FOOTER full-width */
-  #contact, footer {
+  #contact,
+  footer {
     position: static;
     left: 0;
     width: 100%;
@@ -417,249 +539,8 @@ footer {
     width: 100%;
     transform: translateX(-100%);
   }
+
   #sidebar.active {
     transform: translateX(0);
   }
 }
-
-/* ==========================================================================
-   PDF & LLB1 STYLES
-   ========================================================================== */
-.pdf-list {
-  list-style: none;
-  padding-left: 0;
-}
-.pdf-list li {
-  margin: 0.75rem 0;
-}
-.pdf-list a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: #f8f8f8;
-  border-radius: 6px;
-  text-decoration: none;
-  color: #004b8d;
-  transition: background 0.2s ease;
-}
-.pdf-list a:hover {
-  background: var(--accent);
-  color: #fff;
-}
-
-#llb1 ul.pdf-list {
-  margin: 0 auto;
-  background: #f0f0f0;
-  padding: 1.5rem;
-  border-radius: 8px;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-#llb1 ul.pdf-list li {
-  width: 100%;
-  max-width: 400px;
-  margin: 1rem 0;
-}
-#llb1 ul.pdf-list a {
-  display: block;
-  width: 100%;
-}
-
-#llb1 {
-  position: relative;
-  top: -2rem;
-  left: -4rem;
-  width: calc(100% + 8rem);
-  margin: 0 0 0 0;
-  padding: 2.5rem 4rem;
-  background-color: silver;
-  color: #2c2c2c;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-#llb1 h2 {
-  color: #222;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  border: 4px solid burlywood;
-  text-align: center;
-}
-
-/* ==========================================================================
-   FINAL HEADER + PHOTO LAYOUT
-   ========================================================================== */
-/* 1) Give header room for the circle without overlap */
-header {
-  padding: 1.5rem 1rem 10rem;  /* bottom padding makes room for 180px circle */
-  overflow: visible;           /* allow the photo to bleed into that space */
-  text-align: left;            /* align logo/buttons in lower left */
-}
-
-/* 2) Keep sidebar toggle, dark-mode toggle, logo & title above the photo */
-.center-header,
-header #sidebarToggle,
-header #darkModeToggle {
-  position: relative;
-  z-index: 2;
-}
-
-/* 3) One clean .header-photo rule */
-.header-photo {
-  position: absolute;
-  bottom: 0.5rem;              /* lifts circle just above the padding base */
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: 180px;                /* desktop diameter */
-  height: 180px;
-
-  object-fit: contain;         /* full head & arms visible—no cropping */
-  border-radius: 50%;          /* perfect circle */
-  border: 4px solid burlywood; /* <--- CHANGE THIS LINE */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-
-  z-index: 1;                  /* underneath your header content */
-}
-
-/* 4) MOBILE ADJUSTMENTS */
-@media (max-width: 700px) {
-  header {
-    padding-bottom: 8rem;      /* less bottom padding on phones */
-  }
-  .header-photo {
-    width: 140px;              /* smaller circle on mobile */
-    height: 140px;
-    bottom: 0.5rem;
-  }
-}
-
-/* ──────────────────────────────────────────────────────────────
-   FIX LLB MATERIALS + FOOTER CENTERING
-   ────────────────────────────────────────────────────────────── */
-footer {
-  position: relative;
-  left: 0;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem 1rem 2rem 1rem;   /* clean even spacing */
-  max-width: 840px;              /* centers on large screens */
-  text-align: center;
-}
-
-#llb1 h2 {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid burlywood;
-  padding-bottom: 0.5rem;
-}
-
-#llb1 ul.pdf-list {
-  padding: 0;
-  margin: 0 auto;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-  max-width: 600px;
-}
-
-#llb1 ul.pdf-list li {
-  width: 100%;
-}
-
-#llb1 ul.pdf-list a {
-  display: block;
-  padding: 0.75rem 1rem;
-  background: #fff;
-  color: #004b8d;
-  text-decoration: none;
-  border-radius: 8px;
-  border: 2px solid burlywood;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-
-#llb1 ul.pdf-list a:hover {
-  background: burlywood;
-  color: white;
-}
-
-footer p {
-  text-align: center;
-  color: var(--footer-text);
-  margin-top: 1rem;
-}
-
-/* ─────────────────────────────────────────────
-   DROPDOWN MENU STYLING BELOW HAMBURGER BUTTON
-   ───────────────────────────────────────────── */
-#sidebar {
-  position: absolute;
-  top: 5.5rem;                /* places it below header button */
-  left: 1rem;                 /* aligns with hamburger */
-  width: auto;
-  min-width: 220px;
-  background: var(--accent);
-  padding: 1rem 1.25rem;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  display: none;              /* hidden by default */
-  flex-direction: column;
-  gap: 1rem;
-  z-index: 1500;
-  border-radius: 0.5rem;
-}
-
-#sidebar.active {
-  display: flex;
-}
-
-#sidebar a {
-  text-decoration: none;
-  color: #222;
-  font-weight: bold;
-  padding: 0.25rem 0;
-}
-
-#closeSidebar {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: #fff;
-  color: #000;
-  border: none;
-  border-radius: 50%;
-  font-size: 1rem;
-  padding: 0.25rem 0.6rem;
-  cursor: pointer;
-  z-index: 2000;
-}
-
-/* ─────────────────────────────
-   Center LLB Materials Section
-   ───────────────────────────── */
-#llb1 {
-  position: relative;
-  width: 100%;
-  max-width: 840px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
-/* ─────────────────────────────────────────────
-   Silver Background Behind LLB Materials Block
-   ───────────────────────────────────────────── */
-#llb1-wrapper {
-  background: silver;
-  padding: 2rem 0;
-}
-
-#llb1 {
-  max-width: 840px;
-  margin: 0 auto
