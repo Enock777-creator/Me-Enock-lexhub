@@ -14,6 +14,10 @@
   --scroll-bg: transparent;
   /* Total height of your sticky <header> (content + padding) */
   --hdr-height: 9.25rem;
+  --sidebar-width: 160px;
+  --sidebar-mobile-width: 100vw;
+  --sidebar-top-offset: 1.25rem;
+  --sidebar-header-padding: 1.5rem;
 }
 
 [data-theme="dark"] {
@@ -77,18 +81,18 @@ header {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 1001;
+  z-index: 1250;
 }
 
 /* Close button (right) – hidden until sidebar opens */
 #closeSidebar {
-  position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
-  width: 2.2rem;
-  height: 2.2rem;
-  background: #DEB887;
-  color: var(--footer-text);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  background: #deb887;
+  color: #fff;
   border: none;
   border-radius: 50%;
   font-size: 1.2rem;
@@ -96,8 +100,9 @@ header {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  z-index: 1002;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.13);
+  z-index: 1201;
+  transition: background 0.2s;
 }
 
 #sidebar.active #closeSidebar {
@@ -170,28 +175,34 @@ main {
 }
 
 #sidebar.active ~ main {
-  margin-left: 160px;
+  margin-left: var(--sidebar-width);
+}
+
+@media (max-width: 700px) {
+  #sidebar.active ~ main {
+    margin-left: 0;
+  }
 }
 
 /* ==========================================================================
-   SIDEBAR (IMPROVED)
+   SIDEBAR - CORRECTED
    ========================================================================== */
 #sidebar {
-  position: absolute;
-  top: calc(var(--hdr-height));
+  position: fixed;
+  top: var(--sidebar-top-offset);
   left: 0;
-  width: 220px;
-  height: auto;
-  max-height: calc(100vh - var(--hdr-height));
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--sidebar-top-offset));
   background: var(--accent);
-  padding: 1rem 1rem;
+  padding-top: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   overflow-y: auto;
   transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-  z-index: 1500;
-  border-top-left-radius: 0 0;
-  border-bottom-left-radius: 0 0;
+  transition: transform 0.3s cubic-bezier(.77,0,.18,1), box-shadow 0.3s;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.13);
+  z-index: 1200;
+  border-radius: 0 10px 10px 0;
 }
 
 #sidebar.active {
@@ -200,32 +211,41 @@ main {
 
 #sidebar a {
   display: block;
-  margin: 0.5rem 0;
+  margin: 0.8rem 0;
   color: #004b8d;
   font-weight: bold;
   text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.18s, color 0.18s;
 }
 
 #sidebar a:hover {
+  background: #d2ba8a;
   color: #fff;
 }
 
-/* Make sure sidebarToggle stays above the sidebar */
-#sidebarToggle {
-  z-index: 2000;
-}
-
-/* Responsive: sidebar full width on mobile */
 @media (max-width: 700px) {
   #sidebar {
-    width: 100vw;
+    top: var(--sidebar-top-offset);
     left: 0;
-    top: calc(var(--hdr-height));
-    max-height: calc(100vh - var(--hdr-height));
-    padding: 1.5rem 1rem;
+    width: var(--sidebar-mobile-width);
+    height: calc(100vh - var(--sidebar-top-offset));
+    border-radius: 0 0 12px 12px;
+    padding-top: 1.5rem;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.10);
   }
-  #sidebar.active ~ main {
-    margin-left: 0;
+  #sidebar a {
+    font-size: 1.1rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+@media (min-width: 701px) {
+  #sidebar {
+    padding-top: 1.5rem !important;
+    height: calc(100vh - var(--sidebar-top-offset)) !important;
+    top: var(--sidebar-top-offset) !important;
   }
 }
 
@@ -254,7 +274,7 @@ nav {
 }
 
 /* ==========================================================================
-   ARTICLES (EDGE-TO-EDGE)
+   ARTICLES (EDGE-TO-EDGE) + ROUNDED CORNERS
    ========================================================================== */
 #articles {
   position: relative;
@@ -267,6 +287,8 @@ nav {
   background: silver;
   color: #2c2c2c;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 2rem;
+  overflow: hidden;
 }
 
 #articles h2 {
@@ -304,7 +326,7 @@ nav {
 }
 
 /* ==========================================================================
-   CONTACT (EDGE-TO-EDGE)
+   CONTACT (EDGE-TO-EDGE) + ROUNDED CORNERS
    ========================================================================== */
 #contact {
   position: relative;
@@ -316,6 +338,8 @@ nav {
   padding: 2.5rem 4rem;
   background: var(--accent);
   color: #2c2c2c;
+  border-radius: 0 0 2.5rem 2.5rem;
+  overflow: hidden;
 }
 
 #contact h2 {
@@ -403,7 +427,7 @@ nav {
 }
 
 /* ==========================================================================
-   LLB1 Materials: full-width silver band & centered list
+   LLB1 Materials: full-width silver band & centered list + ROUNDED CORNERS
    ========================================================================== */
 #llb1 {
   position: relative;
@@ -416,6 +440,8 @@ nav {
   background-color: silver;
   color: #2c2c2c;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 3rem 0 3rem 0;
+  overflow: hidden;
 }
 
 #llb1 h2 {
@@ -436,16 +462,7 @@ nav {
     max-width: 100%;
     transform: none;
     padding: 2rem 1rem;
-  }
-  #sidebar {
-    width: 100vw;
-    left: 0;
-    top: calc(var(--hdr-height));
-    max-height: calc(100vh - var(--hdr-height));
-    padding: 1.5rem 1rem;
-  }
-  #sidebar.active ~ main {
-    margin-left: 0;
+    border-radius: 1.5rem;
   }
 }
 
