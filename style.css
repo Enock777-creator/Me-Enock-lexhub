@@ -60,11 +60,11 @@ header {
   top: 0;
   z-index: 1000;
   background: var(--accent);
-  padding: 1.5rem 1rem 14rem; /* Adjusted for better spacing */
-  clip-path: ellipse(100% 85% at 50% 0%);
+  padding: 1.5rem 1rem 16rem; /* Adjusted for better spacing */
+  clip-path: ellipse(100% 90% at 50% 0%); /* Adjusted clip-path for better visibility */
   text-align: left;
   overflow: visible;
-  min-height: calc(var(--hdr-height) + 340px); /* Ensure full visibility of content */
+  min-height: calc(var(--hdr-height) + 360px); /* Ensure full visibility of content */
 }
 
 /* Keep sidebar toggle, dark-mode toggle, logo & title above the photo */
@@ -78,14 +78,14 @@ header #darkModeToggle {
 /* Final adjustment of header photo dimensions and position */
 .header-photo {
   position: absolute;
-  bottom: 0; /* Adjusted to center the photo */
+  bottom: -50px; /* Adjusted to ensure full visibility */
   left: 50%;
   transform: translateX(-50%);
-  width: 260px; /* Increased size for better visibility */
-  height: 260px; /* Match width for circular frame */
+  width: 280px; /* Increased size for better visibility */
+  height: 280px; /* Match width for circular frame */
   object-fit: cover; /* Keeps the image filling the circle */
   border-radius: 50%; /* Ensures circular frame */
-  border: 6px solid burlywood; /* Increased border for better framing */
+  border: 8px solid burlywood; /* Increased border for better framing */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Keeps the photo prominent */
   z-index: 1;
 }
@@ -93,14 +93,14 @@ header #darkModeToggle {
 /* Mobile Adjustments */
 @media (max-width: 700px) {
   header {
-    padding-bottom: 12rem;
-    clip-path: ellipse(100% 75% at 50% 0%);
-    min-height: calc(var(--hdr-height) + 250px);
+    padding-bottom: 14rem;
+    clip-path: ellipse(100% 80% at 50% 0%);
+    min-height: calc(var(--hdr-height) + 280px);
   }
   .header-photo {
-    width: 200px;
-    height: 200px;
-    bottom: 0; /* Centered for mobile */
+    width: 220px;
+    height: 220px;
+    bottom: -30px; /* Centered for mobile */
   }
 }
 
