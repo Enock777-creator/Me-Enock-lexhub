@@ -53,18 +53,18 @@ html, body {
 }
 
 /* ==========================================================================
-   HEADER & TOGGLES - FIXED WITH BLOB SHAPE
+   HEADER & TOGGLES - FINAL FIXED WITH BLOB SHAPE
    ========================================================================== */
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: var(--accent);
-  padding: 1.5rem 1rem 12rem; /* Adjusted for better spacing */
+  padding: 1.5rem 1rem 14rem; /* Adjusted for better spacing */
   clip-path: ellipse(100% 80% at 50% 0%);
   text-align: left;
   overflow: visible;
-  min-height: calc(var(--hdr-height) + 300px); /* Increased height to ensure full visibility */
+  min-height: calc(var(--hdr-height) + 340px); /* Ensure full visibility of content */
 }
 
 /* Keep sidebar toggle, dark-mode toggle, logo & title above the photo */
@@ -75,14 +75,14 @@ header #darkModeToggle {
   z-index: 2;
 }
 
-/* Fixed header photo dimensions */
+/* Final adjustment of header photo dimensions and position */
 .header-photo {
   position: absolute;
-  bottom: -20px; /* Adjusted to ensure visibility */
+  bottom: -40px; /* Adjusted to ensure full visibility */
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
-  height: 200px;
+  width: 240px; /* Increased size for better visibility */
+  height: 240px;
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid burlywood;
@@ -93,14 +93,14 @@ header #darkModeToggle {
 /* Mobile header adjustments */
 @media (max-width: 700px) {
   header {
-    padding-bottom: 10rem;
-    clip-path: ellipse(100% 70% at 50% 0%);
-    min-height: calc(var(--hdr-height) + 200px);
+    padding-bottom: 12rem;
+    clip-path: ellipse(100% 75% at 50% 0%);
+    min-height: calc(var(--hdr-height) + 250px);
   }
   .header-photo {
-    width: 160px;
-    height: 160px;
-    bottom: -10px;
+    width: 180px;
+    height: 180px;
+    bottom: -20px;
   }
 }
 
