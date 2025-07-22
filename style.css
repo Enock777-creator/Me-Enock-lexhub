@@ -597,33 +597,45 @@ footer p {
   margin-top: 1rem;
 }
 
-/* ────────────────────────────────────────────────────────────────
-   SIDEBAR MENU FIX: visible, scroll-free contents on click
-   ──────────────────────────────────────────────────────────────── */
+/* ───────────────────────────────────────────────
+   SIDEBAR FIX: full visible menu on open
+   ─────────────────────────────────────────────── */
 #sidebar {
+  position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
-  width: 100%;
-  height: auto;                 /* adjust to content height */
-  max-height: 100vh;            /* prevent overspill beyond screen */
-  overflow-y: auto;
+  width: 250px;
+  height: 100vh;
   background: var(--accent);
-  transform: translateY(-100%);
-  transition: transform 0.3s ease;
+  display: none;                    /* start hidden */
+  flex-direction: column;
+  padding: 5rem 2rem 2rem;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.15);
   z-index: 2000;
-  padding: 5rem 2rem 2rem 2rem; /* enough space below header */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  overflow-y: auto;
 }
 
 #sidebar.active {
-  transform: translateY(0);     /* slides down smoothly into view */
+  display: flex;                    /* reveal menu */
 }
 
-/* Ensure close button stays visible */
+#sidebar a {
+  margin: 1rem 0;
+  text-decoration: none;
+  color: #222;
+  font-weight: bold;
+}
+
 #closeSidebar {
-  position: fixed;
+  position: absolute;
   top: 1rem;
   right: 1rem;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
   z-index: 3000;
 }
