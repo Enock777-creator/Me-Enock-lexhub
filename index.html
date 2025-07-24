@@ -133,20 +133,6 @@
     });
   </script>
 
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    const toggleBtn = document.getElementById("sidebarToggle");
-    const closeBtn = document.getElementById("closeSidebar");
-
-    toggleBtn.addEventListener("click", () => {
-      sidebar.classList.add("active");
-    });
-
-    closeBtn.addEventListener("click", () => {
-      sidebar.classList.remove("active");
-    });
-  </script>
-
   <!-- Dark-Mode & Back-to-Top Logic -->
   <script>
     // Dark mode
@@ -179,5 +165,21 @@
     window.addEventListener('load', adjustSidebar);
     window.addEventListener('resize', adjustSidebar);
   </script>
+
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const toggleBtn = document.getElementById("sidebarToggle");
+  const closeBtn   = document.getElementById("closeSidebar");
+
+  toggleBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+  });
+</script>
+
+  
 </body>
 </html>
