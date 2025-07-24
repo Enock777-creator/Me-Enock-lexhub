@@ -63,8 +63,6 @@ html, body {
   flex-direction: column;
   gap: 0.75rem;
   z-index: 2000;
-
-  /* keep it fully in view */
   max-height: calc(100vh - (var(--sidebar-top-offset) * 2));
   overflow-y: auto;
 }
@@ -85,7 +83,6 @@ html, body {
   color: var(--link-hover);
 }
 
-/* close button inside the panel */
 #closeSidebar {
   position: absolute;
   top: 0.5rem;
@@ -101,7 +98,6 @@ html, body {
   z-index: 2001;
 }
 
-/* MOBILE RESET */
 @media (max-width: 700px) {
   #sidebar {
     left: 0.5rem;
@@ -167,68 +163,37 @@ header {
   top: 0;
   z-index: 1000;
   background: var(--accent);
-  padding: 1.5rem 1rem 10rem; /* bottom space for photo */
+  /* reduced bottom padding so photo flows in-normal */
+  padding: 1.5rem 1rem 2.5rem;
   overflow: visible;
   text-align: left;
 }
 
+/* ─── 1cm BELOW THE ☰ BUTTON ───────────────────────────────── */
 .header-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   gap: 1.1rem;
-  margin-top: 2.5rem;
+  /* was 2.5rem; now exactly 1.5rem (top offset) + 1cm */
+  margin-top: calc(var(--sidebar-header-padding) + 1cm);
   position: relative;
   z-index: 2;
-}
-
-.logo {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.logo-text {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #2c2c2c;
-}
-
-.header-buttons {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.btn {
-  padding: 0.5rem 1.2rem;
-  background: var(--btn-bg);
-  color: var(--btn-text);
-  text-decoration: none;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  transition: background 0.18s;
-}
-
-.btn.outline {
-  background: transparent;
-  border: 2px solid var(--btn-bg);
-}
-
-.btn:hover {
-  background: var(--link-hover);
-  color: #fff;
 }
 
 .photo-container {
   display: flex;
   justify-content: center;
-  margin-top: 2.2rem;
+  /* tighten up above the static photo */
+  margin-top: 1rem;
 }
 
+/* ─── STATIC PHOTO (no overlap) ─────────────────────────────── */
 .header-photo-sq {
+  position: static;
+  display: block;
+  margin: 1rem auto 0;
   width: 200px;
   height: 220px;
   object-fit: cover;
@@ -237,10 +202,6 @@ header {
   border: 5px solid burlywood;
   box-shadow: 0 4px 18px rgba(0,0,0,0.17);
   background: #fff;
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
   z-index: 1;
 }
 
@@ -290,28 +251,6 @@ main {
   padding-bottom: 0.5rem;
 }
 
-.article-box {
-  background: #fff;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  max-width: 840px;
-  border: 5px solid;
-  border-image: linear-gradient(45deg,#ff512f,#f09819) 1;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease;
-}
-
-.article-box:hover {
-  transform: translateY(-4px);
-}
-
-.article-md {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 1rem 1.5rem;
-}
-
 /* ==========================================================================
    CONTACT SECTION
    ========================================================================== */
@@ -334,33 +273,6 @@ main {
 #contact h2 {
   text-align: center;
   margin-bottom: 1rem;
-}
-
-.contact-list {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  max-width: 800px;
-  display: grid;
-  gap: 1rem;
-}
-
-.contact-list a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #2c2c2c;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contact-list a:hover {
-  color: #fff;
-}
-
-.contact-icon {
-  width: 26px;
-  height: 26px;
 }
 
 /* ==========================================================================
@@ -495,9 +407,7 @@ footer p {
   }
 
   /* sections collapse to normal flow */
-  #articles,
-  #contact,
-  #llb1 {
+  #articles, #contact, #llb1 {
     border-radius: 1.2rem;
     clip-path: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
