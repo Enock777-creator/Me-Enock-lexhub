@@ -1,5 +1,5 @@
-/* ==========================================================================
-   VARIABLES & THEMES
+/* ==========================================================================  
+   VARIABLES & THEMES  
    ========================================================================== */
 :root {
   --bg: burlywood;
@@ -29,8 +29,8 @@
   --footer-text: #ccc;
 }
 
-/* ==========================================================================
-   RESET & BASE
+/* ==========================================================================  
+   RESET & BASE  
    ========================================================================== */
 html, body {
   margin: 0;
@@ -47,12 +47,12 @@ html, body {
   box-sizing: border-box;
 }
 
-/* ==========================================================================
-   SIDEBAR (dropdown under hamburger)
+/* ==========================================================================  
+   SIDEBAR (dropdown under hamburger)  
    ========================================================================== */
 #sidebar {
   position: absolute;
-  top: var(--sidebar-top-offset);
+  top: calc(var(--sidebar-top-offset) + 1cm);
   left: var(--sidebar-top-offset);
   width: var(--sidebar-width);
   background: var(--accent);
@@ -63,8 +63,9 @@ html, body {
   flex-direction: column;
   gap: 0.75rem;
   z-index: 2000;
-  max-height: calc(100vh - (var(--sidebar-top-offset) * 2));
+  max-height: calc(100vh - (var(--sidebar-top-offset) + 1cm) * 2);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #sidebar.active {
@@ -103,11 +104,15 @@ html, body {
     left: 0.5rem;
     top: var(--sidebar-top-offset);
     width: calc(100% - 1rem);
+    transform: translateX(-100%);
+  }
+  #sidebar.active {
+    transform: translateX(0);
   }
 }
 
-/* ==========================================================================
-   TOGGLE BUTTONS
+/* ==========================================================================  
+   TOGGLE BUTTONS  
    ========================================================================== */
 #sidebarToggle {
   position: absolute;
@@ -155,28 +160,25 @@ html, body {
   }
 }
 
-/* ==========================================================================
-   HEADER LAYOUT
+/* ==========================================================================  
+   HEADER LAYOUT  
    ========================================================================== */
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: var(--accent);
-  /* reduced bottom padding so photo flows in-normal */
-  padding: 1.5rem 1rem 2.5rem;
+  padding: 1.5rem 1rem 10rem;
   overflow: visible;
   text-align: left;
 }
 
-/* ─── 1cm BELOW THE ☰ BUTTON ───────────────────────────────── */
 .header-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 1.1rem;
-  /* was 2.5rem; now exactly 1.5rem (top offset) + 1cm */
   margin-top: calc(var(--sidebar-header-padding) + 1cm);
   position: relative;
   z-index: 2;
@@ -185,15 +187,15 @@ header {
 .photo-container {
   display: flex;
   justify-content: center;
-  /* tighten up above the static photo */
   margin-top: 1rem;
 }
 
-/* ─── STATIC PHOTO (no overlap) ─────────────────────────────── */
 .header-photo-sq {
-  position: static;
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: block;
-  margin: 1rem auto 0;
   width: 200px;
   height: 220px;
   object-fit: cover;
@@ -205,8 +207,8 @@ header {
   z-index: 1;
 }
 
-/* ==========================================================================
-   MAIN & MARGIN SHIFT
+/* ==========================================================================  
+   MAIN & MARGIN SHIFT  
    ========================================================================== */
 main {
   margin: 0;
@@ -224,8 +226,8 @@ main {
   }
 }
 
-/* ==========================================================================
-   ARTICLES SECTION
+/* ==========================================================================  
+   ARTICLES SECTION  
    ========================================================================== */
 #articles {
   position: relative;
@@ -235,7 +237,7 @@ main {
   transform: translateX(-50%);
   margin: 0;
   padding: 2.5rem 4rem;
-  background: linear-gradient(135deg,#f5e9da,#deb887 80%);
+  background: linear-gradient(135deg, #f5e9da, #deb887 80%);
   color: #2c2c2c;
   border-radius: 2rem;
   overflow: hidden;
@@ -251,8 +253,8 @@ main {
   padding-bottom: 0.5rem;
 }
 
-/* ==========================================================================
-   CONTACT SECTION
+/* ==========================================================================  
+   CONTACT SECTION  
    ========================================================================== */
 #contact {
   position: relative;
@@ -262,7 +264,7 @@ main {
   transform: translateX(-50%);
   margin: 0;
   padding: 2.5rem 4rem;
-  background: linear-gradient(120deg,#deb887 60%,#fffaf0 100%);
+  background: linear-gradient(120deg, #deb887 60%, #fffaf0 100%);
   color: #2c2c2c;
   border-radius: 0 0 2.5rem 2.5rem;
   overflow: hidden;
@@ -275,11 +277,11 @@ main {
   margin-bottom: 1rem;
 }
 
-/* ==========================================================================
-   LLB1 SECTION (full-width silver & centered PDF list)
+/* ==========================================================================  
+   LLB1 SECTION (full-width silver & centered PDF list)  
    ========================================================================== */
 #llb1 {
-  background: linear-gradient(135deg,silver 80%,#f5e9da 100%);
+  background: linear-gradient(135deg, silver 80%, #f5e9da 100%);
   clip-path: polygon(
     0 30px, 30px 0, 100% 0, 100% calc(100% - 30px),
     calc(100% - 30px) 100%, 0 100%
@@ -287,7 +289,6 @@ main {
   border-radius: 3rem 0 3rem 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   overflow: hidden;
-
   position: relative;
   left: 50%;
   width: 100vw;
@@ -328,8 +329,8 @@ main {
   width: 100%;
 }
 
-/* ==========================================================================
-   FOOTER (edge-to-edge)
+/* ==========================================================================  
+   FOOTER (edge-to-edge)  
    ========================================================================== */
 footer {
   position: relative;
@@ -347,8 +348,8 @@ footer p {
   margin: 0.5rem 0 0;
 }
 
-/* ==========================================================================
-   BACK-TO-TOP BUTTON
+/* ==========================================================================  
+   BACK-TO-TOP BUTTON  
    ========================================================================== */
 #topBtn {
   position: fixed;
@@ -382,8 +383,8 @@ footer p {
   background: var(--link-hover);
 }
 
-/* ==========================================================================
-   RESPONSIVE (phones)
+/* ==========================================================================  
+   RESPONSIVE (phones)  
    ========================================================================== */
 @media (max-width: 700px) {
   header {
@@ -405,9 +406,9 @@ footer p {
   .header-stack {
     margin-top: 1.1rem;
   }
-
-  /* sections collapse to normal flow */
-  #articles, #contact, #llb1 {
+  #articles,
+  #contact,
+  #llb1 {
     border-radius: 1.2rem;
     clip-path: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -418,52 +419,4 @@ footer p {
     transform: none;
     padding: 2rem 1rem;
   }
-
-  /* Sidebar off-canvas on mobile */
-  #sidebar {
-    width: var(--sidebar-mobile-width);
-    transform: translateX(-100%);
-  }
-  #sidebar.active {
-    transform: translateX(0);
-  }
 }
-
-/* ──────────────────────────────────────────────
-   1) Header: 1 cm below the ☰ button
-   ────────────────────────────────────────────── */
-.header-stack {
-  /* var(--sidebar-header-padding) is 1.5rem = the button’s top offset */
-  margin-top: calc(var(--sidebar-header-padding) + 1cm) !important;
-}
-
-/* ──────────────────────────────────────────────
-   2) Portrait flows in normal document flow
-   ────────────────────────────────────────────── */
-.header-photo-sq {
-  position: static         !important;
-  display: block           !important;
-  margin: 1rem auto 0      !important;
-  transform: none          !important;
-  left: auto               !important;
-  bottom: auto             !important;
-}
-
-/* ──────────────────────────────────────────────
-   3) Sidebar dropdown box: internal scroll only
-   ────────────────────────────────────────────── */
-#sidebar {
-  top: calc(var(--sidebar-top-offset) + 1rem) !important;
-  left: var(--sidebar-top-offset) !important;
-  display: none          !important;  /* stays hidden until .active */
-  max-height: calc(100vh - (var(--sidebar-top-offset) * 2)) !important; 
-  overflow-y: auto       !important;
-  overflow-x: hidden     !important;
-  z-index: 9999          !important;
-}
-
-#sidebar.active {
-  display: flex         !important;
-}
-
-
