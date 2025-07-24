@@ -1,3 +1,6 @@
+/* ==========================================================================
+   VARIABLES & THEMES
+   ========================================================================== */
 :root {
   --bg: burlywood;
   --text: #333;
@@ -14,6 +17,7 @@
   --sidebar-top-offset: 1.25rem;
   --sidebar-header-padding: 1.5rem;
 }
+
 [data-theme="dark"] {
   --bg: #1e1e1e;
   --text: #ccc;
@@ -24,6 +28,10 @@
   --footer-bg: #000;
   --footer-text: #ccc;
 }
+
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
 html, body {
   margin: 0;
   padding: 0;
@@ -32,30 +40,37 @@ html, body {
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* ──────────────────────────────────────────────
-   SIDEBAR (dropdown under hamburger) – FIXED
-   ────────────────────────────────────────────── */
+/* ==========================================================================
+   SIDEBAR (dropdown under hamburger)
+   ========================================================================== */
 #sidebar {
   position: absolute;
-  top: 4.5rem;               /* just below your header buttons */
-  left: 1rem;                /* aligns under the ☰ button */
+  top: var(--sidebar-top-offset);
+  left: var(--sidebar-top-offset);
+  width: var(--sidebar-width);
   background: var(--accent);
-  padding: 1rem 1.25rem;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  padding: var(--sidebar-header-padding) 1.25rem;
   border-radius: 0.5rem;
-  display: none;             /* hidden by default */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  display: none;
   flex-direction: column;
   gap: 0.75rem;
   z-index: 2000;
+
+  /* keep it fully in view */
+  max-height: calc(100vh - (var(--sidebar-top-offset) * 2));
+  overflow-y: auto;
 }
 
 #sidebar.active {
-  display: flex;             /* shows the full list on click */
+  display: flex;
 }
 
 #sidebar a {
@@ -70,7 +85,7 @@ html, body {
   color: var(--link-hover);
 }
 
-/* close button always visible inside the panel */
+/* close button inside the panel */
 #closeSidebar {
   position: absolute;
   top: 0.5rem;
@@ -83,21 +98,21 @@ html, body {
   border-radius: 50%;
   font-size: 1rem;
   cursor: pointer;
+  z-index: 2001;
 }
 
-/* ──────────────────────────────────────────────
-   MOBILE RESET
-   ────────────────────────────────────────────── */
+/* MOBILE RESET */
 @media (max-width: 700px) {
   #sidebar {
     left: 0.5rem;
-    top: 4rem;
+    top: var(--sidebar-top-offset);
     width: calc(100% - 1rem);
   }
 }
 
-
-/* Hamburger and dark mode always top corners, never overlapping */
+/* ==========================================================================
+   TOGGLE BUTTONS
+   ========================================================================== */
 #sidebarToggle {
   position: absolute;
   top: 1.5rem;
@@ -114,8 +129,9 @@ html, body {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 3010;
+  z-index: 3000;
 }
+
 #darkModeToggle {
   position: absolute;
   top: 1.5rem;
@@ -125,8 +141,9 @@ html, body {
   font-size: 1.5rem;
   color: var(--btn-text);
   cursor: pointer;
-  z-index: 3010;
+  z-index: 3000;
 }
+
 @media (max-width: 700px) {
   #sidebarToggle {
     top: 1rem;
@@ -141,35 +158,49 @@ html, body {
     font-size: 1.25rem;
   }
 }
-/* HEADER LAYOUT */
+
+/* ==========================================================================
+   HEADER LAYOUT
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--accent);
+  padding: 1.5rem 1rem 10rem; /* bottom space for photo */
+  overflow: visible;
+  text-align: left;
+}
+
 .header-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   gap: 1.1rem;
   margin-top: 2.5rem;
   position: relative;
+  z-index: 2;
 }
+
 .logo {
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  margin-bottom: 0.5rem;
   object-fit: cover;
 }
+
 .logo-text {
   font-size: 2.5rem;
   font-weight: bold;
   color: #2c2c2c;
-  margin-bottom: 0.7rem;
 }
+
 .header-buttons {
   display: flex;
   gap: 2rem;
-  margin-bottom: 1.5rem;
   justify-content: center;
 }
+
 .btn {
   padding: 0.5rem 1.2rem;
   background: var(--btn-bg);
@@ -180,19 +211,23 @@ html, body {
   font-size: 1.1rem;
   transition: background 0.18s;
 }
+
 .btn.outline {
   background: transparent;
   border: 2px solid var(--btn-bg);
 }
+
 .btn:hover {
   background: var(--link-hover);
   color: #fff;
 }
+
 .photo-container {
   display: flex;
   justify-content: center;
   margin-top: 2.2rem;
 }
+
 .header-photo-sq {
   width: 200px;
   height: 220px;
@@ -202,86 +237,51 @@ html, body {
   border: 5px solid burlywood;
   box-shadow: 0 4px 18px rgba(0,0,0,0.17);
   background: #fff;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }
-/* ======== REST OF PAGE: ARTICLES, MAIN, ETC ======== */
+
+/* ==========================================================================
+   MAIN & MARGIN SHIFT
+   ========================================================================== */
 main {
   margin: 0;
   padding: 0;
   transition: margin-left 0.3s ease;
 }
+
 #sidebar.active ~ main {
   margin-left: var(--sidebar-width);
 }
+
 @media (max-width: 700px) {
   #sidebar.active ~ main {
     margin-left: 0;
   }
 }
+
+/* ==========================================================================
+   ARTICLES SECTION
+   ========================================================================== */
 #articles {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  max-width: 100vw;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 2.5rem 4rem;
+  background: linear-gradient(135deg,#f5e9da,#deb887 80%);
+  color: #2c2c2c;
   border-radius: 2rem;
   overflow: hidden;
-  background: linear-gradient(135deg, #f5e9da, #deb887 80%);
-  box-shadow: 0 10px 32px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
-  position: relative;
-  left: 50%;
-  width: 100vw;
-  max-width: 100vw;
-  transform: translateX(-50%);
-  margin: 0;
-  padding: 2.5rem 4rem;
-  color: #2c2c2c;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-#contact {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(120deg, #deb887 60%, #fffaf0 100%);
-  border-radius: 0 0 2.5rem 2.5rem;
-  clip-path: ellipse(85% 100% at 50% 0%);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-  left: 50%;
-  width: 100vw;
-  max-width: 100vw;
-  transform: translateX(-50%);
-  margin: 0;
-  padding: 2.5rem 4rem;
-  color: #2c2c2c;
-}
-@media (max-width: 700px) {
-  #articles, #contact, #llb1 {
-    border-radius: 1.2rem;
-    clip-path: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    background: var(--accent);
-    left: 0;
-    width: 100%;
-    max-width: 100%;
-    transform: none;
-    padding: 2rem 1rem;
-  }
-}
-#llb1 {
-  background: linear-gradient(135deg, silver 80%, #f5e9da 100%);
-  clip-path: polygon(
-    0 30px, 30px 0, 100% 0, 100% calc(100% - 30px),
-    calc(100% - 30px) 100%, 0 100%
-  );
-  box-shadow: 0 6px 18px rgba(0,0,0,0.09);
-  overflow: hidden;
-  position: relative;
-  left: 50%;
-  width: 100vw;
-  max-width: 100vw;
-  transform: translateX(-50%);
-  margin: 0;
-  padding: 2.5rem 4rem;
-  color: #2c2c2c;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  border-radius: 3rem 0 3rem 0;
 }
-#articles h2,
-#llb1 h2,
-#contact h2 {
+
+#articles h2 {
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 1.25rem;
@@ -289,24 +289,7 @@ main {
   border-bottom: 2px solid burlywood;
   padding-bottom: 0.5rem;
 }
-nav {
-  background: #deb887;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 2rem;
-  flex-wrap: wrap;
-}
-.nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-}
-.nav-menu a {
-  text-decoration: none;
-  color: #2c2c2c;
-  font-weight: bold;
-}
+
 .article-box {
   background: #fff;
   padding: 1.5rem;
@@ -318,12 +301,41 @@ nav {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
 }
-.article-box:hover { transform: translateY(-4px); }
+
+.article-box:hover {
+  transform: translateY(-4px);
+}
+
 .article-md {
   max-width: 700px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
+
+/* ==========================================================================
+   CONTACT SECTION
+   ========================================================================== */
+#contact {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  max-width: 100vw;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 2.5rem 4rem;
+  background: linear-gradient(120deg,#deb887 60%,#fffaf0 100%);
+  color: #2c2c2c;
+  border-radius: 0 0 2.5rem 2.5rem;
+  overflow: hidden;
+  clip-path: ellipse(85% 100% at 50% 0%);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+#contact h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 .contact-list {
   list-style: none;
   margin: 0 auto;
@@ -332,6 +344,7 @@ nav {
   display: grid;
   gap: 1rem;
 }
+
 .contact-list a {
   display: inline-flex;
   align-items: center;
@@ -340,48 +353,72 @@ nav {
   text-decoration: none;
   font-weight: 500;
 }
-.contact-list a:hover { color: #fff; }
+
+.contact-list a:hover {
+  color: #fff;
+}
+
 .contact-icon {
   width: 26px;
   height: 26px;
 }
-.pdf-list {
-  list-style: none;
-  padding-left: 0;
+
+/* ==========================================================================
+   LLB1 SECTION (full-width silver & centered PDF list)
+   ========================================================================== */
+#llb1 {
+  background: linear-gradient(135deg,silver 80%,#f5e9da 100%);
+  clip-path: polygon(
+    0 30px, 30px 0, 100% 0, 100% calc(100% - 30px),
+    calc(100% - 30px) 100%, 0 100%
+  );
+  border-radius: 3rem 0 3rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  max-width: 100vw;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 2.5rem 4rem;
+  color: #2c2c2c;
 }
-.pdf-list li { margin: 0.75rem 0; }
-.pdf-list a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: #f8f8f8;
-  border-radius: 6px;
-  text-decoration: none;
-  color: #004b8d;
-  transition: background 0.2s ease;
+
+#llb1 h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.25rem;
+  color: #222;
+  border-bottom: 2px solid burlywood;
+  padding-bottom: 0.5rem;
 }
-.pdf-list a:hover {
-  background: var(--accent);
-  color: #fff;
-}
+
 #llb1 ul.pdf-list {
   margin: 0 auto;
-  padding: 1.5rem;
+  max-width: 600px;
+  padding: 1.5rem 0 2rem;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   align-items: center;
   text-align: center;
 }
+
 #llb1 ul.pdf-list li {
   width: 100%;
   max-width: 400px;
-  margin: 1rem 0;
 }
+
 #llb1 ul.pdf-list a {
   display: block;
   width: 100%;
 }
+
+/* ==========================================================================
+   FOOTER (edge-to-edge)
+   ========================================================================== */
 footer {
   position: relative;
   left: 0;
@@ -393,6 +430,14 @@ footer {
   text-align: center;
   box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
 }
+
+footer p {
+  margin: 0.5rem 0 0;
+}
+
+/* ==========================================================================
+   BACK-TO-TOP BUTTON
+   ========================================================================== */
 #topBtn {
   position: fixed;
   bottom: 30px;
@@ -408,6 +453,7 @@ footer {
   font-size: 20px;
   --scroll-angle: 0deg;
 }
+
 #topBtn::before {
   content: '';
   position: absolute;
@@ -419,14 +465,56 @@ footer {
   background: conic-gradient(var(--accent) var(--scroll-angle), var(--scroll-bg) 0deg);
   z-index: -1;
 }
+
 #topBtn:hover {
   background: var(--link-hover);
 }
+
+/* ==========================================================================
+   RESPONSIVE (phones)
+   ========================================================================== */
 @media (max-width: 700px) {
-  header { padding-bottom: 2.5rem; min-height: 320px; }
-  .logo { width: 80px; height: 80px; }
-  .logo-text { font-size: 1.5rem; }
-  .header-photo-sq { width: 110px; height: 130px; border-radius: 14px;}
-  .photo-container { margin-top: 1.1rem; }
-  .header-stack { margin-top: 1.1rem; }
+  header {
+    padding-bottom: 8rem;
+  }
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+  .logo-text {
+    font-size: 1.5rem;
+  }
+  .header-photo-sq {
+    width: 110px;
+    height: 130px;
+    border-radius: 14px;
+  }
+  .photo-container,
+  .header-stack {
+    margin-top: 1.1rem;
+  }
+
+  /* sections collapse to normal flow */
+  #articles,
+  #contact,
+  #llb1 {
+    border-radius: 1.2rem;
+    clip-path: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: var(--accent);
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    transform: none;
+    padding: 2rem 1rem;
+  }
+
+  /* Sidebar off-canvas on mobile */
+  #sidebar {
+    width: var(--sidebar-mobile-width);
+    transform: translateX(-100%);
+  }
+  #sidebar.active {
+    transform: translateX(0);
+  }
 }
