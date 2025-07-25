@@ -262,6 +262,38 @@ document.getElementById('site-search').addEventListener('input', function() {
   });
 });
 </script>
+
+<script>
+document.getElementById('site-search').addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+
+  // Search articles and study materials
+  let firstVisible = null;
+
+  document.querySelectorAll('.article-box, .article-md').forEach(section => {
+    if (section.textContent.toLowerCase().includes(query)) {
+      section.style.display = '';
+      if (!firstVisible) firstVisible = section;
+    } else {
+      section.style.display = 'none';
+    }
+  });
+
+  document.querySelectorAll('.pdf-list li').forEach(li => {
+    if (li.textContent.toLowerCase().includes(query)) {
+      li.style.display = '';
+      if (!firstVisible) firstVisible = li;
+    } else {
+      li.style.display = 'none';
+    }
+  });
+
+  // Scroll to the first visible result if it exists
+  if (firstVisible) {
+    firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+</script>
   
 </body>
 </html>
