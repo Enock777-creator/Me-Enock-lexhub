@@ -233,5 +233,35 @@
     });
     sidebar.addEventListener("click", function(e) { e.stopPropagation(); });
   </script>
+
+<script>
+document.getElementById('site-search-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+});
+
+document.getElementById('site-search').addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+
+  // Search articles
+  document.querySelectorAll('.article-box, .article-md').forEach(section => {
+    // For each section, look for a match in text content
+    if (section.textContent.toLowerCase().includes(query)) {
+      section.style.display = '';
+    } else {
+      section.style.display = 'none';
+    }
+  });
+
+  // Search PDF lists
+  document.querySelectorAll('.pdf-list li').forEach(li => {
+    if (li.textContent.toLowerCase().includes(query)) {
+      li.style.display = '';
+    } else {
+      li.style.display = 'none';
+    }
+  });
+});
+</script>
+  
 </body>
 </html>
