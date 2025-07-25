@@ -240,45 +240,69 @@
   </script>
 
   <!-- Search, Scroll, and No Results Logic -->
-  <script>
-    document.getElementById('site-search-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-    });
+ <script>
+document.getElementById('site-search-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const query = document.getElementById('site-search').value.toLowerCase();
+  let firstVisible = null;
+  let anyVisible = false;
 
-    document.getElementById('site-search').addEventListener('input', function() {
-      const query = this.value.toLowerCase();
-      let firstVisible = null;
-      let anyVisible = false;
+  // Filter articles and materials
+  document.querySelectorAll('.article-box, .article-md').forEach(section => {
+    if (section.textContent.toLowerCase().includes(query)) {
+      section.style.display = '';
+      if (!firstVisible) firstVisible = section;
+      anyVisible = true;
+    } else {
+      section.style.display = 'none';
+    }
+  });
 
-      // Filter articles and materials
-      document.querySelectorAll('.article-box, .article-md').forEach(section => {
-        if (section.textContent.toLowerCase().includes(query)) {
-          section.style.display = '';
-          if (!firstVisible) firstVisible = section;
-          anyVisible = true;
-        } else {
-          section.style.display = 'none';
-        }
-      });
+  document.querySelectorAll('.pdf-list li').forEach(li => {
+    if (li.textContent.toLowerCase().includes(query)) {
+      li.style.display = '';
+      if (!firstVisible) firstVisible = li;
+      anyVisible = true;
+    } else {
+      li.style.display = 'none';
+    }
+  });
 
-      document.querySelectorAll('.pdf-list li').forEach(li => {
-        if (li.textContent.toLowerCase().includes(query)) {
-          li.style.display = '';
-          if (!firstVisible) firstVisible = li;
-          anyVisible = true;
-        } else {
-          li.style.display = 'none';
-        }
-      });
+  // Show or hide the "No results" message
+  document.getElementById('no-results').style.display = anyVisible ? 'none' : '';
 
-      // Show or hide the "No results" message
-      document.getElementById('no-results').style.display = anyVisible ? 'none' : '';
+  // Only scroll now, on submit!
+  if (firstVisible) {
+    firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
 
-      // Scroll to the first visible result if any
-      if (firstVisible) {
-        firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-  </script>
+document.getElementById('site-search').addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+  let anyVisible = false;
+
+  // Filter articles and materials
+  document.querySelectorAll('.article-box, .article-md').forEach(section => {
+    if (section.textContent.toLowerCase().includes(query)) {
+      section.style.display = '';
+      anyVisible = true;
+    } else {
+      section.style.display = 'none';
+    }
+  });
+
+  document.querySelectorAll('.pdf-list li').forEach(li => {
+    if (li.textContent.toLowerCase().includes(query)) {
+      li.style.display = '';
+      anyVisible = true;
+    } else {
+      li.style.display = 'none';
+    }
+  });
+
+  // Show or hide the "No results" message
+  document.getElementById('no-results').style.display = anyVisible ? 'none' : '';
+});
+</script>
 </body>
 </html>
