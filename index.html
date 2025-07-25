@@ -26,14 +26,15 @@
     <div class="header-stack">
       <img src="assets/logo-circle.png" alt="LexHub Logo" class="logo" />
       <h1 class="logo-text">Welcome to LexHub!</h1>
+      <!-- Search Bar -->
       <form id="site-search-form" autocomplete="off">
-  <input type="text" id="site-search" placeholder="Search articles or study materials..." />
-  <button type="submit"><span aria-hidden="true">🔍</span><span class="sr-only">Search</span></button>
-</form>
-
-    <div id="no-results" style="display:none; text-align:center; margin:2rem 0; font-weight:bold; color:#c00;">
-  No results found.
-</div>  
+        <input type="text" id="site-search" placeholder="Search articles or study materials..." />
+        <button type="submit"><span aria-hidden="true">🔍</span><span class="sr-only">Search</span></button>
+      </form>
+      <!-- No Results Message -->
+      <div id="no-results" style="display:none; text-align:center; margin:2rem 0; font-weight:bold; color:#c00;">
+        No results found.
+      </div>
       <div class="header-buttons">
         <a href="#contact" class="btn">Get in Touch</a>
         <a href="#articles" class="btn outline">Read Articles</a>
@@ -73,55 +74,55 @@
     </section>
 
     <section id="llb2" class="article-md">
-  <h2>📚 LLB 2 Study Materials</h2>
-  <ul class="pdf-list">
-    <li>
-      <a href="pdfs/OFJC Syllabus.pdf" target="_blank">
-        ⚖️ OFJC Syllabus
-      </a>
-    </li>
-    <li>
-      <a href="pdfs/UR Specific Crimes Template 2022.pdf" target="_blank">
-        ⚖️ UR Specific Crimes Template 2022
-      </a>
-    </li>
-    <li>
-      <a href="pdfs/Tort Law presentation 2022.pptx" target="_blank">
-        ⚖️ Tort Law presentation 2022 (PPTX)
-      </a>
-    </li>
-    <li>
-      <a href="pdfs/Law of evidence - Syllabus (2019-2020).pdf" target="_blank">
-        ⚖️ Law of Evidence - Syllabus (2019-2020)
-      </a>
-    </li>
-    <li>
-      <a href="pdfs/Psychology and Law 2023.pdf" target="_blank">
-        ⚖️ Psychology and Law 2023
-      </a>
-    </li>
-    <li>
-      <a href="pdfs/Tort Law presentation 2022.pdf" target="_blank">
-        ⚖️ Tort Law presentation 2022 (PDF)
-      </a>
-    </li>
-    <li>
-      <a href="pdfs/sociology of law- LLB II 2024 UPDATED.pdf" target="_blank">
-        ⚖️ Sociology of Law - LLB II 2024 UPDATED
-      </a>
-    </li>
-    <li>
-      <a href="pdfs/SLIDES OF CRIMINOLOGY.pdf" target="_blank">
-        ⚖️ Slides of Criminology
-      </a>
-    </li>
-    <li>
-      <a href="pdfs/General Principles of Criminal Law Slides 2023 -2024.pdf" target="_blank">
-        ⚖️ General Principles of Criminal Law Slides 2023-2024
-      </a>
-    </li>
-  </ul>
-</section>
+      <h2>📚 LLB 2 Study Materials</h2>
+      <ul class="pdf-list">
+        <li>
+          <a href="pdfs/OFJC Syllabus.pdf" target="_blank">
+            ⚖️ OFJC Syllabus
+          </a>
+        </li>
+        <li>
+          <a href="pdfs/UR Specific Crimes Template 2022.pdf" target="_blank">
+            ⚖️ UR Specific Crimes Template 2022
+          </a>
+        </li>
+        <li>
+          <a href="pdfs/Tort Law presentation 2022.pptx" target="_blank">
+            ⚖️ Tort Law presentation 2022 (PPTX)
+          </a>
+        </li>
+        <li>
+          <a href="pdfs/Law of evidence - Syllabus (2019-2020).pdf" target="_blank">
+            ⚖️ Law of Evidence - Syllabus (2019-2020)
+          </a>
+        </li>
+        <li>
+          <a href="pdfs/Psychology and Law 2023.pdf" target="_blank">
+            ⚖️ Psychology and Law 2023
+          </a>
+        </li>
+        <li>
+          <a href="pdfs/Tort Law presentation 2022.pdf" target="_blank">
+            ⚖️ Tort Law presentation 2022 (PDF)
+          </a>
+        </li>
+        <li>
+          <a href="pdfs/sociology of law- LLB II 2024 UPDATED.pdf" target="_blank">
+            ⚖️ Sociology of Law - LLB II 2024 UPDATED
+          </a>
+        </li>
+        <li>
+          <a href="pdfs/SLIDES OF CRIMINOLOGY.pdf" target="_blank">
+            ⚖️ Slides of Criminology
+          </a>
+        </li>
+        <li>
+          <a href="pdfs/General Principles of Criminal Law Slides 2023 -2024.pdf" target="_blank">
+            ⚖️ General Principles of Criminal Law Slides 2023-2024
+          </a>
+        </li>
+      </ul>
+    </section>
     
     <!-- Contact Bar (edge-to-edge) -->
     <section id="contact">
@@ -212,7 +213,7 @@
     );
   </script>
 
-  <!-- Sidebar Logic (no header offset JS needed!) -->
+  <!-- Sidebar Logic -->
   <script>
     const sidebar = document.getElementById("sidebar");
     const toggleBtn = document.getElementById("sidebarToggle");
@@ -238,66 +239,46 @@
     sidebar.addEventListener("click", function(e) { e.stopPropagation(); });
   </script>
 
-<script>
-document.getElementById('site-search-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-});
+  <!-- Search, Scroll, and No Results Logic -->
+  <script>
+    document.getElementById('site-search-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+    });
 
-document.getElementById('site-search').addEventListener('input', function() {
-  const query = this.value.toLowerCase();
+    document.getElementById('site-search').addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      let firstVisible = null;
+      let anyVisible = false;
 
-  // Search articles
-  document.querySelectorAll('.article-box, .article-md').forEach(section => {
-    // For each section, look for a match in text content
-    if (section.textContent.toLowerCase().includes(query)) {
-      section.style.display = '';
-    } else {
-      section.style.display = 'none';
-    }
-  });
+      // Filter articles and materials
+      document.querySelectorAll('.article-box, .article-md').forEach(section => {
+        if (section.textContent.toLowerCase().includes(query)) {
+          section.style.display = '';
+          if (!firstVisible) firstVisible = section;
+          anyVisible = true;
+        } else {
+          section.style.display = 'none';
+        }
+      });
 
-  // Search PDF lists
-  document.querySelectorAll('.pdf-list li').forEach(li => {
-    if (li.textContent.toLowerCase().includes(query)) {
-      li.style.display = '';
-    } else {
-      li.style.display = 'none';
-    }
-  });
-});
-</script>
+      document.querySelectorAll('.pdf-list li').forEach(li => {
+        if (li.textContent.toLowerCase().includes(query)) {
+          li.style.display = '';
+          if (!firstVisible) firstVisible = li;
+          anyVisible = true;
+        } else {
+          li.style.display = 'none';
+        }
+      });
 
-<script>
-document.getElementById('site-search').addEventListener('input', function() {
-  const query = this.value.toLowerCase();
+      // Show or hide the "No results" message
+      document.getElementById('no-results').style.display = anyVisible ? 'none' : '';
 
-  // Search articles and study materials
-  let firstVisible = null;
-
-  document.querySelectorAll('.article-box, .article-md').forEach(section => {
-    if (section.textContent.toLowerCase().includes(query)) {
-      section.style.display = '';
-      if (!firstVisible) firstVisible = section;
-    } else {
-      section.style.display = 'none';
-    }
-  });
-
-  document.querySelectorAll('.pdf-list li').forEach(li => {
-    if (li.textContent.toLowerCase().includes(query)) {
-      li.style.display = '';
-      if (!firstVisible) firstVisible = li;
-    } else {
-      li.style.display = 'none';
-    }
-  });
-
-  // Scroll to the first visible result if it exists
-  if (firstVisible) {
-    firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-});
-</script>
-  
+      // Scroll to the first visible result if any
+      if (firstVisible) {
+        firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
 </body>
 </html>
