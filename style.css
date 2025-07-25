@@ -39,7 +39,40 @@ html, body {
   box-sizing: border-box;
 }
 
-/* --- SIDEBAR: CORRECTED, always from top left, overlays content --- */
+/* ────────────── HEADER WITH BACKGROUND IMAGE ────────────── */
+header {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  min-height: 420px;
+  background: url('images/header-bg.jpg') center center/cover no-repeat;
+}
+@media (max-width: 700px) {
+  header {
+    min-height: 260px;
+    background-position: center top;
+  }
+}
+
+/* Optional: overlay for readability (can comment out if not needed) */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(245, 222, 179, 0.38); /* burlywood overlay, tweak opacity if needed */
+  z-index: 0;
+}
+.header-stack,
+#sidebarToggle,
+#darkModeToggle {
+  position: relative;
+  z-index: 1;
+}
+
+/* ──────────────────────────────────────────────
+   SIDEBAR (dropdown under hamburger) – FIXED
+   ────────────────────────────────────────────── */
 #sidebar {
   position: fixed;
   top: 0;
@@ -58,7 +91,6 @@ html, body {
   opacity: 0;
   transform: translateX(-100%);
 }
-
 #sidebar.active {
   display: flex;
   opacity: 1;
@@ -76,13 +108,11 @@ html, body {
   font-size: 1.1rem;
   transition: color 0.18s, background 0.18s;
 }
-
 #sidebar a:hover {
   color: var(--link-hover);
   background: rgba(0,0,0,0.03);
   border-radius: .5rem;
 }
-
 #closeSidebar {
   position: absolute;
   top: 1.2rem;
@@ -100,7 +130,6 @@ html, body {
   align-items: center;
   justify-content: center;
 }
-
 @media (max-width: 700px) {
   #sidebar {
     width: 100vw;
@@ -125,7 +154,7 @@ html, body {
   }
 }
 
-/* --- Hamburger and dark mode always top corners, never overlapping --- */
+/* Hamburger and dark mode always top corners, never overlapping */
 #sidebarToggle {
   position: absolute;
   top: 1.5rem;
@@ -170,7 +199,7 @@ html, body {
   }
 }
 
-/* --- HEADER LAYOUT --- */
+/* HEADER LAYOUT */
 .header-stack {
   display: flex;
   flex-direction: column;
@@ -233,20 +262,23 @@ html, body {
   background: #fff;
 }
 
-/* --- MAIN and ARTICLES ETC --- */
+/* ======== REST OF PAGE: ARTICLES, MAIN, ETC ======== */
 main {
   margin: 0;
   padding: 0;
   transition: margin-left 0.3s ease;
 }
+
 #sidebar.active ~ main {
   margin-left: var(--sidebar-width);
 }
+
 @media (max-width: 700px) {
   #sidebar.active ~ main {
     margin-left: 0;
   }
 }
+
 #articles {
   border-radius: 2rem;
   overflow: hidden;
@@ -262,6 +294,7 @@ main {
   color: #2c2c2c;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
+
 #contact {
   position: relative;
   overflow: hidden;
@@ -277,6 +310,7 @@ main {
   padding: 2.5rem 4rem;
   color: #2c2c2c;
 }
+
 @media (max-width: 700px) {
   #articles, #contact, #llb1 {
     border-radius: 1.2rem;
@@ -290,6 +324,7 @@ main {
     padding: 2rem 1rem;
   }
 }
+
 #llb1 {
   background: linear-gradient(135deg, silver 80%, #f5e9da 100%);
   clip-path: polygon(
@@ -309,6 +344,7 @@ main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   border-radius: 3rem 0 3rem 0;
 }
+
 #articles h2,
 #llb1 h2,
 #contact h2 {
@@ -319,6 +355,7 @@ main {
   border-bottom: 2px solid burlywood;
   padding-bottom: 0.5rem;
 }
+
 nav {
   background: #deb887;
   display: flex;
@@ -327,16 +364,19 @@ nav {
   padding: 0.75rem 2rem;
   flex-wrap: wrap;
 }
+
 .nav-menu {
   list-style: none;
   display: flex;
   gap: 1rem;
 }
+
 .nav-menu a {
   text-decoration: none;
   color: #2c2c2c;
   font-weight: bold;
 }
+
 .article-box {
   background: #fff;
   padding: 1.5rem;
@@ -348,14 +388,17 @@ nav {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
 }
+
 .article-box:hover {
   transform: translateY(-4px);
 }
+
 .article-md {
   max-width: 700px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
+
 .contact-list {
   list-style: none;
   margin: 0 auto;
@@ -364,6 +407,7 @@ nav {
   display: grid;
   gap: 1rem;
 }
+
 .contact-list a {
   display: inline-flex;
   align-items: center;
@@ -372,20 +416,25 @@ nav {
   text-decoration: none;
   font-weight: 500;
 }
+
 .contact-list a:hover {
   color: #fff;
 }
+
 .contact-icon {
   width: 26px;
   height: 26px;
 }
+
 .pdf-list {
   list-style: none;
   padding-left: 0;
 }
+
 .pdf-list li {
   margin: 0.75rem 0;
 }
+
 .pdf-list a {
   display: inline-flex;
   align-items: center;
@@ -397,10 +446,12 @@ nav {
   color: #004b8d;
   transition: background 0.2s ease;
 }
+
 .pdf-list a:hover {
   background: var(--accent);
   color: #fff;
 }
+
 #llb1 ul.pdf-list {
   margin: 0 auto;
   padding: 1.5rem;
@@ -409,15 +460,18 @@ nav {
   align-items: center;
   text-align: center;
 }
+
 #llb1 ul.pdf-list li {
   width: 100%;
   max-width: 400px;
   margin: 1rem 0;
 }
+
 #llb1 ul.pdf-list a {
   display: block;
   width: 100%;
 }
+
 footer {
   position: relative;
   left: 0;
@@ -429,6 +483,7 @@ footer {
   text-align: center;
   box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
 }
+
 #topBtn {
   position: fixed;
   bottom: 30px;
@@ -444,6 +499,7 @@ footer {
   font-size: 20px;
   --scroll-angle: 0deg;
 }
+
 #topBtn::before {
   content: '';
   position: absolute;
@@ -455,13 +511,15 @@ footer {
   background: conic-gradient(var(--accent) var(--scroll-angle), var(--scroll-bg) 0deg);
   z-index: -1;
 }
+
 #topBtn:hover {
   background: var(--link-hover);
 }
+
 @media (max-width: 700px) {
   header {
     padding-bottom: 2.5rem;
-    min-height: 320px;
+    min-height: 260px;
   }
   .logo {
     width: 80px;
