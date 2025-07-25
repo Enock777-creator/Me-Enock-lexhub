@@ -16,12 +16,12 @@
     <a href="/">🏛️ Home</a>
     <a href="#articles">🔰Articles</a>
     <a href="#categories">📁Categories</a>
-    <a href="#llb1">📚 LLB1(2024-2025)  Materials</a>
+    <a href="#llb1">📚 LLB1(2024-2025) Materials</a>
   </div>
+  <button id="sidebarToggle" aria-label="Open sidebar">☰</button>
 
-  <!-- Header (logo, title, actions centered; photo beneath) -->
+  <!-- Header -->
   <header>
-    <button id="sidebarToggle" aria-label="Open sidebar">☰</button>
     <button id="darkModeToggle" title="Toggle Dark Mode">🌒</button>
     <div class="header-stack">
       <img src="assets/logo-circle.png" alt="LexHub Logo" class="logo" />
@@ -90,7 +90,7 @@
     </section>
   </main>
 
-  <!-- Footer (edge-to-edge) -->
+  <!-- Footer -->
   <footer>
     <p>© MUGISHA Enock 2025. All rights reserved.</p>
   </footer>
@@ -135,14 +135,12 @@
 
   <!-- Dark-Mode & Back-to-Top Logic -->
   <script>
-    // Dark mode
     document.getElementById('darkModeToggle')
       .addEventListener('click', () => {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
       });
 
-    // Scroll-ring & Back to Top
     const topBtn = document.getElementById('topBtn');
     window.addEventListener('scroll', () => {
       const dH = document.documentElement.scrollHeight - window.innerHeight;
@@ -154,32 +152,31 @@
       window.scrollTo({ top: 0, behavior: 'smooth' })
     );
   </script>
+
+  <!-- Sidebar Logic (no header offset JS needed!) -->
   <script>
-    function adjustSidebar() {
-      const hdr = document.querySelector('header');
-      const sb  = document.getElementById('sidebar');
-      const hh  = hdr.offsetHeight;
-      sb.style.top    = hh + 'px';
-      sb.style.height = `calc(100vh - ${hh}px)`;
-    }
-    window.addEventListener('load', adjustSidebar);
-    window.addEventListener('resize', adjustSidebar);
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("sidebarToggle");
+    const closeBtn = document.getElementById("closeSidebar");
+
+    toggleBtn.addEventListener("click", function(e) {
+      sidebar.classList.add("active");
+      e.stopPropagation();
+    });
+    closeBtn.addEventListener("click", function(e) {
+      sidebar.classList.remove("active");
+      e.stopPropagation();
+    });
+    document.addEventListener("click", function(e) {
+      if (
+        sidebar.classList.contains("active") &&
+        !sidebar.contains(e.target) &&
+        e.target !== toggleBtn
+      ) {
+        sidebar.classList.remove("active");
+      }
+    });
+    sidebar.addEventListener("click", function(e) { e.stopPropagation(); });
   </script>
-
-<script>
-  const sidebar = document.getElementById("sidebar");
-  const toggleBtn = document.getElementById("sidebarToggle");
-  const closeBtn   = document.getElementById("closeSidebar");
-
-  toggleBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
-  });
-
-  closeBtn.addEventListener("click", () => {
-    sidebar.classList.remove("active");
-  });
-</script>
-
-  
 </body>
 </html>
