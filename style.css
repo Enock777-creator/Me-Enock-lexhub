@@ -39,14 +39,14 @@ html, body {
   box-sizing: border-box;
 }
 
-/* HEADER WITH BACKGROUND IMAGE, TOP-ALIGNED */
+/* HEADER WITH NEW BACKGROUND IMAGE */
 header {
   position: relative;
   width: 100vw;
   left: 50%;
   transform: translateX(-50%);
   min-height: 420px;
-  background: url('images/header-bg.jpg') top center/cover no-repeat;
+  background: url('images/rdabackground.jpg') top center/cover no-repeat;
   background-position: top center;
   background-size: cover;
 }
