@@ -1,5 +1,5 @@
 
-**Date: 2025-07-11**
+**Date: 11 July, 2025**
 
 
 Judicial precedent means **using previous court rulings as guidance in current legal decisions. It provides consistency and predictability across the justice system.**
