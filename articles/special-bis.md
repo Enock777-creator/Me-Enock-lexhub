@@ -1,6 +1,6 @@
 
 
-**Date: 13 July, 2024** 
+**Date: 13 July, 2025** 
 
 Understanding 'Special' and 'Bis' in Law Drafting: Tools for Precision and Agility in Legislation
 
