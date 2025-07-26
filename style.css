@@ -390,6 +390,18 @@ nav {
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
+
+/* Make images inside article boxes responsive */
+.article-box img,
+.article-md img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 10px; /* Optional: soften corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Optional: subtle shadow */
+}
+
 .contact-list {
   list-style: none;
   margin: 0 auto;
