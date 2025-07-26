@@ -1,5 +1,5 @@
 
-**Date: 2025-07-11**
+**Date: 11 July, 2025**
 
 Legal reasoning blends logical rules with judgment and real-world complexity.
 
