@@ -70,7 +70,7 @@ Special Laws: Enable precision by allowing for tailored legal frameworks for spe
 
 Legal drafters use these tools to add precision and urgency to statutory language.
 
-**Sources**: Sources
+**Sources**
 
 
 Marsol Lawyers &amp Consultants
@@ -91,4 +91,5 @@ Lex specialis derogat legi generali - Oxford Reference
 Wiktionary, the free dictionary
 **en.wiktionary.org**
 bis - Wiktionary, the free dictionary
-**Etymology. From Latin bis (“twice; again!”).**
+
+**Etymology: From Latin bis (“twice; again!”).**
