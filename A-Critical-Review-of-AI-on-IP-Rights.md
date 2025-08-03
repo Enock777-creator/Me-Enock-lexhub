@@ -1,4 +1,5 @@
 **MUGISHA Enock**
+
 **5th VIRTUAL GLOBAL SUMMER SCHOOL On “Law and Ethics of Artificial Intelligence”  
 8th July,2025**
 
