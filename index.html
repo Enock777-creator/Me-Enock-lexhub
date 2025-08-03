@@ -2,11 +2,31 @@
 <html lang="en" data-theme="">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>M. Enock’s LexHub</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- GitHub-style Markdown CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-light.min.css"
+  />
+
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .error {
+      color: #b31d28;
+    }
+  </style>
 </head>
 <body id="home">
 
@@ -49,21 +69,38 @@
   <main>
     <section id="articles">
       <h2>Legal Articles</h2>
-       <div class="article-box" data-md="A-Critical-Review-of-AI-on-IP-Rights.md">
-  Loading article…
-</div>
+<section id="articles">
+  <h2>Legal Articles</h2>
 
-<div class="article-box" data-md="Special-Bis-Analysis.md">
-  Loading article…
-</div>
+  <div
+    class="article-box"
+    data-file="https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/A-Critical-Review-of-Impact-of-Artificial-Intelligence-on-Intellectual-Property-Rights.md"
+    data-title="A Critical Review of AI’s Impact on Intellectual Property Rights by MUGISHA Enock">
+  </div>
 
-<div class="article-box" data-md="Judicial-Precedent-Overview.md">
-  Loading article…
-</div>
+  <div
+    class="article-box"
+    data-file="https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md"
+    data-title="Understanding ‘Special’ and ‘Bis’ in Law Drafting by MUGISHA Enock">
+  </div>
 
-<div class="article-box" data-md="Logic-and-Law.md">
-  Loading article…
-</div>
+  <div
+    class="article-box"
+    data-file="https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md"
+    data-title="What Is Judicial Precedent?">
+  </div>
+
+  <div
+    class="article-box"
+    data-file="https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md"
+    data-title="Logic and the Law by MUGISHA Enock">
+  </div>
+</section>
+
+  <div id="special-bis" class="article-slot"></div>   
+  <div id="special-bis" class="article-slot"></div>
+  <div id="judicial-precedent" class="article-slot"></div>
+  <div id="logic-and-law" class="article-slot"></div>
 
     </section>
 
@@ -259,14 +296,6 @@ document.getElementById('site-search').addEventListener('input', function() {
   let anyVisible = false;
 
   // Filter articles and materials
-  document.querySelectorAll('.article-box, .article-md').forEach(section => {
-    if (section.textContent.toLowerCase().includes(query)) {
-      section.style.display = '';
-      anyVisible = true;
-    } else {
-      section.style.display = 'none';
-    }
-  });
 
   document.querySelectorAll('.pdf-list li').forEach(li => {
     if (li.textContent.toLowerCase().includes(query)) {
@@ -281,14 +310,40 @@ document.getElementById('site-search').addEventListener('input', function() {
   document.getElementById('no-results').style.display = anyVisible ? 'none' : '';
 });
 </script>
+  <script type="module">
+  import { marked } from 'https://cdn.jsdelivr.net/npm/marked@5.4.1/lib/marked.esm.js';
 
- <!-- 1. marked.js (Markdown → HTML) -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  
-  <!-- 2. Your custom JS -->
-  <script src="main.js"></script>
+  async function renderBox(box) {
+    const mdURL = box.dataset.file;
+    const title = box.dataset.title;
+    try {
+      const res = await fetch(mdURL);
+      if (!res.ok) throw new Error(res.statusText);
+      const md  = await res.text();
+      box.innerHTML = `
+        <h3>${title}</h3>
+        <article class="markdown-body">
+          ${marked.parse(md)}
+        </article>
+      `;
+    } catch {
+      box.innerHTML = `
+        <h3>${title}</h3>
+        <p class="error">Could not load this article.</p>
+      `;
+    }
+  }
+
+  document
+    .querySelectorAll('.article-box')
+    .forEach(renderBox);
+</script>
+
+
+
 </body>
 </html>
+
 
 
 
