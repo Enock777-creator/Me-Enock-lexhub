@@ -24,7 +24,8 @@ Upadhyay and Rathee’s analysis merits praise for its comprehensive treatment o
 As a conclusion, Upadhyay and Rathee successfully map the tensions between AI’s promise as an innovation catalyst and its capacity to unsettle core IP doctrines. Their call for a “roadmap” of clear definitions, tiered liability rules, and protective measures for traditional knowledge holders is both timely and urgent. As AI continues to evolve, legislators, IP offices, and scholars must collaborate to craft legal frameworks that harness AI’s benefits without sacrificing the incentives and protections that underpin creative and inventive activity.
 
 
-                                     **References:**
+**REFERENCES:**
+                      
 Upadhyay, N., & Rathee, M. (2020). Impact of Artificial Intelligence on Intellectual Property Rights. Proceedings Of International Young Scholars Workshop, 9. doi:10.47344/iysw.v9i0.192.
 
 Full article is available at:https://journals.sdu.edu.kz/index.php/iysw/article/view/192
