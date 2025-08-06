@@ -587,3 +587,43 @@ footer {
   height: 1px;
   overflow: hidden;
 }
+
+#articles { margin: 2rem 1rem; }
+.articles-list { max-width: 800px; margin: auto; }
+
+.article-item {
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.article-title {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: #f0f4f8;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.article-content {
+  display: none;
+  padding: 1rem;
+  background: #ffffff;
+  border-top: 1px solid #ddd;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.read-more {
+  display: none;
+  padding: 0.5rem 1rem;
+  background: #eef6ff;
+  color: #0366d6;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;
+}
+
+.article-item.open .article-content { display: block; }
+.article-item.open .read-more   { display: block; }
