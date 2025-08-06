@@ -163,41 +163,38 @@
 
 <!-- Article Loader -->
 <script>
-  const files = [
-    {
-      id: "special-bis",
-      file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md",
-      title: "Understanding 'Special' and 'Bis' in Law Drafting by MUGISHA Enock"
-    },
-    {
-      id: "judicial-precedent",
-      file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md",
-      title: "What Is Judicial Precedent?"
-    },
-    {
-      id: "logic-and-law",
-      file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md",
-      title: "Logic and the Law by MUGISHA Enock"
-    }
-  ];
-
-  files.forEach(a => {
-    fetch(a.file)
-      .then(r => r.text())
-      .then(t => {
-        document.getElementById(a.id).innerHTML = `
-          <h3>${a.title}</h3>
-          <div class="article-md">${marked.parse(t)}</div>
-        `;
-      })
-      .catch(() => {
-        document.getElementById(a.id).innerHTML =
-          `<h3>${a.title}</h3><p>Sorry, this article could not be loaded.</p>`;
-      });
-  });
-</script>
-
-
+    const files = [
+      {
+        id: "special-bis",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md",
+        title: "Understanding 'Special' and 'Bis' in Law Drafting by MUGISHA Enock"
+      },
+      {
+        id: "judicial-precedent",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md",
+        title: "What Is Judicial Precedent?"
+      },
+      {
+        id: "logic-and-law",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md",
+        title: "Logic and the Law by MUGISHA Enock"
+      }
+    ];
+    files.forEach(a => {
+      fetch(a.file)
+        .then(r => r.text())
+        .then(t => {
+          document.getElementById(a.id).innerHTML = `
+            <h3>${a.title}</h3>
+            <div class="article-md">${marked.parse(t)}</div>
+          `;
+        })
+        .catch(() => {
+          document.getElementById(a.id).innerHTML =
+            `<h3>${a.title}</h3><p>Sorry, this article could not be loaded.</p>`;
+        });
+    });
+  </script>
   <!-- Search, Scroll, and No Results Logic -->
  <script>
 document.getElementById('site-search-form').addEventListener('submit', function(e) {
@@ -265,6 +262,7 @@ document.getElementById('site-search').addEventListener('input', function() {
 </script>
 </body>
 </html>
+
 
 
 
