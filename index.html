@@ -182,47 +182,35 @@
 
   <!-- Article Loader -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
 <script>
-    const files = [
-      // YOUR NEW ARTICLE ADDED HERE
-      {
-        id: "Ai-and-IP-Laws",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/Ai-and-IP-Laws.md",
-        title: "AI and its Impact on Intellectual Property Laws"
-      },
-      {
-        id: "special-bis",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md",
-        title: "Understanding 'Special' and 'Bis' in Law Drafting by MUGISHA Enock"
-      },
-      {
-        id: "judicial-precedent",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md",
-        title: "What Is Judicial Precedent?"
-      },
-      {
-        id: "logic-and-law",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md",
-        title: "Logic and the Law by MUGISHA Enock"
-      }
-    ];
+  const articles = {
+    "Ai-and-IP-Laws":       "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/Ai-and-IP-Laws.md",
+    "special-bis":          "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md",
+    "judicial-precedent":   "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md",
+    "logic-and-law":        "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md"
+  };
 
-    files.forEach(a => {
-      fetch(a.file)
-        .then(r => r.text())
-        .then(t => {
-          document.getElementById(a.id).innerHTML = `
-            <h3>${a.title}</h3>
-            <div class="article-md">${marked.parse(t)}</div>
-          `;
-        })
-        .catch(() => {
-          document.getElementById(a.id).innerHTML =
-            `<h3>${a.title}</h3><p>Sorry, this article could not be loaded.</p>`;
-        });
+  document.querySelectorAll('.article-item').forEach(item => {
+    const titleBar = item.querySelector('.article-title');
+    const content  = item.querySelector('.article-content');
+
+    titleBar.addEventListener('click', () => {
+      if (!item.classList.contains('open')) {
+        content.textContent = 'Loading…';
+        fetch(articles[item.dataset.id])
+          .then(r => r.text())
+          .then(md => {
+            content.innerHTML = marked.parse(md);
+            item.classList.add('open');
+          })
+          .catch(_ => content.textContent = 'Failed to load.');
+      } else {
+        item.classList.remove('open');
+      }
     });
+  });
 </script>
+
   <!-- Search, Scroll, and No Results Logic -->
  <script>
 document.getElementById('site-search-form').addEventListener('submit', function(e) {
@@ -290,6 +278,7 @@ document.getElementById('site-search').addEventListener('input', function() {
 </script>
 </body>
 </html>
+
 
 
 
