@@ -6,7 +6,6 @@
   <title>M. Enock’s LexHub</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body id="home">
 
@@ -158,12 +157,16 @@
   <button id="topBtn" title="Back to top">↑</button>
 
   <!-- Article Loader -->
- <!-- Marked.js (must come before your custom script) -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-<!-- Article Loader -->
 <script>
     const files = [
+      // YOUR NEW ARTICLE ADDED HERE
+      {
+        id: "Ai-and-IP-Laws",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/Ai-and-IP-Laws.md",
+        title: "AI and its Impact on Intellectual Property Laws"
+      },
       {
         id: "special-bis",
         file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md",
@@ -180,6 +183,7 @@
         title: "Logic and the Law by MUGISHA Enock"
       }
     ];
+
     files.forEach(a => {
       fetch(a.file)
         .then(r => r.text())
@@ -194,7 +198,7 @@
             `<h3>${a.title}</h3><p>Sorry, this article could not be loaded.</p>`;
         });
     });
-  </script>
+</script>
   <!-- Search, Scroll, and No Results Logic -->
  <script>
 document.getElementById('site-search-form').addEventListener('submit', function(e) {
@@ -262,6 +266,7 @@ document.getElementById('site-search').addEventListener('input', function() {
 </script>
 </body>
 </html>
+
 
 
 
