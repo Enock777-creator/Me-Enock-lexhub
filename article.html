@@ -1,53 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LexHub Article</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-</head>
 <body>
   <main>
-    <div id="article-content">Loading article...</div>
+    <!-- Optional wrapper to center & bound width -->
+    <section class="full-article">
+      <!-- This div uses the same box styles as homepage -->
+      <div id="article-box" class="article-item open">
+        <h1 class="article-title">Loading…</h1>
+        <div class="article-content">
+          <!-- Markdown will go here -->
+        </div>
+      </div>
+    </section>
   </main>
 
   <script>
+    // your existing mapping
     const articles = {
       "Ai-and-IP-Laws": {
         title: "AI and its Impact on Intellectual Property Laws",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/Ai-and-IP-Laws.md"
+        file:  "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/Ai-and-IP-Laws.md"
       },
       "special-bis": {
         title: "Understanding 'Special' and 'Bis' in Law Drafting",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md"
+        file:  "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md"
       },
       "judicial-precedent": {
         title: "What Is Judicial Precedent?",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md"
+        file:  "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md"
       },
       "logic-and-law": {
         title: "Logic and the Law",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md"
+        file:  "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md"
       }
     };
 
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+    // Grab the “id” from URL
+    const params    = new URLSearchParams(window.location.search);
+    const id        = params.get("id");
+    const box       = document.getElementById("article-box");
+    const titleEl   = box.querySelector(".article-title");
+    const contentEl = box.querySelector(".article-content");
 
     if (articles[id]) {
+      // Set page <title> and box title
+      document.title    = articles[id].title;
+      titleEl.textContent = articles[id].title;
+
+      // Fetch, parse, and insert markdown
       fetch(articles[id].file)
         .then(res => res.text())
         .then(md => {
-          document.title = articles[id].title;
-          document.getElementById("article-content").innerHTML = `<h1>${articles[id].title}</h1><div>${marked.parse(md)}</div>`;
+          contentEl.innerHTML = marked.parse(md);
         })
         .catch(() => {
-          document.getElementById("article-content").innerHTML = "<p>Failed to load article.</p>";
+          contentEl.innerHTML = "<p>Failed to load article.</p>";
         });
     } else {
-      document.getElementById("article-content").innerHTML = "<p>Article not found.</p>";
+      titleEl.textContent   = "Article not found";
+      contentEl.innerHTML   = "<p>Couldn’t find that article.</p>";
     }
   </script>
 </body>
-</html>
