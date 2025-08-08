@@ -39,48 +39,26 @@
         <a href="#articles" class="btn outline">Read Articles</a>
       </div>
       <div class="photo-container">
-        <img src="images/my-photo.jpg" alt="M. Enock’s Photo" class="header-photo-sq"/>
+        <img src="images/my-photo.png" alt="M. Enock’s Photo" class="header-photo-sq"/>
       </div>
     </div>
   </header>
 
   <!-- Main Content -->
   <main>
-   <section id="articles">
-  <h2>Legal Articles (click to expand)</h2>
-  <div class="articles-list">
-
-    <div class="article-item" data-id="Ai-and-IP-Laws">
-      <h3 class="article-title">🧠 AI and its Impact on IP Laws</h3>
-      <div class="article-content"></div>
-    </div>
-
-    <div class="article-item" data-id="special-bis">
-      <h3 class="article-title">📘 Understanding 'Special' and 'Bis' in Law Drafting</h3>
-      <div class="article-content"></div>
-      <a href="article.html?id=special-bis" target="_blank" class="read-more">Read full article →</a>
-    </div>
-
-    <div class="article-item" data-id="judicial-precedent">
-      <h3 class="article-title">⚖️ What Is Judicial Precedent?</h3>
-      <div class="article-content"></div>
-      <a href="article.html?id=judicial-precedent" target="_blank" class="read-more">Read full article →</a>
-    </div>
-
-    <div class="article-item" data-id="logic-and-law">
-      <h3 class="article-title">🔍 Logic and the Law</h3>
-      <div class="article-content"></div>
-      <a href="article.html?id=logic-and-law" target="_blank" class="read-more">Read full article →</a>
-    </div>
-
-  </div>
-</section>
-
+    <section id="articles">
+      <h2>Legal Articles</h2>
+      <article class="article-box" id="Ai-and-IP-Laws"></article>
+      <article class="article-box" id="special-bis"></article>
+      <article class="article-box" id="judicial-precedent"></article>
+      <article class="article-box" id="logic-and-law"></article>
+      
+    </section>
 
     <section id="llb1" class="article-md">
       <h2>📚 LLB 1 Study Materials</h2>
       <ul class="pdf-list">
-        <li><a href="pdfs/Comparative Legal Traditions.pdf" target="_blank">⚖️ Comparative Legal Traditions</a></li>
+        <li><a href="pdfs/comparative legal traditions.pdf" target="_blank">⚖️ Comparative Legal Traditions</a></li>
         <li><a href="pdfs/Constitutional Law- 2025.pdf" target="_blank">🧾 Constitutional Law – 2025</a></li>
         <li><a href="pdfs/Corrected. TEAM3 FL Assignment.pdf" target="_blank">📝 Family Law – Team Assignment</a></li>
         <li><a href="pdfs/FAMILY LAW component .pptx new slides with updtes 2024 2025.pptxfsfsfs.pdf" target="_blank">👨‍👩‍👧 Family Law Slides 2024–2025</a></li>
@@ -93,8 +71,7 @@
         <li><a href="pdfs/T3 PPT Philosophy Presentation.pdf" target="_blank">🧭 Philosophy – T3 Presentation</a></li>
         <li><a href="pdfs/introduction to legal research.pdf" target="_blank">🔍 Legal Research – Intro</a></li>
         <li><a href="pdfs/general principles of criminal law.pdf" target="_blank">⚖️ Criminal Law – Slides 2025</a></li>
-      <li><a href="pdfs/Black'sLaw4th.pdf" target="_blank">📕 Black'sLaw4th</a></li>
-    <li><a href="pdfs/Dictionary_of_Legal_Terms (1).pdf" target="_blank">📕 Dictionary of Legal Terms (1)</a></li>
+    <li><a href="pdfs/Dictionary_of_Legal_Terms (1).zip" target="_blank">📕 Dictionary of Legal Terms (1)</a></li>
     <li><a href="pdfs/kinyarwanda legal terminologies.pdf" target="_blank">📕 Kinyarwanda Legal Terminologies 2</a></li>
       </ul>
     </section>
@@ -173,7 +150,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>© MUGISHA Enock 2025. All rights reserved.</p>
+    <p>© Copyright  M.Enock's LexHub 2025. All rights reserved.</p>
   </footer>
 
   <!-- Back to Top with Scroll-Ring -->
@@ -181,34 +158,93 @@
 
   <!-- Article Loader -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 <script>
-  const articles = {
-    "Ai-and-IP-Laws":       "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/Ai-and-IP-Laws.md",
-    "special-bis":          "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md",
-    "judicial-precedent":   "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md",
-    "logic-and-law":        "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md"
-  };
+    const files = [
+      // YOUR NEW ARTICLE ADDED HERE
+      {
+        id: "Ai-and-IP-Laws",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/Ai-and-IP-Laws.md",
+        title: "AI and its Impact on Intellectual Property Laws"
+      },
+      {
+        id: "special-bis",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md",
+        title: "Understanding 'Special' and 'Bis' in Law Drafting by MUGISHA Enock"
+      },
+      {
+        id: "judicial-precedent",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md",
+        title: "What Is Judicial Precedent?"
+      },
+      {
+        id: "logic-and-law",
+        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md",
+        title: "Logic and the Law by MUGISHA Enock"
+      }
+    ];
 
-  document.querySelectorAll('.article-item').forEach(item => {
-    const titleBar = item.querySelector('.article-title');
-    const content  = item.querySelector('.article-content');
+    files.forEach(a => {
+      fetch(a.file)
+        .then(r => r.text())
+        .then(t => {
+          document.getElementById(a.id).innerHTML = `
+            <h3>${a.title}</h3>
+            <div class="article-md">${marked.parse(t)}</div>
+          `;
+        })
+        .catch(() => {
+          document.getElementById(a.id).innerHTML =
+            `<h3>${a.title}</h3><p>Sorry, this article could not be loaded.</p>`;
+        });
+    });
+</script>
 
-    titleBar.addEventListener('click', () => {
-      if (!item.classList.contains('open')) {
-        content.textContent = 'Loading…';
-        fetch(articles[item.dataset.id])
-          .then(r => r.text())
-          .then(md => {
-            content.innerHTML = marked.parse(md);
-            item.classList.add('open');
-          })
-          .catch(_ => content.textContent = 'Failed to load.');
-      } else {
-        item.classList.remove('open');
+  <!-- Dark-Mode & Back-to-Top Logic -->
+  <script>
+    document.getElementById('darkModeToggle')
+      .addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+      });
+
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      const dH = document.documentElement.scrollHeight - window.innerHeight;
+      const angle = (window.scrollY / dH) * 360;
+      topBtn.style.setProperty('--scroll-angle', `${angle}deg`);
+      topBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
+  </script>
+
+  <!-- Sidebar Logic -->
+  <script>
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("sidebarToggle");
+    const closeBtn = document.getElementById("closeSidebar");
+
+    toggleBtn.addEventListener("click", function(e) {
+      sidebar.classList.add("active");
+      e.stopPropagation();
+    });
+    closeBtn.addEventListener("click", function(e) {
+      sidebar.classList.remove("active");
+      e.stopPropagation();
+    });
+    document.addEventListener("click", function(e) {
+      if (
+        sidebar.classList.contains("active") &&
+        !sidebar.contains(e.target) &&
+        e.target !== toggleBtn
+      ) {
+        sidebar.classList.remove("active");
       }
     });
-  });
-</script>
+    sidebar.addEventListener("click", function(e) { e.stopPropagation(); });
+  </script>
 
   <!-- Search, Scroll, and No Results Logic -->
  <script>
@@ -277,14 +313,3 @@ document.getElementById('site-search').addEventListener('input', function() {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
