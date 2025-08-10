@@ -588,3 +588,67 @@ footer {
   height: 1px;
   overflow: hidden;
 }
+
+/* 1) Remove stray bullets/markers in article lists */
+#articles ul,
+#articles ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#articles li {
+  margin: 0;
+  padding: 0;
+}
+#articles li::marker,
+#articles li::before {
+  content: none !important;
+}
+
+/* 2) Unify typography across the site (prevents mismatched fonts) */
+html, body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+               Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3) Make article titles look consistent (color, weight, hover) */
+#articles h2,
+#articles h3,
+#articles h4,
+#articles a {
+  color: #222;
+  text-decoration: none;
+}
+
+#articles a {
+  font-weight: 700;            /* strong, consistent titles */
+  letter-spacing: 0.2px;
+  display: inline-block;       /* improves hover area */
+}
+
+#articles a:hover {
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+#articles a:visited {
+  color: #222;                 /* avoid purple visited links */
+}
+
+/* 4) If your titles live in a specific list, keep spacing tidy */
+.articles-list li + li {
+  margin-top: 0.75rem;
+}
+
+/* 5) Hide unused icon tags (prevents empty squares if icon fonts aren’t loaded) */
+#articles i[class^="fa"],
+#articles i[class*=" fa-"],
+#articles .material-icons,
+#articles .material-symbols-outlined {
+  display: none;
+  font-style: normal; /* prevents weird fallback glyphs */
+}
+
