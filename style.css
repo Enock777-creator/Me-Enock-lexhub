@@ -528,11 +528,14 @@ footer {
     width: 80px;
     height: 80px;
   }
-  .logo-text {
-  color: #C0C0C0;           /* classic silver shade */
-  font-weight: 600;         /* still strong, but not heavy bold */
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2); /* soft highlight */
+
+  /* Website title in BurlyWood */
+.logo-text {
+  color: burlywood;
+  font-weight: 600; /* not too bold */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15); /* soft depth */
 }
+
   .header-photo-sq {
     width: 110px;
     height: 130px;
@@ -657,23 +660,26 @@ html, body {
 /* Dark Mode toggle design */
 #darkModeToggle {
   display: flex;
-  flex-direction: column;   /* stack icon and text vertically */
-  align-items: center;      /* center them horizontally */
+  flex-direction: column;
+  align-items: center;
   background: none;
   border: none;
   cursor: pointer;
-  color: #C0C0C0;           /* silver color */
-  font-size: 0.75rem;       /* smaller text for label */
-  gap: 2px;                 /* small space between icon and text */
+  color: burlywood;       /* main color */
+  font-size: 0.75rem;
+  gap: 2px;
 }
 
 #darkModeToggle span.icon {
-  font-size: 1.2rem;        /* icon slightly larger */
+  font-size: 1.2rem;
   line-height: 1;
+  color: burlywood;       /* icon color */
 }
 
 #darkModeToggle span.label {
-  font-size: 0.7rem;        /* small text for “Dark Mode” */
-  color: #C0C0C0;           /* match silver */
+  font-size: 0.7rem;
+  color: burlywood;       /* label color */
 }
+
+
 
