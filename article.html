@@ -1,62 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LexHub Article</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
 <body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-stack">
+      <img src="assets/logo-circle.png" alt="LexHub Logo" class="logo" />
+      <h1 class="logo-text" id="article-title">Loading...</h1>
+      <div class="header-buttons">
+        <a href="index.html" class="btn">🏠 Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Content -->
   <main>
-    <!-- Optional wrapper to center & bound width -->
-    <section class="full-article">
-      <!-- This div uses the same box styles as homepage -->
-      <div id="article-box" class="article-item open">
-        <h1 class="article-title">Loading…</h1>
-        <div class="article-content">
-          <!-- Markdown will go here -->
-        </div>
+    <section id="articles">
+      <div class="article-box" id="article-content">
+        Loading article content...
       </div>
     </section>
   </main>
 
+  <footer>
+    <p>© 2025 M.Enock's LexHub. All rights reserved.</p>
+  </footer>
+
   <script>
-    // your existing mapping
-    const articles = {
-      "Ai-and-IP-Laws": {
-        title: "AI and its Impact on Intellectual Property Laws",
-        file:  "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/Ai-and-IP-Laws.md"
-      },
-      "special-bis": {
-        title: "Understanding 'Special' and 'Bis' in Law Drafting",
-        file:  "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md"
-      },
-      "judicial-precedent": {
-        title: "What Is Judicial Precedent?",
-        file:  "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md"
-      },
-      "logic-and-law": {
-        title: "Logic and the Law",
-        file:  "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md"
-      }
-    };
+    // 1. Read the ?id= from the URL
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
 
-    // Grab the “id” from URL
-    const params    = new URLSearchParams(window.location.search);
-    const id        = params.get("id");
-    const box       = document.getElementById("article-box");
-    const titleEl   = box.querySelector(".article-title");
-    const contentEl = box.querySelector(".article-content");
+    const titleEl = document.getElementById('article-title');
+    const contentEl = document.getElementById('article-content');
 
-    if (articles[id]) {
-      // Set page <title> and box title
-      document.title    = articles[id].title;
-      titleEl.textContent = articles[id].title;
-
-      // Fetch, parse, and insert markdown
-      fetch(articles[id].file)
-        .then(res => res.text())
-        .then(md => {
-          contentEl.innerHTML = marked.parse(md);
-        })
-        .catch(() => {
-          contentEl.innerHTML = "<p>Failed to load article.</p>";
-        });
-    } else {
-      titleEl.textContent   = "Article not found";
-      contentEl.innerHTML   = "<p>Couldn’t find that article.</p>";
+    if (!id) {
+      titleEl.textContent = 'Article Not Found';
+      contentEl.innerHTML = '<p>No article ID provided in the URL.</p>';
+      throw new Error('No article ID');
     }
+
+    // 2. Convert the id into a readable title (if needed)
+    titleEl.textContent = id
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
+
+    // 3. Build possible file paths (local and GitHub raw)
+    const sources = [
+      `articles/${id}.md`,
+      `articles/${id}.html`,
+      `https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/${id}.md`
+    ];
+
+    // 4. Try loading from each source until one works
+    (async () => {
+      for (const url of sources) {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) continue;
+
+          const text = await res.text();
+          if (url.endsWith('.md')) {
+            contentEl.innerHTML = marked.parse(text);
+          } else {
+            contentEl.innerHTML = text;
+          }
+          return; // Success
+        } catch (err) {
+          // Ignore and try next source
+        }
+      }
+      // If all fail:
+      contentEl.innerHTML = `
+        <p>Sorry, this article could not be loaded.</p>
+        <p>Check that the file <code>${id}.md</code> or <code>${id}.html</code> exists in the <strong>articles</strong> folder.</p>
+      `;
+    })();
   </script>
+
 </body>
+</html>
