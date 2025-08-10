@@ -696,6 +696,19 @@ html, body {
   text-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
+/* Adjust hamburger alignment */
+.hamburger {
+    position: relative;
+    top: 6px; /* adjust this value until it's visually aligned */
+}
+
+/* Optional: ensure all three elements share the same vertical alignment */
+.header-container {
+    display: flex;
+    align-items: center; /* locks everything to the same baseline */
+    justify-content: space-between; /* logo in center, buttons on ends */
+}
+
 
 
 
