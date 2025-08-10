@@ -529,8 +529,10 @@ footer {
     height: 80px;
   }
   .logo-text {
-    font-size: 1.5rem;
-  }
+  color: #C0C0C0;           /* classic silver shade */
+  font-weight: 600;         /* still strong, but not heavy bold */
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2); /* soft highlight */
+}
   .header-photo-sq {
     width: 110px;
     height: 130px;
@@ -650,5 +652,28 @@ html, body {
 #articles .material-symbols-outlined {
   display: none;
   font-style: normal; /* prevents weird fallback glyphs */
+}
+
+/* Dark Mode toggle design */
+#darkModeToggle {
+  display: flex;
+  flex-direction: column;   /* stack icon and text vertically */
+  align-items: center;      /* center them horizontally */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #C0C0C0;           /* silver color */
+  font-size: 0.75rem;       /* smaller text for label */
+  gap: 2px;                 /* small space between icon and text */
+}
+
+#darkModeToggle span.icon {
+  font-size: 1.2rem;        /* icon slightly larger */
+  line-height: 1;
+}
+
+#darkModeToggle span.label {
+  font-size: 0.7rem;        /* small text for “Dark Mode” */
+  color: #C0C0C0;           /* match silver */
 }
 
