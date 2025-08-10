@@ -9,71 +9,74 @@
 </head>
 <body id="home">
 
-  <!-- Sidebar Navigation -->
-  <div id="sidebar">
-    <button id="closeSidebar" aria-label="Close sidebar">✕</button>
-    <a href="/">🏛️ Home</a>
-    <a href="#articles">🔰Articles</a>
-    <a href="#categories">📁Categories</a>
-    <a href="#llb1">📚 LLB1(2024-2025) Materials</a>
-  </div>
-  <button id="sidebarToggle" aria-label="Open sidebar">☰</button>
+<!-- Sidebar Navigation -->
+<div id="sidebar">
+  <button id="closeSidebar" aria-label="Close sidebar">✕</button>
+  <a href="/">🏛️ Home</a>
+  <a href="#articles">🔰Articles</a>
+  <a href="#categories">📁Categories</a>
+  <a href="#llb1">📚 LLB1(2024-2025) Materials</a>
+</div>
+<button id="sidebarToggle" aria-label="Open sidebar">☰</button>
 
-  <!-- Header -->
-  <header>
-    <button id="darkModeToggle" title="Toggle Dark Mode">🌒Dark Mode</button>
-    <div class="header-stack">
-      <img src="assets/logo-circle.png" alt="LexHub Logo" class="logo" />
-      <h1 class="logo-text">Welcome to LexHub!</h1>
-      <!-- Search Bar -->
-      <form id="site-search-form" autocomplete="off">
-        <input type="text" id="site-search" placeholder="Search articles or study materials..." />
-        <button type="submit"><span aria-hidden="true">🔍</span><span class="sr-only">Search</span></button>
-      </form>
-      <!-- No Results Message -->
-      <div id="no-results" style="display:none; text-align:center; margin:2rem 0; font-weight:bold; color:#c00;">
-        No results found.
-      </div>
-      <div class="header-buttons">
-        <a href="#contact" class="btn">Get in Touch</a>
-        <a href="#articles" class="btn outline">Read Articles</a>
-      </div>
-      <div class="photo-container">
-        <img src="images/my-photo.png" alt="M. Enock’s Photo" class="header-photo-sq"/>
-      </div>
+<!-- Header -->
+<header>
+  <button id="darkModeToggle" title="Toggle Dark Mode">🌒Dark Mode</button>
+  <div class="header-stack">
+    <img src="assets/logo-circle.png" alt="LexHub Logo" class="logo" />
+    <h1 class="logo-text">Welcome to LexHub!</h1>
+
+    <!-- Search Bar -->
+    <form id="site-search-form" autocomplete="off">
+      <input type="text" id="site-search" placeholder="Search articles or study materials..." />
+      <button type="submit"><span aria-hidden="true">🔍</span><span class="sr-only">Search</span></button>
+    </form>
+    <div id="no-results" style="display:none;text-align:center;margin:2rem 0;font-weight:bold;color:#c00;">
+      No results found.
     </div>
-  </header>
 
-  <!-- Main Content -->
-  <main>
-    <section id="articles">
-      <h2>Legal Articles</h2>
-!-- AI and IP Laws -->
-  <a href="article.html?id=Ai-and-IP-Laws" class="article-box" target="_blank">
-    <h3>AI and its Impact on Intellectual Property Laws</h3>
-    <p>Click to read more...</p>
-  </a>
+    <div class="header-buttons">
+      <a href="#contact" class="btn">Get in Touch</a>
+      <a href="#articles" class="btn outline">Read Articles</a>
+    </div>
+    <div class="photo-container">
+      <img src="images/my-photo.png" alt="M. Enock’s Photo" class="header-photo-sq"/>
+    </div>
+  </div>
+</header>
 
-  <!-- Special and Bis -->
-  <a href="article.html?id=special-bis" class="article-box" target="_blank">
-    <h3>Understanding 'Special' and 'Bis' in Law Drafting</h3>
-    <p>Click to read more...</p>
-  </a>
+<!-- Main Content -->
+<main>
+  <section id="articles">
+    <h2>Legal Articles</h2>
 
-  <!-- Judicial Precedent -->
-  <a href="article.html?id=judicial-precedent" class="article-box" target="_blank">
-    <h3>What Is Judicial Precedent?</h3>
-    <p>Click to read more...</p>
-  </a>
+    <!-- AI and IP Laws -->
+    <a href="article.html?id=Ai-and-IP-Laws" class="article-box" target="_blank">
+      <h3>AI and its Impact on Intellectual Property Laws</h3>
+      <p>Click to read more...</p>
+    </a>
 
-  <!-- Logic and the Law -->
-  <a href="article.html?id=logic-and-law" class="article-box" target="_blank">
-    <h3>Logic and the Law</h3>
-    <p>Click to read more...</p>
-  </a>
-</section>
+    <!-- Special and Bis -->
+    <a href="article.html?id=special-bis" class="article-box" target="_blank">
+      <h3>Understanding 'Special' and 'Bis' in Law Drafting</h3>
+      <p>Click to read more...</p>
+    </a>
 
-    <section id="llb1" class="article-md">
+    <!-- Judicial Precedent -->
+    <a href="article.html?id=judicial-precedent" class="article-box" target="_blank">
+      <h3>What Is Judicial Precedent?</h3>
+      <p>Click to read more...</p>
+    </a>
+
+    <!-- Logic and the Law -->
+    <a href="article.html?id=logic-and-law" class="article-box" target="_blank">
+      <h3>Logic and the Law</h3>
+      <p>Click to read more...</p>
+    </a>
+  </section>
+
+  <!-- KEEP your other sections (LLB1, LLB2, Contact, etc.) exactly as they are -->
+   <section id="llb1" class="article-md">
       <h2>📚 LLB 1 Study Materials</h2>
       <ul class="pdf-list">
         <li><a href="pdfs/comparative legal traditions.pdf" target="_blank">⚖️ Comparative Legal Traditions</a></li>
@@ -94,7 +97,7 @@
       </ul>
     </section>
 
-    <section id="llb2" class="article-md">
+     <section id="llb2" class="article-md">
       <h2>📚 LLB 2 Study Materials</h2>
       <ul class="pdf-list">
         <li>
@@ -139,7 +142,7 @@
         </li>
       </ul>
     </section>
-    
+
     <!-- Contact Bar (edge-to-edge) -->
     <section id="contact">
       <h2>Get in touch</h2>
@@ -164,172 +167,88 @@
         </li>
       </ul>
     </section>
-  </main>
+  <!-- ... -->
+</main>
 
-  <!-- Footer -->
-  <footer>
-    <p>© Copyright  M.Enock's LexHub 2025. All rights reserved.</p>
-  </footer>
+<footer>
+  <p>© Copyright M.Enock's LexHub 2025. All rights reserved.</p>
+</footer>
 
-  <!-- Back to Top with Scroll-Ring -->
-  <button id="topBtn" title="Back to top">↑</button>
+<!-- Back to Top -->
+<button id="topBtn" title="Back to top">↑</button>
 
-  <!-- Article Loader -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
+<!-- Dark Mode & Back-to-Top Logic -->
 <script>
-    const files = [
-      // YOUR NEW ARTICLE ADDED HERE
-      {
-        id: "Ai-and-IP-Laws",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/Ai-and-IP-Laws.md",
-        title: "AI and its Impact on Intellectual Property Laws"
-      },
-      {
-        id: "special-bis",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/special-bis.md",
-        title: "Understanding 'Special' and 'Bis' in Law Drafting by MUGISHA Enock"
-      },
-      {
-        id: "judicial-precedent",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/judicial-precedent.md",
-        title: "What Is Judicial Precedent?"
-      },
-      {
-        id: "logic-and-law",
-        file: "https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/logic-and-law.md",
-        title: "Logic and the Law by MUGISHA Enock"
-      }
-    ];
-
-    files.forEach(a => {
-      fetch(a.file)
-        .then(r => r.text())
-        .then(t => {
-          document.getElementById(a.id).innerHTML = `
-            <h3>${a.title}</h3>
-            <div class="article-md">${marked.parse(t)}</div>
-          `;
-        })
-        .catch(() => {
-          document.getElementById(a.id).innerHTML =
-            `<h3>${a.title}</h3><p>Sorry, this article could not be loaded.</p>`;
-        });
-    });
+document.getElementById('darkModeToggle').addEventListener('click', () => {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+});
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll', () => {
+  const dH = document.documentElement.scrollHeight - window.innerHeight;
+  const angle = (window.scrollY / dH) * 360;
+  topBtn.style.setProperty('--scroll-angle', `${angle}deg`);
+  topBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+});
+topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
 
-  <!-- Dark-Mode & Back-to-Top Logic -->
-  <script>
-    document.getElementById('darkModeToggle')
-      .addEventListener('click', () => {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
-      });
+<!-- Sidebar Logic -->
+<script>
+const sidebar = document.getElementById("sidebar");
+const toggleBtn = document.getElementById("sidebarToggle");
+const closeBtn = document.getElementById("closeSidebar");
+toggleBtn.addEventListener("click", e => { sidebar.classList.add("active"); e.stopPropagation(); });
+closeBtn.addEventListener("click", e => { sidebar.classList.remove("active"); e.stopPropagation(); });
+document.addEventListener("click", e => {
+  if (sidebar.classList.contains("active") && !sidebar.contains(e.target) && e.target !== toggleBtn) {
+    sidebar.classList.remove("active");
+  }
+});
+sidebar.addEventListener("click", e => e.stopPropagation());
+</script>
 
-    const topBtn = document.getElementById('topBtn');
-    window.addEventListener('scroll', () => {
-      const dH = document.documentElement.scrollHeight - window.innerHeight;
-      const angle = (window.scrollY / dH) * 360;
-      topBtn.style.setProperty('--scroll-angle', `${angle}deg`);
-      topBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
-    });
-    topBtn.addEventListener('click', () =>
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    );
-  </script>
-
-  <!-- Sidebar Logic -->
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    const toggleBtn = document.getElementById("sidebarToggle");
-    const closeBtn = document.getElementById("closeSidebar");
-
-    toggleBtn.addEventListener("click", function(e) {
-      sidebar.classList.add("active");
-      e.stopPropagation();
-    });
-    closeBtn.addEventListener("click", function(e) {
-      sidebar.classList.remove("active");
-      e.stopPropagation();
-    });
-    document.addEventListener("click", function(e) {
-      if (
-        sidebar.classList.contains("active") &&
-        !sidebar.contains(e.target) &&
-        e.target !== toggleBtn
-      ) {
-        sidebar.classList.remove("active");
-      }
-    });
-    sidebar.addEventListener("click", function(e) { e.stopPropagation(); });
-  </script>
-
-  <!-- Search, Scroll, and No Results Logic -->
- <script>
+<!-- Search Logic -->
+<script>
 document.getElementById('site-search-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const query = document.getElementById('site-search').value.toLowerCase();
   let firstVisible = null;
   let anyVisible = false;
-
-  // Filter articles and materials
   document.querySelectorAll('.article-box, .article-md').forEach(section => {
     if (section.textContent.toLowerCase().includes(query)) {
       section.style.display = '';
       if (!firstVisible) firstVisible = section;
       anyVisible = true;
-    } else {
-      section.style.display = 'none';
-    }
+    } else { section.style.display = 'none'; }
   });
-
   document.querySelectorAll('.pdf-list li').forEach(li => {
     if (li.textContent.toLowerCase().includes(query)) {
       li.style.display = '';
       if (!firstVisible) firstVisible = li;
       anyVisible = true;
-    } else {
-      li.style.display = 'none';
-    }
+    } else { li.style.display = 'none'; }
   });
-
-  // Show or hide the "No results" message
   document.getElementById('no-results').style.display = anyVisible ? 'none' : '';
-
-  // Only scroll now, on submit!
-  if (firstVisible) {
-    firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
+  if (firstVisible) { firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
 });
-
 document.getElementById('site-search').addEventListener('input', function() {
   const query = this.value.toLowerCase();
   let anyVisible = false;
-
-  // Filter articles and materials
   document.querySelectorAll('.article-box, .article-md').forEach(section => {
     if (section.textContent.toLowerCase().includes(query)) {
       section.style.display = '';
       anyVisible = true;
-    } else {
-      section.style.display = 'none';
-    }
+    } else { section.style.display = 'none'; }
   });
-
   document.querySelectorAll('.pdf-list li').forEach(li => {
     if (li.textContent.toLowerCase().includes(query)) {
       li.style.display = '';
       anyVisible = true;
-    } else {
-      li.style.display = 'none';
-    }
+    } else { li.style.display = 'none'; }
   });
-
-  // Show or hide the "No results" message
   document.getElementById('no-results').style.display = anyVisible ? 'none' : '';
 });
 </script>
 </body>
 </html>
-
-
