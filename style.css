@@ -704,6 +704,27 @@ html, body {
   margin-top: 12rem;
 }
 
+.category-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.category-chips .chip {
+  background: var(--chip-bg, #eee);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.category-chips .chip:hover {
+  background: var(--chip-hover, #ccc);
+}
+
+
 
 
 
