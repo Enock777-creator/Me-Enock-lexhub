@@ -527,8 +527,8 @@ footer {
     min-height: 260px;
   }
   .logo {
-    width: 110px;
-    height: 110px;
+    width: 130px;
+    height: 130px;
   }
 
   /* Website title in BurlyWood */
@@ -539,7 +539,7 @@ footer {
   text-align: center;
   width: 100%;
   font-size: 1.8rem;      /* slightly smaller than desktop to fit phone width */
-  margin-top: 0.3rem;     /* pulls it down a bit so it aligns with logo */
+  margin-top: 2rem;     /* pulls it down a bit so it aligns with logo */
 }
   .header-stack {
     align-items: center;
@@ -703,6 +703,7 @@ html, body {
 .header-stack {
   margin-top: 12rem;
 }
+
 
 
 
