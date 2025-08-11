@@ -218,8 +218,8 @@ header::before {
 }
 .logo {
   margin-top: -10rem; /* lifts the logo upward */
-  width: 110px;
-  height: 110px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   margin-bottom: 0.5rem;
   object-fit: cover;
@@ -701,5 +701,6 @@ html, body {
 .header-stack {
   margin-top: 11.5rem;
 }
+
 
 
