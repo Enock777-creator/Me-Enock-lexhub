@@ -183,17 +183,32 @@
 
 <!-- Dark Mode & Back-to-Top Logic -->
 <script>
+(function () {
   const btn = document.getElementById('darkModeToggle');
   const root = document.documentElement;
-  const saved = localStorage.getItem('theme');
 
-  if (saved) root.setAttribute('data-theme', saved);
+  // Safe read (some private modes throw on localStorage)
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem('theme'); } catch (e) {}
 
-  btn?.addEventListener('click', () => {
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    root.setAttribute('data-theme', savedTheme);
+  } else {
+    // Fall back to system preference
+    const prefersDark = window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+  }
+
+  function toggleTheme() {
     const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', current);
-    localStorage.setItem('theme', current);
-  });
+    try { localStorage.setItem('theme', current); } catch (e) {}
+  }
+
+  // Universal click/tap support
+  btn && btn.addEventListener('click', toggleTheme, { passive: true });
+})();
 </script>
 
 <script>
@@ -333,6 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
 
 
