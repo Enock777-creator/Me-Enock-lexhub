@@ -182,7 +182,7 @@ header::before {
 
 #darkModeToggle {
   position: absolute;
-  top: -6rem;
+  top: -5.5rem;
   right: 2rem;
   background: transparent;
   border: none;
@@ -200,7 +200,7 @@ header::before {
     font-size: 1.25rem;
   }
   #darkModeToggle {
-    top: -8rem;
+    top: -7.5rem;
     right: 1rem;
     font-size: 1.25rem;
   }
@@ -217,6 +217,7 @@ header::before {
   position: relative;
 }
 .logo {
+  margin-top: -2rem; /* lifts the logo upward */
   width: 110px;
   height: 110px;
   border-radius: 50%;
@@ -700,6 +701,7 @@ html, body {
 .header-stack {
   margin-top: 10rem;
 }
+
 
 
 
