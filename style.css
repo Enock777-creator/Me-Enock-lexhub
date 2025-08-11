@@ -699,7 +699,7 @@ html, body {
 /* Adjust hamburger alignment */
 .hamburger {
     position: relative;
-    top: 6px; /* adjust this value until it's visually aligned */
+    down: 6px; /* adjust this value until it's visually aligned */
 }
 
 /* Optional: ensure all three elements share the same vertical alignment */
@@ -708,6 +708,7 @@ html, body {
     align-items: center; /* locks everything to the same baseline */
     justify-content: space-between; /* logo in center, buttons on ends */
 }
+
 
 
 
