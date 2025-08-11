@@ -182,19 +182,19 @@
 
 <!-- Dark Mode & Back-to-Top Logic -->
 <script>
-document.getElementById('darkModeToggle').addEventListener('click', () => {
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
-});
-const topBtn = document.getElementById('topBtn');
-window.addEventListener('scroll', () => {
-  const dH = document.documentElement.scrollHeight - window.innerHeight;
-  const angle = (window.scrollY / dH) * 360;
-  topBtn.style.setProperty('--scroll-angle', `${angle}deg`);
-  topBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
-});
-topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  const btn = document.getElementById('darkModeToggle');
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+
+  if (saved) root.setAttribute('data-theme', saved);
+
+  btn?.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', current);
+    localStorage.setItem('theme', current);
+  });
 </script>
+
 
 <!-- Sidebar Logic -->
 <script>
@@ -258,23 +258,9 @@ searchInput.addEventListener('input', () => {
 });
 </script>
 
-
-  <script>
-  const btn = document.getElementById('darkModeToggle');
-  const root = document.documentElement;
-  const saved = localStorage.getItem('theme');
-
-  if (saved) root.setAttribute('data-theme', saved);
-
-  btn?.addEventListener('click', () => {
-    const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', current);
-    localStorage.setItem('theme', current);
-  });
-</script>
-
 </body>
 </html>
+
 
 
 
