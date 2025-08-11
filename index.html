@@ -224,7 +224,6 @@ function runSearch(query, scrollToFirst = false) {
   let anyVisible = false;
   let firstVisible = null;
 
-  // Helper to show/hide matching elements
   function filterList(list) {
     list.forEach(item => {
       if (item.textContent.toLowerCase().includes(term)) {
@@ -240,26 +239,25 @@ function runSearch(query, scrollToFirst = false) {
   filterList(articleItems);
   filterList(pdfItems);
 
-  // Show/hide "No results" message
   noResults.style.display = anyVisible ? 'none' : '';
 
-  // Optional: Scroll to first match
   if (scrollToFirst && firstVisible) {
     firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
 
-// Handle submit (Enter key)
+// 🔹 Enter key → filter + scroll to first match
 searchForm.addEventListener('submit', e => {
   e.preventDefault();
   runSearch(searchInput.value, true);
 });
 
-// Handle live typing
+// 🔹 Typing → filter only (no scrolling)
 searchInput.addEventListener('input', () => {
-  runSearch(searchInput.value, true);
+  runSearch(searchInput.value, false);
 });
 </script>
+
 
   <script>
   const btn = document.getElementById('darkModeToggle');
@@ -277,6 +275,7 @@ searchInput.addEventListener('input', () => {
 
 </body>
 </html>
+
 
 
 
