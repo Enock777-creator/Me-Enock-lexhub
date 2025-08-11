@@ -217,7 +217,7 @@ header::before {
   position: relative;
 }
 .logo {
-  margin-top: -4.5rem; /* lifts the logo upward */
+  margin-top: -6rem; /* lifts the logo upward */
   width: 110px;
   height: 110px;
   border-radius: 50%;
@@ -699,8 +699,9 @@ html, body {
 }
 
 .header-stack {
-  margin-top: 10rem;
+  margin-top: 11.5rem;
 }
+
 
 
 
