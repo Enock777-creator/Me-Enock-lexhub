@@ -237,55 +237,103 @@ document.addEventListener("click", e => {
 sidebar.addEventListener("click", e => e.stopPropagation());
 </script>
 
-<!-- Search Logic -->
+<!-- Search Logic (with auto-categories) -->
 <script>
-const searchInput = document.getElementById('site-search');
-const searchForm = document.getElementById('site-search-form');
-const noResults = document.getElementById('no-results');
-const articleItems = document.querySelectorAll('.article-box, .article-md');
-const pdfItems = document.querySelectorAll('.pdf-list li');
+document.addEventListener('DOMContentLoaded', () => {
+  // References
+  const searchInput = document.getElementById('site-search');
+  const searchForm = document.getElementById('site-search-form');
+  const noResults = document.getElementById('no-results');
+  const articleItems = document.querySelectorAll('.article-box, .article-md');
+  const pdfItems = document.querySelectorAll('.pdf-list li');
 
-function runSearch(query, scrollToFirst = false) {
-  const term = query.toLowerCase();
-  let anyVisible = false;
-  let firstVisible = null;
+  // 1) Search function (define first so others can reuse it)
+  function runSearch(query, scrollToFirst = false) {
+    const term = query.toLowerCase();
+    let anyVisible = false;
+    let firstVisible = null;
 
-  function filterList(list) {
-    list.forEach(item => {
-      if (item.textContent.toLowerCase().includes(term)) {
-        item.style.display = '';
-        if (!firstVisible) firstVisible = item;
-        anyVisible = true;
-      } else {
-        item.style.display = 'none';
+    function filterList(list) {
+      list.forEach(item => {
+        if (item.textContent.toLowerCase().includes(term)) {
+          item.style.display = '';
+          if (!firstVisible) firstVisible = item;
+          anyVisible = true;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    filterList(articleItems);
+    filterList(pdfItems);
+
+    if (noResults) noResults.style.display = anyVisible ? 'none' : '';
+
+    if (scrollToFirst && firstVisible) {
+      firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // 2) Auto-generate category chips (this sits AFTER runSearch and BEFORE the listeners)
+  const catContainer = document.getElementById('category-list');
+  if (catContainer) {
+    // Helper: pull a clean category name from a title like "Family Law – Slides" -> "Family Law"
+    const cleanCategory = (text) => {
+      const head = text.trim().split(/[-–—:|]/)[0].trim();
+      // Optional: title-case normalization
+      return head.replace(/\s+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    };
+
+    const seen = new Map(); // nameKey -> originalName (for nice casing)
+
+    // Scan headings and pdf items for category-like prefixes
+    document.querySelectorAll('.article-box h2, .article-md h2, .pdf-list li').forEach(node => {
+      const raw = node.textContent || '';
+      const name = cleanCategory(raw);
+      const key = name.toLowerCase();
+      if (name.length > 2 && !seen.has(key)) {
+        seen.set(key, name);
       }
+    });
+
+    // Render chips
+    const chips = [...seen.values()].sort((a, b) => a.localeCompare(b));
+    catContainer.innerHTML = chips.map(name =>
+      `<div class="chip" data-filter="${name.toLowerCase()}">${name}</div>`
+    ).join('');
+
+    // Chip click -> fill search + filter + scroll
+    catContainer.addEventListener('click', e => {
+      const chip = e.target.closest('.chip');
+      if (!chip) return;
+      const term = chip.dataset.filter || '';
+      if (searchInput) searchInput.value = term;
+      runSearch(term, true);
     });
   }
 
-  filterList(articleItems);
-  filterList(pdfItems);
-
-  noResults.style.display = anyVisible ? 'none' : '';
-
-  if (scrollToFirst && firstVisible) {
-    firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // 3) Event listeners (placed last)
+  if (searchForm) {
+    // Enter key: filter + scroll to first match
+    searchForm.addEventListener('submit', e => {
+      e.preventDefault();
+      runSearch(searchInput?.value || '', true);
+    });
   }
-}
 
-// 🔹 Enter key → filter + scroll to first match
-searchForm.addEventListener('submit', e => {
-  e.preventDefault();
-  runSearch(searchInput.value, true);
-});
-
-// 🔹 Typing → filter only (no scrolling)
-searchInput.addEventListener('input', () => {
-  runSearch(searchInput.value, false);
+  if (searchInput) {
+    // Typing: filter only (no scroll)
+    searchInput.addEventListener('input', () => {
+      runSearch(searchInput.value, false);
+    });
+  }
 });
 </script>
 
 </body>
 </html>
+
 
 
 
