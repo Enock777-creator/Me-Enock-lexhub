@@ -200,7 +200,7 @@ header::before {
     font-size: 1.25rem;
   }
   #darkModeToggle {
-    top: -4rem;
+    top: -6rem;
     right: 1rem;
     font-size: 1.25rem;
   }
@@ -700,6 +700,7 @@ html, body {
 .header-stack {
   margin-top: 10rem;
 }
+
 
 
 
