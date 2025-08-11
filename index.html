@@ -196,6 +196,31 @@
   });
 </script>
 
+<script>
+const categories = [
+  { name: 'Criminal Law', icon: '⚖️' },
+  { name: 'Family Law', icon: '👨‍👩‍👧' },
+  { name: 'Legal Philosophy', icon: '🧠' },
+  { name: 'Public Law', icon: '🏛️' },
+  { name: 'Private Law', icon: '📜' }
+];
+
+const catContainer = document.getElementById('category-list');
+
+catContainer.innerHTML = categories.map(cat =>
+  `<div class="chip" data-filter="${cat.name.toLowerCase()}">
+     ${cat.icon} ${cat.name}
+   </div>`
+).join('');
+
+catContainer.addEventListener('click', e => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  const term = chip.dataset.filter;
+  document.getElementById('site-search').value = term;
+  runSearch(term, true); // reuse your existing function
+});
+</script>
 
 <!-- Sidebar Logic -->
 <script>
@@ -261,6 +286,7 @@ searchInput.addEventListener('input', () => {
 
 </body>
 </html>
+
 
 
 
