@@ -162,12 +162,12 @@ header::before {
 /* Hamburger and dark mode always top corners, never overlapping */
 #sidebarToggle {
   position: absolute;
-  top: 1.5rem;
+  top: 2.5rem;
   left: 2rem;
   width: 3rem;
   height: 3rem;
-  background: burlywood
-  color: black
+  background: burlywood;
+  color: black;
   border: none;
   border-radius: 50%;
   font-size: 1.5rem;
@@ -696,18 +696,8 @@ html, body {
   text-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
-/* Adjust hamburger alignment */
-.hamburger {
-    position: relative;
-    down: 6px; /* adjust this value until it's visually aligned */
-}
 
-/* Optional: ensure all three elements share the same vertical alignment */
-.header-container {
-    display: flex;
-    align-items: center; /* locks everything to the same baseline */
-    justify-content: space-between; /* logo in center, buttons on ends */
-}
+
 
 
 
