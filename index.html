@@ -344,8 +344,55 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+  <!-- Sidebar auto-close + scroll offset styles -->
+<style>
+  :root { --header-offset: 72px; }
+  html { scroll-behavior: smooth; }
+  [id], .article-box h2, .article-md h2 { scroll-margin-top: var(--header-offset); }
+  .overlay, .backdrop, [data-overlay] { pointer-events: none; opacity: 0; transition: opacity .2s ease; }
+  .overlay.show, .backdrop.show, [data-overlay].show { pointer-events: auto; opacity: 1; }
+  .sidebar, .side-nav, #sidebar { will-change: transform; }
+  .sidebar.open, .side-nav.open, #sidebar.open { transform: translateX(0); }
+</style>
+
+<!-- Auto-close sidebar on mobile when clicking a category/article -->
+<script>
+(function () {
+  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+  const sidebar = document.querySelector('#sidebar');
+  const body = document.body;
+
+  function closeSidebar() {
+    sidebar.classList.remove('active', 'open', 'show');
+    body.classList.remove('no-scroll', 'menu-open', 'sidebar-open');
+  }
+
+  const closeOnClickSelectors = [
+    '#category-list .chip',
+    '.article-box a',
+    '.article-md a',
+    '.pdf-list a',
+    'a[href^="#"]'
+  ].join(',');
+
+  document.addEventListener('click', (e) => {
+    const hit = e.target.closest(closeOnClickSelectors);
+    if (!hit || !isMobile()) return;
+    setTimeout(() => {
+      closeSidebar();
+      if (hit.tagName === 'A' && hit.hash) {
+        const id = decodeURIComponent(hit.hash.slice(1));
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 60);
+  }, true);
+})();
+</script>
+
+  
 </body>
 </html>
+
 
 
 
