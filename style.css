@@ -385,6 +385,8 @@ nav {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
   text-align: justify;
+  word-wrap: break-word;      /* old but reliable */
+  overflow-wrap: anywhere;    /* modern browsers */
 }
 .article-box:hover {
   transform: translateY(-4px);
@@ -724,6 +726,7 @@ html, body {
 .category-chips .chip:hover {
   background: var(--chip-hover, #ccc);
 }
+
 
 
 
