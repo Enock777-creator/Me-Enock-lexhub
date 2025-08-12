@@ -527,8 +527,8 @@ footer {
     min-height: 260px;
   }
   .logo {
-    width: 130px;
-    height: 130px;
+    width: 135px;
+    height: 135px;
   }
 
   /* Website title in BurlyWood */
@@ -723,6 +723,7 @@ html, body {
 .category-chips .chip:hover {
   background: var(--chip-hover, #ccc);
 }
+
 
 
 
