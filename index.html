@@ -194,12 +194,11 @@
   try { savedTheme = localStorage.getItem('theme'); } catch (e) {}
 
   if (savedTheme === 'dark' || savedTheme === 'light') {
+    // Step 1: Apply saved theme
     root.setAttribute('data-theme', savedTheme);
   } else {
-    // Fall back to system preference
-    const prefersDark = window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    // Step 2: No saved choice — default to LIGHT mode
+    root.setAttribute('data-theme', 'light');
   }
 
   function toggleTheme() {
@@ -212,6 +211,7 @@
   btn && btn.addEventListener('click', toggleTheme, { passive: true });
 })();
 </script>
+
 
 <script>
 const categories = [
@@ -392,6 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
 
 
 
