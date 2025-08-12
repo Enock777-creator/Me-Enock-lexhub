@@ -384,6 +384,7 @@ nav {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.2s ease;
+  text-align: justify;
 }
 .article-box:hover {
   transform: translateY(-4px);
@@ -723,6 +724,7 @@ html, body {
 .category-chips .chip:hover {
   background: var(--chip-hover, #ccc);
 }
+
 
 
 
