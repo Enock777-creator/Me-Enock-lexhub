@@ -6,6 +6,21 @@
   <title>LexHub Article</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Apply saved theme before rendering -->
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
@@ -17,6 +32,8 @@
       <h1 class="logo-text" id="article-title">Loading...</h1>
       <div class="header-buttons">
         <a href="index.html" class="btn">🏠 Back to Home</a>
+        <!-- Dark mode toggle -->
+        <button id="darkModeToggle" class="btn">🌓</button>
       </div>
     </div>
   </header>
@@ -35,7 +52,23 @@
   </footer>
 
   <script>
-    // 1. Read the ?id= from the URL
+    // Dark mode toggle logic
+    (function () {
+      const btn = document.getElementById('darkModeToggle');
+      const root = document.documentElement;
+
+      function toggleTheme() {
+        const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', current);
+        try { localStorage.setItem('theme', current); } catch (e) {}
+      }
+
+      if (btn) btn.addEventListener('click', toggleTheme, { passive: true });
+    })();
+  </script>
+
+  <script>
+    // Article loader
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
 
@@ -48,19 +81,16 @@
       throw new Error('No article ID');
     }
 
-    // 2. Convert the id into a readable title (if needed)
     titleEl.textContent = id
       .replace(/-/g, ' ')
       .replace(/\b\w/g, c => c.toUpperCase());
 
-    // 3. Build possible file paths (local and GitHub raw)
     const sources = [
       `articles/${id}.md`,
       `articles/${id}.html`,
       `https://raw.githubusercontent.com/Enock777-creator/Me-Enock-lexhub/main/articles/${id}.md`
     ];
 
-    // 4. Try loading from each source until one works
     (async () => {
       for (const url of sources) {
         try {
@@ -73,12 +103,11 @@
           } else {
             contentEl.innerHTML = text;
           }
-          return; // Success
+          return;
         } catch (err) {
-          // Ignore and try next source
+          // try next
         }
       }
-      // If all fail:
       contentEl.innerHTML = `
         <p>Sorry, this article could not be loaded.</p>
         <p>Check that the file <code>${id}.md</code> or <code>${id}.html</code> exists in the <strong>articles</strong> folder.</p>
