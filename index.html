@@ -185,54 +185,68 @@
 
 <!-- Sidebar Logic -->
 <script>
-const sidebar = document.getElementById("sidebar");
-const toggleBtn = document.getElementById("sidebarToggle");
-const closeBtn = document.getElementById("closeSidebar");
-toggleBtn.addEventListener("click", e => { sidebar.classList.add("active"); e.stopPropagation(); });
-closeBtn.addEventListener("click", e => { sidebar.classList.remove("active"); e.stopPropagation(); });
-document.addEventListener("click", e => {
+var sidebar = document.getElementById("sidebar");
+var toggleBtn = document.getElementById("sidebarToggle");
+var closeBtn = document.getElementById("closeSidebar");
+
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", function(e) { 
+    sidebar.classList.add("active"); 
+    e.stopPropagation(); 
+  });
+}
+if (closeBtn) {
+  closeBtn.addEventListener("click", function(e) { 
+    sidebar.classList.remove("active"); 
+    e.stopPropagation(); 
+  });
+}
+
+document.addEventListener("click", function(e) {
   if (sidebar.classList.contains("active") && !sidebar.contains(e.target) && e.target !== toggleBtn) {
     sidebar.classList.remove("active");
   }
 });
-sidebar.addEventListener("click", e => e.stopPropagation());
+if (sidebar) {
+  sidebar.addEventListener("click", function(e) { e.stopPropagation(); });
+}
 </script>
 
-<!-- Search Logic -->
+<!-- Search Logic (compatibility safe) -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const searchInput = document.getElementById('site-search');
-  const searchForm = document.getElementById('site-search-form');
-  const noResults = document.getElementById('no-results');
+document.addEventListener('DOMContentLoaded', function () {
+  var searchInput = document.getElementById('site-search');
+  var searchForm = document.getElementById('site-search-form');
+  var noResults = document.getElementById('no-results');
 
-  const articleItems = document.querySelectorAll('.article-box, .article-md');
-  const pdfItems = document.querySelectorAll('.pdf-list li');
+  var articleItems = document.querySelectorAll('.article-box, .article-md');
+  var pdfItems = document.querySelectorAll('.pdf-list li');
 
-  function runSearch(query, scrollToFirst = false) {
-    const term = query.toLowerCase();
-    let anyVisible = false;
-    let firstVisible = null;
-
-    function filterList(list) {
-      list.forEach(item => {
-        if (item.textContent.toLowerCase().includes(term)) {
-          item.style.display = '';
-          if (!firstVisible) firstVisible = item;
-          anyVisible = true;
-        } else {
-          item.style.display = 'none';
-        }
-      });
+  function filterList(list, term, state) {
+    for (var i = 0; i < list.length; i++) {
+      var item = list[i];
+      if ((item.textContent || '').toLowerCase().indexOf(term) !== -1) {
+        item.style.display = '';
+        if (!state.firstVisible) state.firstVisible = item;
+        state.anyVisible = true;
+      } else {
+        item.style.display = 'none';
+      }
     }
+  }
 
-    filterList(articleItems);
-    filterList(pdfItems);
+  function runSearch(query, scrollToFirst) {
+    var term = (query || '').toLowerCase();
+    var state = { anyVisible: false, firstVisible: null };
 
-    if (noResults) noResults.style.display = anyVisible ? 'none' : '';
+    filterList(articleItems, term, state);
+    filterList(pdfItems, term, state);
 
-    if (scrollToFirst && firstVisible) {
-      setTimeout(() => {
-        firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (noResults) noResults.style.display = state.anyVisible ? 'none' : '';
+
+    if (scrollToFirst && state.firstVisible) {
+      setTimeout(function () {
+        state.firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 100);
     }
   }
@@ -240,13 +254,13 @@ document.addEventListener('DOMContentLoaded', () => {
   window.runSearch = runSearch;
 
   if (searchForm) {
-    searchForm.addEventListener('submit', e => {
+    searchForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      runSearch(searchInput?.value || '', true);
+      runSearch(searchInput ? searchInput.value : '', true);
     });
   }
   if (searchInput) {
-    searchInput.addEventListener('input', () => {
+    searchInput.addEventListener('input', function () {
       runSearch(searchInput.value, false);
     });
   }
@@ -267,33 +281,36 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- Auto-close sidebar on mobile with Chrome fix -->
 <script>
 (function () {
-  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
-  const sidebar = document.querySelector('#sidebar');
-  const body = document.body;
+  var isMobile = function () { return window.matchMedia('(max-width: 900px)').matches; };
+  var sidebar = document.querySelector('#sidebar');
+  var body = document.body;
 
   function closeSidebar() {
+    if (!sidebar) return;
     sidebar.classList.remove('active', 'open', 'show');
     body.classList.remove('no-scroll', 'menu-open', 'sidebar-open');
   }
 
-  const closeOnClickSelectors = [
+  var closeOnClickSelectors = [
     '.article-box a',
     '.article-md a',
     '.pdf-list a',
     'a[href^="#"]'
   ].join(',');
 
-  document.addEventListener('click', (e) => {
-    const hit = e.target.closest(closeOnClickSelectors);
+  document.addEventListener('click', function (e) {
+    var hit = e.target && e.target.closest ? e.target.closest(closeOnClickSelectors) : null;
     if (!hit || !isMobile()) return;
 
     if (hit.tagName === 'A' && hit.hash) {
-      // Delay closing so Chrome scrolls first
-      setTimeout(() => {
+      setTimeout(function () {
         closeSidebar();
-        const id = decodeURIComponent(hit.hash.slice(1));
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300); // delay in ms
+        var id = decodeURIComponent(hit.hash.slice(1));
+        var el = document.getElementById(id);
+        if (el && el.scrollIntoView) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
     } else {
       closeSidebar();
     }
@@ -303,6 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- Unified dark mode + back-to-top -->
 <script src="theme.js?v=6"></script>
+
 </body>
 </html>
 
