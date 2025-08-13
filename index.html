@@ -236,7 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Make runSearch available globally
   window.runSearch = runSearch;
 
   if (searchForm) {
@@ -264,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
   .sidebar.open, .side-nav.open, #sidebar.open { transform: translateX(0); }
 </style>
 
-<!-- Auto-close sidebar on mobile -->
+<!-- Auto-close sidebar on mobile with Chrome fix -->
 <script>
 (function () {
   const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
@@ -286,22 +285,26 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (e) => {
     const hit = e.target.closest(closeOnClickSelectors);
     if (!hit || !isMobile()) return;
-    setTimeout(() => {
-      closeSidebar();
-      if (hit.tagName === 'A' && hit.hash) {
+
+    if (hit.tagName === 'A' && hit.hash) {
+      // Delay closing so Chrome scrolls first
+      setTimeout(() => {
+        closeSidebar();
         const id = decodeURIComponent(hit.hash.slice(1));
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 60);
+      }, 300); // delay in ms
+    } else {
+      closeSidebar();
+    }
   }, true);
 })();
 </script>
 
 <!-- Unified dark mode + back-to-top -->
 <script src="theme.js?v=3"></script>
-
 </body>
 </html>
+
 
 
 
