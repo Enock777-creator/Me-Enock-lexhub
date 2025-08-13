@@ -177,7 +177,7 @@
 </main>
 
 <footer>
-  <p>© Copyright M.Enock's LexHub 2025. All rights reserved.</p>
+  <p>© Copyright| M.Enock's LexHub 2025| All rights reserved.</p>
 </footer>
 
 <!-- Back to Top -->
@@ -259,7 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (noResults) noResults.style.display = anyVisible ? 'none' : '';
 
     if (scrollToFirst && firstVisible) {
-      // Delay scroll slightly so mobile layout settles
       setTimeout(() => {
         firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 100);
@@ -275,7 +274,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const seen = new Map();
 
-    // Scan for possible category sources: h2, h3, and PDF links
     document.querySelectorAll(
       '.article-box h2, .article-box h3, .article-md h2, .pdf-list li a'
     ).forEach(node => {
@@ -316,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-  <!-- Sidebar auto-close + scroll offset styles -->
+<!-- Sidebar auto-close + scroll offset styles -->
 <style>
   :root { --header-offset: 72px; }
   html { scroll-behavior: smooth; }
@@ -359,32 +357,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 60);
   }, true);
 })();
-
-<script src="theme.js?v=1"></script>
-
 </script>
+
+<!-- Load your unified dark mode + back-to-top -->
+<script src="theme.js?v=2"></script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
