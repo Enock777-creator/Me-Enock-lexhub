@@ -20,7 +20,6 @@
   <button id="closeSidebar" aria-label="Close sidebar">✕</button>
   <a href="/">🏛️ Home</a>
   <a href="#articles">🔰Articles</a>
-  <a href="#categories">📁Categories</a>
   <a href="#llb1">📚 LLB1(2024-2025) Materials</a>
   <a href="#llb2">📚 LLB1(2024-2025) Materials</a>
 </div>
@@ -149,12 +148,6 @@
       </ul>
     </section>
 
-  <section id="category-room">
-  <h2>📁 Browse by Category</h2>
-  <div id="category-list" class="category-chips"></div>
-  </section>
-
-
     <!-- Contact Bar (edge-to-edge) -->
     <section id="contact">
       <h2>Get in touch</h2>
@@ -188,56 +181,6 @@
 
 <!-- Back to Top -->
 <button id="topBtn" title="Back to top">↑</button>
-
-<!-- Robust Category Generation -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const catContainer = document.getElementById('category-list');
-  const searchInput = document.getElementById('site-search');
-
-  if (!catContainer) return;
-
-  const cleanCategory = (text) => {
-    const head = text.trim().split(/[-–—:|]/)[0].trim();
-    return head.replace(/\s+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-  };
-
-  const seen = new Map();
-
-  // Scan for headings and PDF links
-  document.querySelectorAll(
-    '.article-box h2, .article-box h3, .article-md h2, .pdf-list li a'
-  ).forEach(node => {
-    const raw = node.textContent || '';
-    const name = cleanCategory(raw);
-    const key = name.toLowerCase();
-    if (name.length > 2 && !seen.has(key)) {
-      seen.set(key, name);
-    }
-  });
-
-  const chips = [...seen.values()].sort((a, b) => a.localeCompare(b));
-  catContainer.innerHTML = chips
-    .map(name => `<div class="chip" data-filter="${name.toLowerCase()}">${name}</div>`)
-    .join('');
-
-  // Guarantee clickability in Chrome
-  catContainer.querySelectorAll('.chip').forEach(chip => {
-    chip.style.position = 'relative';
-    chip.style.zIndex = '10';
-    chip.style.pointerEvents = 'auto';
-  });
-
-  // Click handler
-  catContainer.addEventListener('click', e => {
-    const chip = e.target.closest('.chip');
-    if (!chip) return;
-    const term = chip.dataset.filter || '';
-    if (searchInput) searchInput.value = term;
-    if (typeof runSearch === 'function') runSearch(term, true);
-  });
-});
-</script>
 
 <!-- Sidebar Logic -->
 <script>
@@ -293,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Make runSearch available globally for category clicks
+  // Make runSearch available globally
   window.runSearch = runSearch;
 
   if (searchForm) {
@@ -334,7 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const closeOnClickSelectors = [
-    '#category-list .chip',
     '.article-box a',
     '.article-md a',
     '.pdf-list a',
@@ -360,4 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
+
 
