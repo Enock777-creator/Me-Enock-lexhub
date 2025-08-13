@@ -177,35 +177,59 @@
 </main>
 
 <footer>
-  <p>© Copyright| M.Enock's LexHub 2025| All rights reserved.</p>
+  <p>© Copyright | M.Enock's LexHub 2025 | All rights reserved.</p>
 </footer>
 
 <!-- Back to Top -->
 <button id="topBtn" title="Back to top">↑</button>
 
+<!-- Robust Category Generation -->
 <script>
-const categories = [
-  { name: 'Criminal Law', icon: '⚖️' },
-  { name: 'Family Law', icon: '👨‍👩‍👧' },
-  { name: 'Legal Philosophy', icon: '🧠' },
-  { name: 'Public Law', icon: '🏛️' },
-  { name: 'Private Law', icon: '📜' }
-];
+document.addEventListener('DOMContentLoaded', () => {
+  const catContainer = document.getElementById('category-list');
+  const searchInput = document.getElementById('site-search');
 
-const catContainer = document.getElementById('category-list');
+  if (!catContainer) return;
 
-catContainer.innerHTML = categories.map(cat =>
-  `<div class="chip" data-filter="${cat.name.toLowerCase()}">
-     ${cat.icon} ${cat.name}
-   </div>`
-).join('');
+  const cleanCategory = (text) => {
+    const head = text.trim().split(/[-–—:|]/)[0].trim();
+    return head.replace(/\s+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  };
 
-catContainer.addEventListener('click', e => {
-  const chip = e.target.closest('.chip');
-  if (!chip) return;
-  const term = chip.dataset.filter;
-  document.getElementById('site-search').value = term;
-  runSearch(term, true); // reuse your existing function
+  const seen = new Map();
+
+  // Scan for headings and PDF links
+  document.querySelectorAll(
+    '.article-box h2, .article-box h3, .article-md h2, .pdf-list li a'
+  ).forEach(node => {
+    const raw = node.textContent || '';
+    const name = cleanCategory(raw);
+    const key = name.toLowerCase();
+    if (name.length > 2 && !seen.has(key)) {
+      seen.set(key, name);
+    }
+  });
+
+  const chips = [...seen.values()].sort((a, b) => a.localeCompare(b));
+  catContainer.innerHTML = chips
+    .map(name => `<div class="chip" data-filter="${name.toLowerCase()}">${name}</div>`)
+    .join('');
+
+  // Guarantee clickability in Chrome
+  catContainer.querySelectorAll('.chip').forEach(chip => {
+    chip.style.position = 'relative';
+    chip.style.zIndex = '10';
+    chip.style.pointerEvents = 'auto';
+  });
+
+  // Click handler
+  catContainer.addEventListener('click', e => {
+    const chip = e.target.closest('.chip');
+    if (!chip) return;
+    const term = chip.dataset.filter || '';
+    if (searchInput) searchInput.value = term;
+    if (typeof runSearch === 'function') runSearch(term, true);
+  });
 });
 </script>
 
@@ -224,18 +248,16 @@ document.addEventListener("click", e => {
 sidebar.addEventListener("click", e => e.stopPropagation());
 </script>
 
-<!-- Search Logic (with auto-categories) -->
+<!-- Search Logic -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('site-search');
   const searchForm = document.getElementById('site-search-form');
   const noResults = document.getElementById('no-results');
 
-  // Grab every clickable thing we want to search/filter
   const articleItems = document.querySelectorAll('.article-box, .article-md');
   const pdfItems = document.querySelectorAll('.pdf-list li');
 
-  // --- SEARCH FUNCTION ---
   function runSearch(query, scrollToFirst = false) {
     const term = query.toLowerCase();
     let anyVisible = false;
@@ -265,41 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- AUTO-GENERATE CATEGORIES ---
-  const catContainer = document.getElementById('category-list');
-  if (catContainer) {
-    const cleanCategory = (text) => {
-      const head = text.trim().split(/[-–—:|]/)[0].trim();
-      return head.replace(/\s+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    };
-    const seen = new Map();
+  // Make runSearch available globally for category clicks
+  window.runSearch = runSearch;
 
-    document.querySelectorAll(
-      '.article-box h2, .article-box h3, .article-md h2, .pdf-list li a'
-    ).forEach(node => {
-      const raw = node.textContent || '';
-      const name = cleanCategory(raw);
-      const key = name.toLowerCase();
-      if (name.length > 2 && !seen.has(key)) {
-        seen.set(key, name);
-      }
-    });
-
-    const chips = [...seen.values()].sort((a, b) => a.localeCompare(b));
-    catContainer.innerHTML = chips
-      .map(name => `<div class="chip" data-filter="${name.toLowerCase()}">${name}</div>`)
-      .join('');
-
-    catContainer.addEventListener('click', e => {
-      const chip = e.target.closest('.chip');
-      if (!chip) return;
-      const term = chip.dataset.filter || '';
-      if (searchInput) searchInput.value = term;
-      runSearch(term, true);
-    });
-  }
-
-  // --- LISTENERS ---
   if (searchForm) {
     searchForm.addEventListener('submit', e => {
       e.preventDefault();
@@ -325,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
   .sidebar.open, .side-nav.open, #sidebar.open { transform: translateX(0); }
 </style>
 
-<!-- Auto-close sidebar on mobile when clicking a category/article -->
+<!-- Auto-close sidebar on mobile -->
 <script>
 (function () {
   const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
@@ -359,8 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 </script>
 
-<!-- Load your unified dark mode + back-to-top -->
-<script src="theme.js?v=2"></script>
+<!-- Unified dark mode + back-to-top -->
+<script src="theme.js?v=3"></script>
 
 </body>
 </html>
