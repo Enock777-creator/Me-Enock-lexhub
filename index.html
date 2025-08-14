@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en" data-theme="">
 <head>
@@ -318,6 +320,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- Unified dark mode + back-to-top -->
 <script src="theme.js?v=2025-08-13"></script>
+
+ <!-- 1. Load your local jQuery -->
+    <script src="/htdocs/jquery.js"></script>
+
+    <!-- 2. Read More feature -->
+    <script>
+      $(function(){
+        $("#show-article").on("click", function(){
+          $("#extra-article").fadeIn(400);
+          $(this).hide();
+        });
+      });
+    </script>
 </body>
 </html>
 
